@@ -293,15 +293,24 @@
     }
 </>CSS
     
-    .profile-rect {
-  width: 200px;
-  height: 240px;
+.profile-rect {
+  width: 260px;
+  height: 320px;
   object-fit: cover;
   object-position: center;
-  border-radius: 12px;
-  margin: 20px auto 10px;
+  border-radius: 14px;
+  margin: 24px auto 12px;
   display: block;
   border: 2px solid #c9a86a;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+/* 모바일 전용 */
+@media (max-width:720px){
+  .profile-rect {
+    width: 160px;
+    height: 200px;
+  }
 }
     
   </style>
