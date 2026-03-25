@@ -1,440 +1,497 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>메르세데스-벤츠 공식딜러 구용회 팀장</title>
-  <meta name="description" content="메르세데스-벤츠 공식딜러 구용회 팀장 | 벤츠한바퀴 유튜브, 네이버 블로그, 차량 선택 가이드, 문의 연결" />
-  <style>
-    :root{
-      --bg:#060606;
-      --bg-soft:#0d0f12;
-      --card:#111317;
-      --card-2:#171a20;
-      --line:rgba(255,255,255,.08);
-      --text:#f7f7f8;
-      --muted:#b7bcc6;
-      --gold:#c7a56a;
-      --gold-2:#e2c48f;
-      --shadow:0 24px 60px rgba(0,0,0,.42);
-      --radius-xl:30px;
-      --radius-lg:22px;
-      --radius-md:18px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family:Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(199,165,106,.16), transparent 24%),
-        linear-gradient(180deg, #050505 0%, #090909 36%, #050505 100%);
-      line-height:1.6;
-    }
-
-    a{text-decoration:none;color:inherit}
-
-    .wrap{
-      width:min(100%, 860px);
-      margin:0 auto;
-      padding:20px 18px 80px;
-    }
-
-    .hero{
-      position:relative;
-      overflow:hidden;
-      padding:38px 22px 28px;
-      border-radius:34px;
-      border:1px solid rgba(255,255,255,.08);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
-        linear-gradient(135deg, rgba(199,165,106,.10), rgba(255,255,255,0));
-      box-shadow:var(--shadow);
-      text-align:center;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      right:-80px;
-      top:-70px;
-      width:240px;
-      height:240px;
-      background:radial-gradient(circle, rgba(199,165,106,.25), transparent 68%);
-      filter:blur(8px);
-      pointer-events:none;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(199,165,106,.25);
-      background:rgba(199,165,106,.07);
-      color:var(--gold-2);
-      font-size:13px;
-      letter-spacing:.06em;
-      margin-bottom:16px;
-    }
-
-    h1{
-      margin:0;
-      font-size:42px;
-      line-height:1.18;
-      letter-spacing:-.03em;
-      font-weight:800;
-    }
-
-    .hero-main{
-      margin:18px auto 0;
-      max-width:560px;
-      font-size:19px;
-      color:#ececef;
-    }
-
-    .hero-sub{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    .cta-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:26px;
-    }
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-height:60px;
-      padding:0 18px;
-      border-radius:18px;
-      font-size:17px;
-      font-weight:800;
-      border:1px solid var(--line);
-      transition:transform .22s ease, box-shadow .22s ease, opacity .22s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 30px rgba(0,0,0,.24);
-    }
-
-    .btn-gold{
-      color:#111;
-      background:linear-gradient(135deg, var(--gold), var(--gold-2));
-    }
-
-    .btn-dark{
-      background:linear-gradient(180deg, #191c21, #111318);
-      color:#fff;
-    }
-
-    .btn-line{
-      background:rgba(255,255,255,.03);
-      color:#fff;
-    }
-
-    .section{
-      margin-top:16px;
-      border:1px solid var(--line);
-      border-radius:28px;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
-      padding:24px 20px;
-    }
-
-    .section-title{
-      margin:0 0 8px;
-      font-size:28px;
-      line-height:1.3;
-      letter-spacing:-.03em;
-    }
-
-    .section-desc{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    .notice-grid,
-    .guide-grid,
-    .link-grid{
-      display:grid;
-      gap:12px;
-    }
-
-    .notice-item,
-    .guide-item{
-      background:linear-gradient(180deg, #15181d, #101216);
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:16px 16px;
-    }
-
-    .notice-item{
-      font-weight:700;
-      color:#f2f2f4;
-    }
-
-    .guide-item strong{
-      display:block;
-      font-size:18px;
-      margin-bottom:4px;
-      color:#fff;
-    }
-
-    .guide-item span{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .link-card{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      min-height:78px;
-      padding:0 18px;
-      border-radius:20px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, #1a1d22, #111318);
-      transition:transform .22s ease, border-color .22s ease;
-    }
-
-    .link-card:hover{
-      transform:translateY(-2px);
-      border-color:rgba(199,165,106,.4);
-    }
-
-    .link-title{
-      font-size:17px;
-      font-weight:800;
-      color:#fff;
-    }
-
-    .link-sub{
-      display:block;
-      color:var(--muted);
-      font-size:13px;
-      margin-top:2px;
-    }
-
-    .arrow{
-      color:var(--gold);
-      font-size:22px;
-      font-weight:800;
-      flex:0 0 auto;
-    }
-
-    .highlight{
-      margin-top:16px;
-      text-align:center;
-      padding:28px 20px;
-      border-radius:30px;
-      border:1px solid rgba(199,165,106,.22);
-      background:
-        linear-gradient(180deg, rgba(199,165,106,.12), rgba(255,255,255,.02)),
-        linear-gradient(180deg, #0d0f12, #090909);
-      box-shadow:var(--shadow);
-    }
-
-    .highlight h3{
-      margin:0 0 10px;
-      font-size:30px;
-      line-height:1.25;
-      letter-spacing:-.03em;
-    }
-
-    .highlight p{
-      margin:0;
-      color:#ebebee;
-      font-size:16px;
-    }
-
-    .footer{
-      text-align:center;
-      padding-top:24px;
-      color:var(--muted);
-    }
-
-    .footer-name{
-      color:#fff;
-      font-size:18px;
-      font-weight:800;
-      margin-bottom:8px;
-    }
-
-    .footer-contact{
-      font-size:15px;
-      line-height:1.9;
-    }
-
-    .footer-sign{
-      margin-top:16px;
-      color:#ddd;
-      font-size:15px;
-    }
-
- <style>
-...
-@media (max-width:720px){
-  h1{font-size:33px}
-  .hero-main{font-size:17px}
-  .cta-grid{grid-template-columns:1fr}
-  .section-title{font-size:23px}
-  .highlight h3{font-size:25px}
-}
-
-.profile-rect {
-  width: 180px;
-  height: 220px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 14px;
-  margin: 20px auto;
-  display: block;
-  border: 2px solid #c9a86a;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-/* 모바일 */
-@media (max-width:720px){
-  .profile-rect {
-    width: 140px;
-    height: 180px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercedes-Benz MY26 어프로치북</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --silver: #c4c4c4;
+    --gold: #b8983c;
+    --white: #f8f6f2;
+    --card-bg: #111111;
+    --border: rgba(196,196,196,0.15);
+    --tag-bg: rgba(184,152,60,0.12);
+    --tag-border: rgba(184,152,60,0.4);
   }
-}
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
 
+  /* HEADER */
+  header {
+    position: sticky; top:0; z-index:100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .logo span { color: var(--gold); }
+  .header-right {
+    display: flex; align-items: center; gap: 24px;
+  }
+  .model-count {
+    font-size: 11px;
+    color: var(--silver);
+    letter-spacing: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 32px 48px;
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .hero-title em {
+    display: block;
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: 2px;
+    line-height: 2;
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    position: sticky; top:64px; z-index:90;
+    background: rgba(10,10,10,0.98);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+  }
+  .filter-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; gap: 8px;
+    padding: 16px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter-inner::-webkit-scrollbar { display:none; }
+  .filter-btn {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--silver);
+    padding: 7px 18px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--silver); color: var(--white); }
+  .filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  /* SEARCH */
+  .search-wrap {
+    max-width: 1400px; margin: 0 auto;
+    padding: 24px 32px 0;
+  }
+  .search-input {
+    width: 100%; max-width: 400px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 10px 4px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: rgba(196,196,196,0.4); letter-spacing:1px; }
+  .search-input:focus { border-bottom-color: var(--gold); }
+
+  /* GRID */
+  .grid-wrap {
+    max-width: 1400px; margin: 0 auto;
+    padding: 32px 32px 80px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-top: 16px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 28px;
+    cursor: pointer;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column; gap: 16px;
+    animation: fadeUp 0.4s ease both;
+  }
+  .card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .card:hover { border-color: rgba(184,152,60,0.4); transform: translateY(-2px); }
+  .card:hover::before { transform: scaleX(1); }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .card-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+  }
+  .card-variant {
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: 1px;
+  }
+  .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+  .card-price small {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    color: var(--silver);
+    font-weight: 300;
+  }
+  .card-divider {
+    height: 1px;
+    background: var(--border);
+  }
+  .card-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+  }
+  .spec-item { display:flex; flex-direction:column; gap:2px; }
+  .spec-label { font-size: 9px; letter-spacing:2px; color: rgba(196,196,196,0.5); text-transform:uppercase; }
+  .spec-value { font-size: 13px; color: var(--white); font-weight: 400; }
+  .card-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 4px;
+  }
+  .tag {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--tag-border);
+    background: var(--tag-bg);
+    color: var(--gold);
+  }
+  .tag.ev { border-color: rgba(100,200,150,0.4); background: rgba(100,200,150,0.08); color: #64c896; }
+  .tag.amg { border-color: rgba(200,80,60,0.4); background: rgba(200,80,60,0.08); color: #e05040; }
+  .tag.maybach { border-color: rgba(184,152,60,0.6); background: rgba(184,152,60,0.15); color: #d4aa50; }
+  .tag.hybrid { border-color: rgba(120,180,220,0.4); background: rgba(120,180,220,0.08); color: #78b4dc; }
+
+  /* DETAIL PANEL */
+  .panel-overlay {
+    display:none;
+    position:fixed; inset:0; z-index:200;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
+  }
+  .panel-overlay.open { display:flex; align-items:stretch; justify-content:flex-end; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  .panel {
+    width: min(680px, 100vw);
+    background: #0d0d0d;
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+    padding: 0;
+  }
+  @keyframes slideIn { from{transform:translateX(40px);opacity:0} to{transform:translateX(0);opacity:1} }
+  .panel-header {
+    position: sticky; top:0;
+    background: #0d0d0d;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .panel-close {
+    background: none; border: none; color: var(--silver);
+    cursor: pointer; font-size: 20px; line-height:1;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .panel-close:hover { color: var(--white); }
+  .panel-body { padding: 28px; }
+  .panel-cat { font-size:10px; letter-spacing:3px; color:var(--gold); margin-bottom:8px; }
+  .panel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    line-height: 1.1; margin-bottom: 4px;
+  }
+  .panel-variant { font-size:13px; color:var(--silver); letter-spacing:1px; margin-bottom:20px; }
+  .panel-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; color: var(--gold); font-weight:300;
+    letter-spacing:-1px; margin-bottom: 24px;
+  }
+  .panel-section-title {
+    font-size: 9px; letter-spacing:3px; color:var(--gold);
+    text-transform:uppercase; margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .panel-specs-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+  }
+  .panel-spec { display:flex; flex-direction:column; gap:3px; }
+  .panel-spec-label { font-size:9px; letter-spacing:2px; color:rgba(196,196,196,0.45); text-transform:uppercase; }
+  .panel-spec-value { font-size:14px; color:var(--white); font-weight:400; }
+  .option-list { display:flex; flex-direction:column; gap:6px; }
+  .option-item {
+    font-size: 12px; color: var(--silver);
+    padding: 7px 12px;
+    border-left: 1px solid var(--border);
+    line-height: 1.5;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .option-item:hover { border-left-color: var(--gold); color: var(--white); }
+  .option-group { margin-bottom: 16px; }
+  .option-group-label {
+    font-size:9px; letter-spacing:2px; color:rgba(184,152,60,0.7);
+    text-transform:uppercase; margin-bottom:8px;
+  }
+  .no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 80px 32px;
+    color: var(--silver);
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(196,196,196,0.35);
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 0 16px; }
+    .hero { padding: 48px 16px 32px; flex-direction:column; gap:16px; }
+    .hero-meta { text-align: left; }
+    .filter-bar { padding: 0 16px; }
+    .search-wrap { padding: 16px 16px 0; }
+    .grid-wrap { padding: 24px 16px 60px; }
+    .grid { grid-template-columns: 1fr; gap: 1px; }
+    .panel-specs-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-  <div class="wrap">
 
-    <section class="hero">
-      <div class="chip">Mercedes-Benz Official Dealer</div>
-      <img src="KakaoTalk_20260325_174337828.jpg" class="profile-rect">
-      <h1>메르세데스-벤츠 공식딜러<br>구용회 팀장</h1>
-      <div class="hero-main">
-        차를 파는 사람이 아니라,<br>
-        고객님 선택을 정리해드리는 사람입니다.
-      </div>
-      <div class="hero-sub">
-        의정부 전시장 · 실차 기반 안내 · 유튜브 채널등 각종 소통채널 운영
-      </div>
-
-      <div class="cta-grid">
-        <a class="btn btn-gold" href="tel:01027580789">📞 전화 바로 연결</a>
-        <a class="btn btn-dark" href="https://open.kakao.com/o/snV0S6Tf" target="_blank" rel="noopener">💬 카카오톡 빠른 문의</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">왜 지금 문의하셔야 할까요</h2>
-      <p class="section-desc">
-        같은 모델을 보시더라도 어떤 기준으로 정리하느냐에 따라 체감 결과는 꽤 달라집니다.
-      </p>
-      <div class="notice-grid">
-        <div class="notice-item">✔ 재고는 수시로 변동됩니다</div>
-        <div class="notice-item">✔ 조건은 타이밍에 따라 달라질 수 있습니다</div>
-        <div class="notice-item">✔ 같은 차량도 구성과 방향에 따라 만족도가 크게 달라집니다</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">차량 선택 가이드</h2>
-      <p class="section-desc">
-        고객님 성향에 맞는 방향부터 먼저 정리해드리겠습니다.
-      </p>
-      <div class="guide-grid">
-        <div class="guide-item">
-          <strong>E클래스</strong>
-          <span>가장 균형 잡힌 선택. 세단 감성, 브랜드 완성도, 일상 활용성을 함께 보시는 분께 잘 맞습니다.</span>
-        </div>
-        <div class="guide-item">
-          <strong>GLE</strong>
-          <span>패밀리 SUV, 높은 시야, 장거리 활용성, 존재감을 중요하게 보시는 분께 추천드립니다.</span>
-        </div>
-        <div class="guide-item">
-          <strong>S클래스</strong>
-          <span>정숙성, 품격, 브랜드가 보여줄 수 있는 완성형 세단 감각을 원하시는 분께 적합합니다.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">콘텐츠 확인</h2>
-      <p class="section-desc">
-        실차 기반 영상과 블로그 글로 먼저 비교해보실 수 있습니다.
-      </p>
-      <div class="link-grid">
-        <a class="link-card" href="https://www.youtube.com/@yonghei" target="_blank" rel="noopener">
-          <div>
-            <div class="link-title">벤츠한바퀴 유튜브</div>
-            <span class="link-sub">실차 리뷰 · 비교 콘텐츠 · 출고 이야</span>
-          </div>
-          <div class="arrow">→</div>
-        </a>
-
-        <a class="link-card" href="https://blog.naver.com/yonghei84" target="_blank" rel="noopener">
-          <div>
-            <div class="link-title">네이버 블로그</div>
-            <span class="link-sub">차종별 정리 · 선택 포인트 · 상세 안내</span>
-          </div>
-          <div class="arrow">→</div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">어프로치북 / 가이드</h2>
-      <p class="section-desc">
-        차량을 보시는 기준을 담았습니다.
-      </p>
-      <div class="link-grid">
-        <a class="link-card" href="YOUR_APPROACHBOOK_LINK" target="_blank" rel="noopener">
-          <div>
-            <div class="link-title">어프로치북 다운로드</div>
-            <span class="link-sub">클릭 시 바로 확인하실 수 있습니다.</span>
-          </div>
-          <div class="arrow">↓</div>
-        </a>
-      </div>
-    </section>
-
-    <section class="highlight">
-      <h3>고객님의 선택은 이미 옳습니다.</h3>
-      <p>
-        다만 그 선택이 더 완벽해질 수 있도록 정리해드리겠습니다.<br>
-        지금 가장 중요한 건 차량이 아니라 <strong>선택 기준</strong>입니다.
-      </p>
-
-      <div class="cta-grid" style="margin-top:22px;">
-        <a class="btn btn-gold" href="tel:01027580789">📞 지금 바로 연결</a>
-        <a class="btn btn-line" href="https://open.kakao.com/o/snV0S6Tf" target="_blank" rel="noopener">💬 카카오톡 문의</a>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-name">메르세데스-벤츠 공식딜러 구용회 팀장</div>
-      <div class="footer-contact">
-        📞 010-2758-0789<br>
-        💬 카카오톡 ID : yonghei84
-      </div>
-      <div class="footer-sign">
-        가장 멋지고 편안한 Car life-style을<br>
-        즐기실 수 있도록 함께하겠습니다.
-      </div>
-    </footer>
-
+<header>
+  <div class="logo">Mercedes<span>·</span>Benz</div>
+  <div class="header-right">
+    <span class="model-count" id="modelCount">— 모델</span>
   </div>
-</body>
-</html>
+</header>
+
+<div class="hero">
+  <h1 class="hero-title">Approach<em>Book</em></h1>
+  <div class="hero-meta">
+    MODEL YEAR 2026<br>
+    구 용 회 팀 장<br>
+    010-2758-0789
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner" id="filterBar"></div>
+</div>
+
+<div class="search-wrap">
+  <input class="search-input" type="text" placeholder="모델 검색..." id="searchInput">
+</div>
+
+<div class="grid-wrap">
+  <div class="grid" id="carGrid"></div>
+</div>
+
+<footer>© 2026 Mercedes-Benz Korea · All Prices Include VAT · Specifications Subject to Change</footer>
+
+<!-- Detail Panel -->
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel(event)">
+  <div class="panel" id="panel">
+    <div class="panel-header">
+      <span style="font-size:11px;letter-spacing:3px;color:var(--silver)">DETAIL</span>
+      <button class="panel-close" onclick="closePanelDirect()">✕</button>
+    </div>
+    <div class="panel-body" id="panelBody"></div>
+  </div>
+</div>
+
+<script>
+const MODELS = [
+  // ─── A-CLASS HATCHBACK ───
+  {
+    id:'a220h', category:'세단', subcat:'A-Class', name:'A-Class Hatchback', variant:'A 220 Hatch',
+    price:'4,810만원', priceNum:4810,
+    fuel:'가솔린', drive:'전륜', body:'해치백',
+    tags:['48V MHEV'],
+    specs:{
+      '전장×전폭×전고':'4,420×1,795×1,445mm', '축거':'2,730mm', '승차정원':'5인승', '트렁크':'505L',
+      '엔진':'M260 / 1,991cc', '최고출력':'190hp / 5,500rpm', '최대토크':'30.6kgm / 1,600rpm',
+      '변속기':'8G-DCT', '구동방식':'전륜구동',
+      '복합연비':'11.9km/L (3등급)', '연료탱크':'51L',
+      '공차중량':'1,430kg', '0→100km/h':'6.9초', '최고속도':'240km/h'
+    },
+    options:{
+      '드라이빙':['8G-DCT','크루즈 컨트롤','썸머 타이어(Tirefit)','Comfort 서스펜션'],
+      '외장':['High performance LED 헤드라이트 & 어댑티브 상향등','Progressive Line Exterior','17" 5트윈 스포크 휠(R62)'],
+      '실내':['ARTICO 시트','앞좌석 메모리/열선시트/4웨이 요추 지지대','뒷좌석 접이식/ISOFIX/암레스트','가죽 다기능 스포츠 터치 스티어링 휠(열선)','다크 카본 파이버 룩 트림','앰비언트 라이트(64색)'],
+      '편의':['10.25" 계기반, MBUX(터치스크린)','무선 안드로이드 오토 & 애플 카플레이','앞좌석 휴대폰 무선 충전','기본형 스피커(6개 100W)','Mercedes Me Connect(원격시동)','순정형 블랙박스 & 하이패스','에어컨(1존)','후방카메라 + 액티브 주차 어시스트'],
+      '안전':['Active Bonnet','Adaptive Brake(HOLD)','ABS, ESP, Attention Assist','Active Brake Assist','차선 이탈 방지','사각지대 어시스트','에어백 7개']
+    }
+  },
+  {
+    id:'amga45h', category:'AMG', subcat:'A-Class', name:'A-Class Hatchback', variant:'AMG A 45 S 4MATIC+',
+    price:'8,040만원', priceNum:8040,
+    fuel:'가솔린', drive:'사륜', body:'해치백',
+    tags:['AMG','4MATIC+'],
+    specs:{
+      '전장×전폭×전고':'4,445×1,850×1,410mm', '축거':'2,730mm', '승차정원':'5인승', '트렁크':'370L',
+      '엔진':'M139 / 1,991cc', '최고출력':'387hp / 6,500rpm', '최대토크':'48.9kgm / 4,750rpm',
+      '변속기':'AMG SPEEDSHIFT DCT 8단', '구동방식':'가변식 사륜구동',
+      '복합연비':'9.0km/L (5등급)', '연료탱크':'51L',
+      '공차중량':'1,650kg', '0→100km/h':'4.0초', '최고속도':'250km/h'
+    },
+    options:{
+      '드라이빙':['AMG SPEEDSHIFT DCT 8-Speed','크루즈 컨트롤','썸머 타이어(Tirefit)','AMG 라이드 컨트롤 서스펜션','AMG 리얼 퍼포먼스 사운드'],
+      '외장':['High performance LED 헤드라이트 & 어댑티브 상향등','AMG 45 Exterior','AMG 나이트 & 에어로 다이나믹 패키지','19" AMG 크로스 스포크 단조 휠(RSZ), 레드 캘리퍼'],
+      '실내':['ARTICO DINAMICA microfibre 시트','앞좌석 메모리/열선시트/4웨이 요추','AMG 퍼포먼스 나파 스티어링 휠(열선)','AMG 스티어링 휠 버튼','레드 컬러 안전벨트','앰비언트 라이트(64색)','파노라마 선루프'],
+      '편의':['10.25" 계기반, MBUX, 내비게이션','무선 안드로이드 오토 & 애플 카플레이','앞좌석 휴대폰 무선 충전','부메스터 서라운드 사운드(13개 590W)','Mercedes Me Connect(원격시동)'],
+      '안전':['Active Bonnet','Adaptive Brake(HOLD)','ABS, ESP, Attention Assist','액티브 디스턴스 어시스트 디스트로닉','차선 이탈 방지','사각지대 어시스트','에어백 7개']
+    }
+  },
+  // ─── A-CLASS SEDAN ───
+  {
+    id:'a220s', category:'세단', subcat:'A-Class', name:'A-Class Sedan', variant:'A 220 Sedan',
+    price:'4,990만원', priceNum:4990,
+    fuel:'가솔린', drive:'전륜', body:'세단',
+    tags:['48V MHEV'],
+    specs:{
+      '전장×전폭×전고':'4,550×1,795×1,445mm', '축거':'2,730mm', '승차정원':'5인승', '트렁크':'405L',
+      '엔진':'M260 / 1,991cc', '최고출력':'190hp / 5,500rpm', '최대토크':'30.6kgm / 1,600rpm',
+      '변속기':'8G-DCT', '구동방식':'전륜구동',
+      '복합연비':'11.7km/L (3등급)', '연료탱크':'51L',
+      '공차중량':'1,440kg', '0→100km/h':'7.1초', '최고속도':'237km/h'
+    },
+    options:{
+      '드라이빙':['8G-DCT','크루즈 컨트롤','썸머 타이어(Tirefit)','Comfort 서스펜션'],
+      '외장':['High performance LED 헤드라이트','Progressive Line Exterior','18" 5트윈 스포크 휠(R31)'],
+      '실내':['ARTICO 시트','앞좌석 메모리/열선/4웨이 요추','스포츠 나파 가죽 터치 스크롤 스티어링 휠(열선)','카본 룩 트림','앰비언트 라이트(64색)'],
+      '편의':['10.25" MBUX(터치스크린)','무선 안드로이드/애플 카플레이','앞좌석 무선 충전','Mercedes Me Connect(원격시동)','순정형 블랙박스 & 하이패스'],
+      '안전':['Active Bonnet','ABS, ESP','차선 이탈 방지','사각지대 어시스트','에어백 7개']
+    }
+  },
+  {
+    id:'amga35s', category:'AMG', subcat:'A-Class', name:'A-Class Sedan', variant:'AMG A 35 4MATIC',
+    price:'6,770만원', priceNum:6770,
+    fuel:'가솔린', drive:'사륜', body:'세단',
+    tags:['AMG','48V MHEV'],
+    specs:{
+      '전장×전폭×전고':'4,560×1,795×1,415mm', '축거':'2,730mm', '승차정원':'5인승', '트렁크':'405L',
+      '엔진':'M260 / 1,991cc', '최고출력':'306hp / 5,800rpm', '최대토크':'40.8kgm / 3,000rpm',
+      '변속기':'AMG SPEEDSHIFT DCT 8단', '구동방식':'사륜구동',
+      '복합연비':'10.1km/L (4등급)', '연료탱크':'51L',
+      '공차중량':'1,575kg', '0→100km/h':'4.8초', '최고속도':'250km/h'
+    },
+    options:{
+      '드라이빙':['AMG SPEEDSHIFT DCT 8-Speed','크루즈 컨트롤','썸머 타이어','AMG 라이드 컨트롤 서스펜션'],
+      '외장':['High performance LED 헤드라이트','AMG 35 Exterior','18" AMG 10스포크 휠(RQQ)'],
+      '실내':['ARTICO DINAMICA microfibre 시트','AMG 퍼포먼스 나파 스티어링 휠(열선)','파노라마 선루프','앰비언트 라이트(64색)'],
+      '편의':['10.25" MBUX, 내비게이션','무선 안드로이드/애플 카플레이','앞좌석 무선 충전'],
+      '안전':['ABS, ESP','차선 이탈 방지','사각지대 어시스트','에어백 7개']
+    }
+  },
+  // ─── CLA COUPE ───
+  {
+    id:'cla250', category:'세단', subcat:'CLA', name:'CLA Coupe', variant:'CLA 250 4MATIC AMG Line',
+    price:'6,370만원', priceNum:6370,
+    fuel:'가솔린', drive:'사륜', body:'쿠페',
+    tags:['48V MHEV','4MATIC'],
+    specs:{
+      '전장×전폭×전고':'4,695×1,830×1,445mm', '축거':'2,730mm', '승차정원':'5인승', '트렁크':'460L',
+      '엔진':'M260 / 1,991cc', '최고출력':'224hp / 5,500rpm', '최대토크':'35.7kgm / 2,000rpm',
+      '변속기':'8G-DCT', '구동방식':'사륜구동',
+      '복합연비':'12.0km/L (3등급)', '연료탱크':'51L',
+      '공차중량':'1,630kg', '0→100km/h':'6.4초', '최고속도':'250km/h'
+    },
+    options:{
+      '드라이빙':['8G-DCT','썸머 타이어','Comfort 서스펜션'],
+      '외장':['High performance LED 헤드라이트','AMG Line Exterior','18" AMG 5트윈 스포크 휠(RQS)'],
+      '실내':['ARTICO DINAMICA microfibre 시트','나파가죽 스포츠 터치 컨트롤 스티어링 휠(열선)','파노라마 선루프','앰비언트 라이트(64색)'],
+      '편의':['10.25" MBUX, 내비게이션 프리미엄','무선 안드로이드/애플 카플레이','앞좌석 무선 충전'],
+      '안전':['Active Bonnet','드라이빙 어시스턴스 패키지(

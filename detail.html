@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercedes-Benz MY26</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── DETAIL LAYOUT ── */
+.detail-wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding: 40px 40px 120px;
+}
+
+/* ── BACK + BREADCRUMB ── */
+.nav-row {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 40px;
+}
+.breadcrumb {
+  font-size: 10px; letter-spacing: 2px; color: #333;
+  text-transform: uppercase;
+}
+
+/* ── HERO BLOCK ── */
+.model-hero {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 40px; margin-bottom: 40px;
+}
+.model-category {
+  font-size: 9px; letter-spacing: 4px; color: #444;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.model-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300; line-height: 1.0;
+  letter-spacing: -1px; margin-bottom: 8px;
+}
+.model-variant {
+  font-size: 14px; color: #666; letter-spacing: .5px;
+  margin-bottom: 20px;
+}
+.model-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+.model-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300; color: var(--gold); letter-spacing: -1px;
+}
+.price-note {
+  font-size: 10px; color: #444; letter-spacing: 2px;
+  text-transform: uppercase; margin-top: 4px;
+}
+
+/* ── TWO-COLUMN LAYOUT ── */
+.detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 48px;
+  align-items: start;
+}
+
+/* ── SECTION BLOCK ── */
+.section-block { }
+.section-title {
+  font-size: 9px; letter-spacing: 4px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 16px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+
+/* ── SPECS TABLE ── */
+.specs-table { width: 100%; border-collapse: collapse; }
+.specs-table tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+.specs-table tr:last-child { border-bottom: none; }
+.specs-table td {
+  padding: 9px 0;
+  font-size: 12px; line-height: 1.5;
+  vertical-align: top;
+}
+.specs-table td:first-child {
+  color: #4a4a4a; width: 42%;
+  font-size: 10px; letter-spacing: .5px;
+  padding-right: 12px;
+}
+.specs-table td:last-child { color: var(--white); }
+
+/* ── OPTIONS LIST ── */
+.option-group { margin-bottom: 22px; }
+.option-group:last-child { margin-bottom: 0; }
+.option-group-title {
+  font-size: 10px; letter-spacing: 2px; color: #3a3a3a;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.option-group ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.option-group li {
+  font-size: 12px; color: #888; line-height: 1.5;
+  padding-left: 12px; position: relative;
+}
+.option-group li::before {
+  content: '–';
+  position: absolute; left: 0; color: #333;
+}
+
+/* ── CTA ── */
+.cta-section {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  padding: 32px 36px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 300;
+}
+.cta-title span { color: var(--gold); }
+.cta-contact {
+  display: flex; flex-direction: column; gap: 4px;
+  text-align: right;
+}
+.cta-name { font-size: 13px; letter-spacing: 3px; color: var(--white); }
+.cta-phone {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; color: var(--gold); letter-spacing: 1px;
+  text-decoration: none;
+}
+.cta-phone:hover { text-decoration: underline; }
+
+/* ── NOT FOUND ── */
+.not-found {
+  text-align: center; padding: 120px 40px;
+  color: #333; font-size: 13px; letter-spacing: 2px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .detail-wrap { padding: 24px 20px 80px; }
+  .detail-body { grid-template-columns: 1fr; gap: 32px; }
+  .cta-section { flex-direction: column; align-items: flex-start; }
+  .cta-contact { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="site-logo" href="index.html">Mercedes<span>·</span>Benz</a>
+  <span class="header-sub">Model Year 2026</span>
+</header>
+
+<div class="detail-wrap anim-up" id="content">
+  <div class="not-found">로딩 중...</div>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-left">Mercedes · Benz</span>
+  <div class="footer-right">
+    MY26 공식 어프로치북<br>
+    구용회 팀장 · 010-2758-0789
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+const TAG_CLASS = {
+  'AMG':'amg','전기차':'ev','플러그인 하이브리드':'hybrid','48V MHEV':'hybrid',
+  'Maybach':'maybach','Manufaktur':'maybach','V8':'4m','V12':'4m',
+  '4MATIC':'4m','4MATIC+':'4m','디젤':'diesel','저공해':'4m','NEW':'amg'
+};
+function tagCls(t) { return TAG_CLASS[t] || '4m'; }
+
+const OPTION_LABELS = {
+  '드라이빙': '드라이빙 & 섀시',
+  '외장': '익스테리어',
+  '실내': '인테리어',
+  '편의': '편의 & 인포테인먼트',
+  '안전': '안전 & 어시스턴스'
+};
+
+function render() {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  const model = MODELS.find(m => m.id === id);
+  const wrap = document.getElementById('content');
+
+  if (!model) {
+    wrap.innerHTML = `
+      <div class="nav-row">
+        <a class="btn-back" href="index.html">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 2L4 7l5 5"/>
+          </svg>
+          전체 모델 목록
+        </a>
+      </div>
+      <div class="not-found">해당 모델을 찾을 수 없습니다.</div>
+    `;
+    return;
+  }
+
+  document.title = `${model.name} ${model.variant} — Mercedes-Benz MY26`;
+
+  // Tags
+  const tagsHtml = (model.tags||[]).map(t =>
+    `<span class="tag tag-${tagCls(t)}">${t}</span>`
+  ).join('');
+
+  // Specs table
+  const specsRows = Object.entries(model.specs||{}).map(([k,v]) =>
+    `<tr><td>${k}</td><td>${v}</td></tr>`
+  ).join('');
+
+  // Options
+  const OPTION_ORDER = ['드라이빙','외장','실내','편의','안전'];
+  const optionsHtml = OPTION_ORDER
+    .filter(k => model.options && model.options[k])
+    .map(k => {
+      const items = model.options[k].map(o => `<li>${o}</li>`).join('');
+      return `
+        <div class="option-group">
+          <div class="option-group-title">${OPTION_LABELS[k] || k}</div>
+          <ul>${items}</ul>
+        </div>
+      `;
+    }).join('');
+
+  wrap.innerHTML = `
+    <div class="nav-row">
+      <a class="btn-back" href="index.html">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 2L4 7l5 5"/>
+        </svg>
+        전체 모델 목록
+      </a>
+      <span class="breadcrumb">${model.category} · ${model.code||''}</span>
+    </div>
+
+    <div class="model-hero">
+      <div class="model-category">${model.category} · ${model.code||''}</div>
+      <h1 class="model-name">${model.name}</h1>
+      <div class="model-variant">${model.variant}</div>
+      ${tagsHtml ? `<div class="model-tags">${tagsHtml}</div>` : ''}
+      <div class="model-price">${model.price}</div>
+      <div class="price-note">부가세 포함 공식 출고가 기준</div>
+    </div>
+
+    <div class="detail-body">
+
+      ${specsRows ? `
+      <div class="section-block">
+        <div class="section-title">주요 제원</div>
+        <table class="specs-table"><tbody>${specsRows}</tbody></table>
+      </div>
+      ` : ''}
+
+      ${optionsHtml ? `
+      <div class="section-block">
+        <div class="section-title">주요 기본 사양</div>
+        ${optionsHtml}
+      </div>
+      ` : ''}
+
+      <div class="cta-section">
+        <div class="cta-title">
+          ${model.name} ${model.variant}<br>
+          <span>상담 및 시승 예약</span>
+        </div>
+        <div class="cta-contact">
+          <span class="cta-name">구 용 회 팀 장</span>
+          <a class="cta-phone" href="tel:01027580789">010-2758-0789</a>
+        </div>
+      </div>
+
+    </div>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>
