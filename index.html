@@ -1,120 +1,403 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>벤츠 의정부 구용회 팀장</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메르세데스-벤츠 공식딜러 구용회 팀장</title>
+  <meta name="description" content="메르세데스-벤츠 공식딜러 구용회 팀장 | 벤츠한바퀴 유튜브, 블로그, 차량 선택 가이드, 문의 연결" />
+  <style>
+    :root{
+      --bg:#050505;
+      --bg2:#0d0d0f;
+      --card:#111214;
+      --card2:#17181b;
+      --text:#f5f5f7;
+      --muted:#b9bcc3;
+      --line:rgba(255,255,255,.08);
+      --gold:#c9a86a;
+      --gold2:#9d7a3a;
+      --white:#ffffff;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:22px;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #0b0b0b;
-    color: #fff;
-    text-align: center;
-}
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(201,168,106,.12), transparent 28%),
+        linear-gradient(180deg, #060606 0%, #090909 35%, #040404 100%);
+      line-height:1.6;
+    }
 
-.container {
-    padding: 40px 20px;
-}
+    a{text-decoration:none;color:inherit;}
+    .wrap{
+      width:min(100%, 780px);
+      margin:0 auto;
+      padding:28px 18px 80px;
+    }
 
-h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        linear-gradient(180deg, rgba(201,168,106,.08), rgba(255,255,255,0));
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      padding:40px 24px 30px;
+      text-align:center;
+      margin-bottom:18px;
+    }
 
-.subtitle {
-    font-size: 16px;
-    color: #ccc;
-    margin-bottom: 30px;
-}
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -70px auto;
+      width:200px;
+      height:200px;
+      background:radial-gradient(circle, rgba(201,168,106,.25), transparent 65%);
+      filter:blur(10px);
+      pointer-events:none;
+    }
 
-.button {
-    display: block;
-    width: 90%;
-    max-width: 320px;
-    margin: 10px auto;
-    padding: 15px;
-    border-radius: 10px;
-    background: #fff;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-}
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:13px;
+      letter-spacing:.08em;
+      color:var(--gold);
+      border:1px solid rgba(201,168,106,.24);
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(201,168,106,.06);
+      margin-bottom:18px;
+    }
 
-.button.dark {
-    background: #1f1f1f;
-    color: #fff;
-}
+    h1{
+      margin:0;
+      font-size:40px;
+      line-height:1.2;
+      letter-spacing:-.03em;
+      font-weight:800;
+    }
 
-.section {
-    margin-top: 50px;
-}
+    .hero p{
+      margin:18px auto 0;
+      max-width:520px;
+      font-size:18px;
+      color:#e6e6e8;
+    }
 
-.footer {
-    margin-top: 60px;
-    font-size: 14px;
-    color: #aaa;
-}
-</style>
+    .hero .sub{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:58px;
+      border-radius:18px;
+      font-size:17px;
+      font-weight:800;
+      transition:.25s ease;
+      border:1px solid var(--line);
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-gold{
+      background:linear-gradient(135deg, var(--gold), #e4c996);
+      color:#111;
+      box-shadow:0 12px 30px rgba(201,168,106,.24);
+    }
+
+    .btn-dark{
+      background:linear-gradient(180deg, #17181b, #101114);
+      color:#fff;
+    }
+
+    .btn-outline{
+      background:rgba(255,255,255,.03);
+      color:#fff;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border-radius:28px;
+      padding:24px 20px;
+      box-shadow:var(--shadow);
+      margin-top:16px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:0 0 14px;
+      font-size:26px;
+      line-height:1.3;
+      letter-spacing:-.03em;
+    }
+
+    .section-desc{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .guide-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .guide-item{
+      background:linear-gradient(180deg, #141518, #0f1012);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px 16px;
+    }
+
+    .guide-item strong{
+      display:block;
+      font-size:17px;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .guide-item span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .why-item{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, #121316, #0d0e10);
+      border-radius:18px;
+      padding:15px 16px;
+      color:#f1f1f1;
+      font-weight:700;
+    }
+
+    .link-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .link-btn{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      min-height:66px;
+      padding:0 18px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, #191a1d, #111215);
+      font-size:17px;
+      font-weight:800;
+    }
+
+    .link-btn .small{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:500;
+      margin-top:2px;
+    }
+
+    .arrow{
+      font-size:20px;
+      color:var(--gold);
+    }
+
+    .final-box{
+      text-align:center;
+      padding:28px 20px;
+      border-radius:28px;
+      margin-top:18px;
+      border:1px solid rgba(201,168,106,.24);
+      background:
+        linear-gradient(180deg, rgba(201,168,106,.12), rgba(255,255,255,.02)),
+        linear-gradient(180deg, #0d0d0f, #090909);
+      box-shadow:var(--shadow);
+    }
+
+    .final-box h3{
+      margin:0 0 10px;
+      font-size:28px;
+      letter-spacing:-.03em;
+    }
+
+    .final-box p{
+      margin:0;
+      color:#ececef;
+      font-size:16px;
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      padding-top:26px;
+    }
+
+    .footer .name{
+      color:#fff;
+      font-weight:800;
+      font-size:18px;
+      margin-bottom:8px;
+    }
+
+    .footer .contact{
+      line-height:1.9;
+      font-size:15px;
+    }
+
+    .footer .sign{
+      margin-top:18px;
+      color:#ddd;
+      font-size:15px;
+    }
+
+    @media (max-width:640px){
+      h1{font-size:31px;}
+      .hero p{font-size:16px;}
+      .cta-grid{grid-template-columns:1fr;}
+      .section-title{font-size:22px;}
+      .link-btn{min-height:62px;}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
 
-<div class="container">
+    <section class="hero">
+      <div class="brand">Mercedes-Benz Official Dealer</div>
+      <h1>메르세데스-벤츠 공식딜러<br>구용회 팀장</h1>
+      <p>차를 파는 사람이 아니라,<br>고객님 선택을 정리해드리는 사람입니다.</p>
+      <div class="sub">의정부 전시장 · 벤츠한바퀴 운영 · 실차 중심 안내</div>
 
-<h1>메르세데스-벤츠 공식딜러<br>구용회 팀장</h1>
-<p class="subtitle">
-차를 파는 사람이 아니라,<br>
-선택을 정리해드리는 사람입니다
-</p>
+      <div class="cta-grid">
+        <a class="btn btn-gold" href="tel:01027580789">📞 전화 바로 연결</a>
+        <a class="btn btn-dark" href="https://open.kakao.com/o/splaceholder" target="_blank" rel="noopener">💬 카카오톡으로 빠르게 안내받기</a>
+      </div>
+    </section>
 
-<a class="button" href="tel:01027580789">📞 전화 바로 연결</a>
-<a class="button" href="http://pf.kakao.com/_yourid">💬 카카오톡 문의</a>
+    <section class="card">
+      <h2 class="section-title">왜 지금 문의하셔야 할까요</h2>
+      <p class="section-desc">같은 차량을 보시더라도 선택 기준과 진행 방향에 따라 체감 결과는 꽤 달라집니다.</p>
+      <div class="why-grid">
+        <div class="why-item">✔ 재고는 수시로 변동됩니다</div>
+        <div class="why-item">✔ 조건은 타이밍에 따라 달라질 수 있습니다</div>
+        <div class="why-item">✔ 같은 모델도 어떤 구성을 보느냐에 따라 만족도가 크게 달라집니다</div>
+      </div>
+    </section>
 
-<div class="section">
-<h2>📊 차량 선택 가이드</h2>
-<p>
-E클래스 → 가장 균형 잡힌 선택<br>
-GLE → 패밀리 SUV 고민<br>
-S클래스 → 완성형 세단
-</p>
-</div>
+    <section class="card">
+      <h2 class="section-title">차량 선택 가이드</h2>
+      <p class="section-desc">고객님 성향에 맞는 방향부터 먼저 정리해드리겠습니다.</p>
+      <div class="guide-list">
+        <div class="guide-item">
+          <strong>E클래스</strong>
+          <span>가장 균형 잡힌 선택. 세단 감성과 브랜드 완성도를 함께 보시는 분께 잘 맞습니다.</span>
+        </div>
+        <div class="guide-item">
+          <strong>GLE</strong>
+          <span>패밀리 SUV, 장거리 활용성, 높은 시야와 존재감을 중요하게 보시는 분께 추천드립니다.</span>
+        </div>
+        <div class="guide-item">
+          <strong>S클래스</strong>
+          <span>브랜드가 보여줄 수 있는 정숙성, 품격, 완성형 세단 감각을 원하시는 분께 적합합니다.</span>
+        </div>
+      </div>
+    </section>
 
-<div class="section">
-<h2>🎥 콘텐츠 확인</h2>
-<a class="button dark" href="https://youtube.com">유튜브 ‘벤츠한바퀴’</a>
-<a class="button dark" href="https://blog.naver.com/yonghei84">블로그 보기</a>
-</div>
+    <section class="card">
+      <h2 class="section-title">콘텐츠 확인</h2>
+      <p class="section-desc">실차 기반 콘텐츠와 글을 통해 먼저 비교해보실 수 있습니다.</p>
+      <div class="link-grid">
+        <a class="link-btn" href="https://www.youtube.com/@yonghei" target="_blank" rel="noopener">
+          <div>
+            벤츠한바퀴 유튜브
+            <span class="small">실차 리뷰 · 비교 콘텐츠 · 출고 이야기</span>
+          </div>
+          <span class="arrow">→</span>
+        </a>
 
-<div class="section">
-<h2>📘 구매 가이드</h2>
-<a class="button" href="#">어프로치북 다운로드</a>
-</div>
+        <a class="link-btn" href="https://blog.naver.com/yonghei84" target="_blank" rel="noopener">
+          <div>
+            네이버 블로그
+            <span class="small">차종별 정리 · 선택 포인트 · 상세 안내</span>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
 
-<div class="section">
-<h2>🚀 지금 문의하세요</h2>
-<p>
-차량보다 중요한 건<br>
-고객님 상황에 맞는 선택입니다
-</p>
-<a class="button" href="tel:01027580789">📞 전화하기</a>
-<a class="button" href="http://pf.kakao.com/_yourid">💬 카톡 문의</a>
-</div>
+    <section class="card">
+      <h2 class="section-title">어프로치북 / 가이드</h2>
+      <p class="section-desc">어프로치북 PDF가 있으면 아래 버튼 링크만 바꿔 넣으시면 됩니다.</p>
+      <div class="link-grid">
+        <a class="link-btn" href="#" target="_blank" rel="noopener">
+          <div>
+            어프로치북 다운로드
+            <span class="small">PDF 링크 연결 시 바로 열리도록 설정 가능</span>
+          </div>
+          <span class="arrow">↓</span>
+        </a>
+      </div>
+    </section>
 
-<div class="footer">
-<p>
-📞 010-2758-0789<br>
-💬 카카오톡 ID : yonghei84
-</p>
+    <section class="final-box">
+      <h3>고객님의 선택은 이미 옳습니다.</h3>
+      <p>
+        다만 그 선택이 더 완벽해질 수 있도록 정리해드리겠습니다.<br>
+        지금 가장 중요한 건 차량이 아니라 <strong>선택 기준</strong>입니다.
+      </p>
 
-<p style="margin-top:20px;">
-고객님의 선택은 이미 옳습니다.<br>
-더 완벽한 선택이 될 수 있도록 함께하겠습니다.
-</p>
-</div>
+      <div class="cta-grid" style="margin-top:22px;">
+        <a class="btn btn-gold" href="tel:01027580789">📞 지금 바로 연결</a>
+        <a class="btn btn-outline" href="https://open.kakao.com/o/splaceholder" target="_blank" rel="noopener">💬 카카오톡 문의</a>
+      </div>
+    </section>
 
-</div>
+    <footer class="footer">
+      <div class="name">메르세데스-벤츠 공식딜러 구용회 팀장</div>
+      <div class="contact">
+        📞 010-2758-0789<br>
+        💬 카카오톡 ID : yonghei84
+      </div>
+      <div class="sign">
+        가장 멋지고 편안한 Car life-style을<br>
+        즐기실 수 있도록 함께하겠습니다.
+      </div>
+    </footer>
 
+  </div>
 </body>
 </html>
