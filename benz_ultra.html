@@ -696,34 +696,30 @@ footer{background:var(--ink);padding:40px 32px}
   .fleet-card-title{font-size:20px}
 }
 
-/* ══ CONTACT FAB (PC 우측 고정 버튼) ══ */
+/* ══ CONTACT FAB (PC + 모바일 공통, 우측 하단 고정) ══ */
 .contact-fab{
   position:fixed;
-  right:20px;bottom:32px;
-  z-index:400;
-  display:flex;flex-direction:column;gap:8px;
+  right:20px;bottom:28px;
+  z-index:500;
+  display:flex;flex-direction:column;gap:10px;
 }
-.fab-kakao,.fab-call{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 16px;
-  font-size:13px;font-weight:600;
-  text-decoration:none;border-radius:28px;
-  box-shadow:0 4px 16px rgba(0,0,0,.15);
+.fab-btn{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
   transition:transform .18s,box-shadow .18s;
-  white-space:nowrap;
 }
-.fab-kakao:hover,.fab-call:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
-.fab-kakao{background:#FEE500;color:#3C1E1E}
-.fab-call{background:var(--ink);color:#fff}
-/* 모바일에서는 FAB 숨기고 bottom-bar 사용 */
+.fab-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.fab-kakao{background:#FEE500}
+.fab-call{background:var(--ink)}
 @media(max-width:700px){
-  .contact-fab{display:none}
+  .contact-fab{right:16px;bottom:20px}
+  .fab-btn{width:44px;height:44px}
 }
-/* PC에서는 bottom-bar 숨김 */
-@media(min-width:701px){
-  .bottom-bar{display:none!important}
-  body{padding-bottom:0}
-}
+/* 모바일 bottom-bar 완전 숨김 */
+.bottom-bar{display:none!important}
+body{padding-bottom:0}
 
 </style>
 </head>
@@ -731,7 +727,7 @@ footer{background:var(--ink);padding:40px 32px}
 <!-- ══ HEADER ══ -->
 <header class="site-header">
   <div class="sh-util">
-    <a href="koo_yonghei_full.html" class="sh-back" target="_self">← 소개 페이지</a>
+    <a href="https://yonghei8412-design.github.io/yonghei.github.io/" class="sh-back" onclick="window.location.href='https://yonghei8412-design.github.io/yonghei.github.io/';return false;">← 소개 페이지</a>
     <span class="sh-util-sep">|</span>
     <span class="sh-util-date">2026 May · Price Guide</span>
   </div>
@@ -1403,27 +1399,13 @@ footer{background:var(--ink);padding:40px 32px}
   </div>
 </footer>
 
-<!-- ══ CONTACT FAB (PC + 모바일 공통) ══ -->
+<!-- ══ CONTACT FAB (공통 우측 하단 고정) ══ -->
 <div class="contact-fab">
-  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="fab-kakao" title="카카오톡 상담">
+  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="fab-btn fab-kakao" title="카카오톡 상담">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C5.477 2 1 5.808 1 10.5c0 2.99 1.735 5.625 4.385 7.219L4.5 21l4.02-2.133C9.31 19.28 10.147 19.4 11 19.4c5.523 0 10-3.806 10-8.9S16.523 2 11 2z" fill="#3C1E1E"/></svg>
-    카카오 상담
   </a>
-  <a href="tel:01027580789" class="fab-call" title="전화 연결">
+  <a href="tel:01027580789" class="fab-btn fab-call" title="전화 연결">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5C1 12.15 7.85 19 17.5 19A1.5 1.5 0 0019 17.5v-4a1.5 1.5 0 00-1.5-1.5c-1.132 0-2.24-.18-3.27-.513a1.5 1.5 0 00-1.52.368l-2.02 2.02a11.576 11.576 0 01-5.055-5.056l2.02-2.02a1.5 1.5 0 00.368-1.52A10.52 10.52 0 018 2.5 1.5 1.5 0 006.5 1z" fill="white"/></svg>
-    전화 연결
-  </a>
-</div>
-
-<!-- ══ FIXED BOTTOM BAR (모바일) ══ -->
-<div class="bottom-bar">
-  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">
-    <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M11 2C5.477 2 1 5.808 1 10.5c0 2.99 1.735 5.625 4.385 7.219L4.5 21l4.02-2.133C9.31 19.28 10.147 19.4 11 19.4c5.523 0 10-3.806 10-8.9S16.523 2 11 2z" fill="#3C1E1E"/></svg>
-    카카오 상담
-  </a>
-  <a href="tel:01027580789" class="bb-call" title="전화 연결">
-    <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5C1 12.15 7.85 19 17.5 19A1.5 1.5 0 0019 17.5v-4a1.5 1.5 0 00-1.5-1.5c-1.132 0-2.24-.18-3.27-.513a1.5 1.5 0 00-1.52.368l-2.02 2.02a11.576 11.576 0 01-5.055-5.056l2.02-2.02a1.5 1.5 0 00.368-1.52A10.52 10.52 0 018 2.5 1.5 1.5 0 006.5 1z" fill="white"/></svg>
-    전화 연결
   </a>
 </div>
 
