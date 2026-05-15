@@ -3,1668 +3,675 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>가격 및 프로모션 | 모터원 의정부 구용회 팀장</title>
+<title>Mercedes-Benz Price Guide | 구용회 팀장</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+KR:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Noto+Serif+KR:wght@200;300;400;500&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET ─── */
+/* ── RESET ── */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:'Noto Sans KR',sans-serif;
-  background:#f9f9f7;
-  color:#1a1a1a;
+  background:#f7f7f5;
+  color:#141414;
   font-size:14px;
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
 
-/* ─── TOKENS ─── */
+/* ── TOKENS ── */
 :root{
-  --ink:#141414;
-  --ink2:#3a3a3a;
-  --muted:#777;
-  --muted2:#b0b0b0;
-  --line:#e4e4e4;
-  --line2:#d0d0d0;
+  --ink:#111111;
+  --ink2:#383838;
+  --muted:#888;
+  --muted2:#bbb;
+  --line:#e0e0de;
+  --line2:#cacac8;
   --bg:#ffffff;
   --bg2:#f5f5f3;
-  --bg3:#eeecea;
-  --red:#b52b1e;
-  --blue:#1250a0;
-  --green:#1a6038;
-  --amg:#8b1a1a;
+  --bg3:#ececea;
+  --red:#b02a1e;
+  --blue:#1150a0;
+  --green:#185e36;
+  --amg:#8a1a1a;
 }
 
-/* ─── TOP HEADER ─── */
+/* ═══════════════════════════
+   HEADER
+═══════════════════════════ */
 .site-header{
   background:#fff;
   border-bottom:1px solid var(--line);
   padding:0 32px;
-  position:sticky;
-  top:0;
-  z-index:200;
+  position:sticky;top:0;z-index:300;
+  box-shadow:0 1px 0 var(--line);
 }
-/* 상단 바: 뒤로가기 + 날짜 */
-.sh-top-bar{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  height:32px;
-  border-bottom:1px solid var(--line);
+/* 유틸 바 */
+.sh-util{
+  display:flex;align-items:center;gap:14px;
+  height:32px;border-bottom:1px solid var(--line);
 }
 .sh-back{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  font-size:11px;
-  color:var(--muted);
-  text-decoration:none;
-  letter-spacing:.04em;
+  font-size:11px;color:var(--muted);
+  text-decoration:none;letter-spacing:.04em;
+  display:flex;align-items:center;gap:5px;
   transition:color .2s;
 }
 .sh-back:hover{color:var(--ink)}
-.sh-sep{color:var(--line2)}
-.sh-date{
-  font-size:10.5px;
-  color:var(--muted2);
-  letter-spacing:.12em;
-  text-transform:uppercase;
+.sh-util-sep{color:var(--line2);font-size:11px}
+.sh-util-date{font-size:10px;color:var(--muted2);letter-spacing:.16em;text-transform:uppercase}
+/* 메인 행 */
+.sh-main{
+  display:flex;align-items:center;justify-content:space-between;
+  height:54px;
 }
-/* 메인 행: 이름(크게) + 전화번호(크게) */
-.sh-main-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:56px;
+.sh-identity{display:flex;align-items:center;gap:0}
+.sh-dealer{
+  font-size:10px;color:var(--muted);letter-spacing:.14em;
+  text-transform:uppercase;font-weight:300;
+  padding-right:16px;border-right:1px solid var(--line2);margin-right:16px;
 }
-.sh-left{
-  display:flex;
-  align-items:center;
-  gap:0;
-}
-/* 브랜드명 — 작게 보조 */
-.sh-brand{
-  font-size:11px;
-  color:var(--muted);
-  letter-spacing:.1em;
-  font-weight:300;
-  text-transform:uppercase;
-  padding-right:14px;
-  border-right:1px solid var(--line2);
-  margin-right:14px;
-}
-/* 이름 — 크고 굵게 */
 .sh-name{
   font-family:'Playfair Display',serif;
-  font-size:20px;
-  font-weight:700;
-  color:var(--ink);
-  letter-spacing:.01em;
+  font-size:19px;font-weight:600;color:var(--ink);letter-spacing:.01em;
 }
-/* 전화번호 — 크고 굵게 */
-.sh-contact a{
+.sh-phone a{
   font-family:'Playfair Display',serif;
-  font-size:20px;
-  font-weight:700;
-  color:var(--ink);
-  text-decoration:none;
-  letter-spacing:.02em;
-  border-bottom:2px solid transparent;
+  font-size:19px;font-weight:600;color:var(--ink);
+  text-decoration:none;letter-spacing:.02em;
+  padding-bottom:2px;border-bottom:2px solid transparent;
   transition:border-color .2s;
 }
-.sh-contact a:hover{border-bottom-color:var(--ink)}
+.sh-phone a:hover{border-bottom-color:var(--ink)}
+@media(max-width:700px){
+  .site-header{padding:0 16px}
+  .sh-phone{display:none}
+  .sh-dealer{display:none}
+  .sh-name{font-size:16px}
+}
 
-/* ─── NAV ─── */
+/* ═══════════════════════════
+   NAV
+═══════════════════════════ */
 .nav-wrap{
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  overflow-x:auto;
-  scrollbar-width:none;
-  position:sticky;
-  top:86px; /* sh-top-bar(34) + sh-main-row(52) */
-  z-index:190;
+  background:#fff;border-bottom:1px solid var(--line);
+  position:sticky;top:86px;z-index:290;
+  overflow:hidden;
 }
-.nav-wrap::-webkit-scrollbar{display:none}
-#main-nav{position:relative}
+.nav-inner-wrap{position:relative}
 .nav-inner{
-  display:flex;
-  white-space:nowrap;
+  display:flex;white-space:nowrap;
   padding:0 28px;
-  min-width:max-content;
+  overflow-x:auto;scrollbar-width:none;
 }
+.nav-inner::-webkit-scrollbar{display:none}
 .nav-inner a{
-  display:inline-flex;
-  align-items:center;
-  padding:11px 12px;
-  font-size:12.5px;
-  font-weight:400;
-  color:var(--muted);
-  text-decoration:none;
+  display:inline-flex;align-items:center;
+  padding:0 11px;height:40px;
+  font-size:12px;color:var(--muted);text-decoration:none;
   border-bottom:2px solid transparent;
-  transition:all .2s;
-  letter-spacing:.01em;
+  transition:color .18s,border-color .18s;
+  white-space:nowrap;letter-spacing:.01em;flex-shrink:0;
 }
-.nav-inner a:hover{color:var(--ink);border-bottom-color:var(--ink)}
-.nav-inner a.nav-hot{color:var(--ink);font-weight:600}
+.nav-inner a:hover,.nav-inner a.hot{color:var(--ink);border-bottom-color:var(--ink)}
+.nav-inner a.hot{font-weight:600}
 /* 우측 페이드 */
-.nav-fade-right{
-  position:absolute;
-  right:0;top:0;bottom:0;
-  width:64px;
-  background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,1) 70%);
+.nav-fade{
+  position:absolute;right:0;top:0;bottom:0;width:52px;
+  background:linear-gradient(to right,transparent,#fff 80%);
   pointer-events:none;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  padding-right:10px;
-  transition:opacity .3s;
+  display:flex;align-items:center;justify-content:flex-end;padding-right:10px;
+  transition:opacity .25s;
 }
-.nav-fade-right.hidden{opacity:0}
-.nav-scroll-hint{
-  font-size:20px;
-  color:var(--muted);
-  animation:bounce-x 1.4s ease-in-out infinite;
-  line-height:1;
+.nav-fade.gone{opacity:0}
+.nav-hint{font-size:17px;color:var(--muted2);animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0);opacity:.25}55%{transform:translateX(5px);opacity:.9}}
+/* 모바일 칩형 */
+@media(max-width:700px){
+  .nav-wrap{top:76px}
+  .nav-inner{padding:7px 14px;gap:6px;height:auto;align-items:center}
+  .nav-inner a{
+    height:28px;padding:0 12px;font-size:11.5px;
+    border:1px solid var(--line2);border-radius:14px;border-bottom:1px solid var(--line2);
+    background:#fff;
+  }
+  .nav-inner a:hover,.nav-inner a.hot{
+    background:var(--ink);color:#fff;border-color:var(--ink);
+  }
 }
-@keyframes bounce-x{
-  0%,100%{transform:translateX(0);opacity:.3}
-  50%{transform:translateX(5px);opacity:.9}
-}
+@media(max-width:700px){.site-header .sh-util{height:28px}.sh-main{height:48px}}
 
-/* ─── HERO ─── */
+/* ═══════════════════════════
+   HERO  (미니멀 중앙형)
+═══════════════════════════ */
 .hero{
   background:var(--ink);
-  border-bottom:none;
-  padding:0;
-  text-align:left;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:220px;
-  overflow:hidden;
-  position:relative;
+  padding:80px 32px 72px;
+  text-align:center;
+  position:relative;overflow:hidden;
 }
-/* 좌측 텍스트 영역 */
-.hero-left{
-  padding:44px 48px 44px 32px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  position:relative;
-  z-index:1;
+/* 미세 도트 텍스처 */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:32px 32px;
+  pointer-events:none;
 }
-/* 우측 정보 패널 */
-.hero-right{
-  background:var(--bg2);
-  padding:40px 32px 40px 40px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  border-left:1px solid var(--line);
+.hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+/* 상단 라벨 */
+.hero-kicker{
+  font-size:11px;letter-spacing:.36em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);font-weight:300;
+  margin-bottom:32px;
 }
-.hero-eyebrow{
-  font-size:10.5px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.4);
-  margin-bottom:16px;
-  font-weight:400;
-}
-.hero h1{
+/* 메인 타이틀 */
+.hero-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(32px,4.5vw,52px);
-  font-weight:700;
-  color:#fff;
-  line-height:1.05;
-  letter-spacing:-.01em;
-  margin-bottom:0;
+  font-size:clamp(36px,6vw,64px);
+  font-weight:300;color:#fff;
+  letter-spacing:.08em;line-height:1;
+  margin-bottom:8px;
 }
-.hero h1 em{
-  display:block;
-  font-style:italic;
-  font-weight:400;
-  color:rgba(255,255,255,.55);
+/* 컬렉션 서브 */
+.hero-collection{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(12px,1.8vw,15px);
+  font-weight:300;font-style:italic;
+  color:rgba(255,255,255,.38);
+  letter-spacing:.22em;
+  margin-bottom:40px;
 }
+/* 구분선 */
 .hero-rule{
-  width:28px;
-  height:2px;
-  background:rgba(255,255,255,.25);
-  margin:18px 0;
+  width:1px;height:48px;
+  background:linear-gradient(to bottom,transparent,rgba(255,255,255,.25),transparent);
+  margin:0 auto 40px;
 }
+/* 서브텍스트 */
 .hero-sub{
   font-family:'Noto Serif KR',serif;
-  font-size:13px;
-  font-weight:300;
-  color:rgba(255,255,255,.5);
-  letter-spacing:.04em;
-}
-/* 우측 패널 내용 */
-.hero-info-label{
-  font-size:10px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
+  font-size:15px;font-weight:300;
+  color:rgba(255,255,255,.55);letter-spacing:.06em;
   margin-bottom:8px;
-  font-weight:400;
 }
-.hero-info-val{
-  font-family:'Playfair Display',serif;
-  font-size:17px;
-  font-weight:600;
-  color:var(--ink);
-  letter-spacing:.01em;
-}
-.hero-info-val a{
-  color:var(--ink);
-  text-decoration:none;
-}
-.hero-info-val a:hover{text-decoration:underline}
-.hero-info-block{margin-bottom:20px}
-.hero-info-block:last-child{margin-bottom:0}
-.hero-tags{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-}
-.hero-tag{
-  font-size:11px;
-  color:var(--muted);
-  background:var(--bg3);
-  padding:4px 10px;
-  letter-spacing:.04em;
+.hero-meta{
+  font-size:12.5px;color:rgba(255,255,255,.45);letter-spacing:.08em;
 }
 @media(max-width:700px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{border-left:none;border-top:1px solid var(--line)}
-  .hero-left{padding:36px 24px 32px}
-  .hero-right{padding:28px 24px}
+  .hero{padding:44px 20px 40px}
+  .hero-title{font-size:clamp(30px,8vw,44px)}
+  .hero-kicker{margin-bottom:20px;font-size:10px}
+  .hero-rule{height:32px;margin-bottom:28px}
 }
 
-/* ─── WRAP ─── */
-.wrap{
-  max-width:980px;
-  margin:0 auto;
-  padding:0 24px 80px;
-}
+/* ═══════════════════════════
+   WRAP
+═══════════════════════════ */
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 80px}
+@media(max-width:700px){.wrap{padding:0 16px 80px}}
 
-/* ─── NOTICE ─── */
+/* ═══════════════════════════
+   NOTICE
+═══════════════════════════ */
 .notice-box{
-  background:#fff;
-  border:1px solid var(--line);
+  background:#fff;border:1px solid var(--line);
   border-left:3px solid var(--ink);
-  padding:18px 22px;
-  margin:40px 0 0;
+  padding:16px 20px;margin-top:36px;
 }
 .notice-box p{
-  font-family:'Noto Serif KR',serif;
-  font-size:13.5px;
-  font-weight:300;
-  color:var(--ink2);
-  line-height:1.95;
+  font-family:'Noto Serif KR',serif;font-size:13px;
+  font-weight:300;color:var(--ink2);line-height:1.9;
 }
 .notice-box strong{color:var(--ink);font-weight:600}
 
-/* ─── SECTION DIVIDER ─── */
-.sec-divider{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin:52px 0 24px;
+/* ═══════════════════════════
+   SEC DIVIDER
+═══════════════════════════ */
+.sec-div{
+  display:flex;align-items:center;gap:14px;margin:48px 0 20px;
 }
-.sec-divider::before,.sec-divider::after{
-  content:'';
-  flex:1;
-  height:1px;
-  background:var(--line);
-}
-.sec-divider span{
-  font-size:11px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-  white-space:nowrap;
-  font-weight:400;
-}
+.sec-div::before,.sec-div::after{content:'';flex:1;height:1px;background:var(--line)}
+.sec-div span{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:300}
 
-/* ─── DISCOUNT GRID ─── */
+/* ═══════════════════════════
+   DISCOUNT CARDS
+═══════════════════════════ */
 .disc-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--line);
-  background:var(--line);
-  gap:1px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:8px;margin-bottom:2px;
 }
 .disc-card{
-  padding:20px 18px;
-  background:#fff;
-  transition:background .15s;
+  background:#fff;border:1px solid var(--line);
+  padding:18px 16px;transition:border-color .2s,box-shadow .2s;
 }
-.disc-card:hover{background:var(--bg2)}
+.disc-card:hover{border-color:var(--line2);box-shadow:0 2px 10px rgba(0,0,0,.05)}
 .dc-label{
-  font-size:11px;
-  font-weight:700;
-  color:var(--ink);
-  letter-spacing:.04em;
-  margin-bottom:10px;
-  text-transform:uppercase;
-  padding-bottom:8px;
-  border-bottom:1px solid var(--line);
+  font-size:10.5px;font-weight:700;color:var(--ink);
+  letter-spacing:.06em;text-transform:uppercase;
+  padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid var(--line);
 }
-.dc-body{
-  font-family:'Noto Serif KR',serif;
-  font-size:12.5px;
-  font-weight:300;
-  color:var(--ink2);
-  line-height:1.85;
-}
-.dc-body .plus{
-  color:var(--green);
-  font-weight:700;
-  font-size:14px;
-}
+.dc-body{font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--ink2);line-height:1.85}
+.dc-body .plus{color:var(--green);font-weight:700;font-size:14px}
 /* 플릿 카드 */
 a.fleet-disc-card{
-  background:var(--ink);
-  border-right:none;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  grid-column:span 3;
-  cursor:pointer;
-  transition:background .2s;
-  padding:20px 24px;
+  background:var(--ink);text-decoration:none;
+  display:flex;align-items:center;gap:12px;
+  grid-column:span 3;border:1px solid var(--ink);
+  padding:18px 20px;transition:background .2s;cursor:pointer;
 }
-a.fleet-disc-card:hover{background:var(--ink2)}
-a.fleet-disc-card .dc-label{
-  color:#fff;
-  border-bottom-color:rgba(255,255,255,.15);
-}
-a.fleet-disc-card .dc-body{color:rgba(255,255,255,.55)}
-.fleet-arrow-ico{
-  margin-left:auto;
-  font-size:22px;
-  color:rgba(255,255,255,.4);
-  flex-shrink:0;
-}
-
-/* ─── SPECIAL / EVENT ─── */
-.special-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--line);
-  margin-top:1px;
-}
-.sp-block{
-  padding:24px 26px;
-  background:#fff;
-}
-.sp-block.dark{background:var(--ink)}
-.sp-eyebrow{
-  font-size:10px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:10px;
-  font-weight:400;
-}
-.sp-block.dark .sp-eyebrow{color:rgba(255,255,255,.4)}
-.sp-block h3{
-  font-family:'Playfair Display',serif;
-  font-size:18px;
-  font-weight:700;
-  color:var(--ink);
-  margin-bottom:8px;
-  letter-spacing:.01em;
-}
-.sp-block.dark h3{color:#fff}
-.sp-block p{
-  font-family:'Noto Serif KR',serif;
-  font-size:13px;
-  font-weight:300;
-  color:var(--ink2);
-  line-height:1.8;
-}
-.sp-block.dark p{color:rgba(255,255,255,.6)}
-
-.ev-panel{
-  background:#fff;
-  border:1px solid var(--line);
-  border-top:2px solid var(--ink);
-  padding:22px 26px;
-  margin-top:1px;
-}
-.ev-head{
-  display:flex;
-  align-items:baseline;
-  gap:14px;
-  margin-bottom:18px;
-  padding-bottom:14px;
-  border-bottom:1px solid var(--line);
-}
-.ev-chip{
-  font-size:10px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  background:var(--ink);
-  color:#fff;
-  padding:4px 10px;
-  font-weight:600;
-}
-.ev-title{
-  font-family:'Playfair Display',serif;
-  font-size:17px;
-  font-weight:700;
-  color:var(--ink);
-}
-.ev-rows{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin-bottom:16px}
-.ev-k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:2px;white-space:nowrap}
-.ev-v{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--ink2)}
-.benefit-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.bp{background:var(--bg2);border:1px solid var(--line);padding:13px 16px}
-.bp-lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600}
-.bp-val{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:400;color:var(--ink2)}
-
-.fleet-cta-bar{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  background:var(--bg2);
-  border:1px solid var(--line);
-  border-left:3px solid var(--ink);
-  padding:13px 20px;
-  margin-top:12px;
-  text-decoration:none;
-  color:var(--ink);
-  font-size:13px;
-  font-weight:500;
-  transition:background .2s;
-}
-.fleet-cta-bar:hover{background:var(--bg3)}
-.fleet-cta-bar .fca-sub{color:var(--muted);font-size:12px;font-weight:300;margin-left:4px}
-.fleet-cta-bar .fca-arrow{margin-left:auto;font-size:16px;color:var(--muted)}
-
-/* ─── SECTION HEADER ─── */
-.sec-hd{
-  padding:64px 0 6px;
-  border-top:1px solid var(--line);
-  margin-top:64px;
-}
-.sec-hd:first-of-type{border-top:none;margin-top:0}
-.sec-eyebrow{
-  font-size:10.5px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:10px;
-  font-weight:400;
-}
-.sec-hd h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(28px,4vw,40px);
-  font-weight:700;
-  color:var(--ink);
-  line-height:1.1;
-  letter-spacing:-.01em;
-}
-.sec-hd h2 em{font-style:italic;font-weight:400;color:var(--muted)}
-.sec-sub{
-  font-family:'Noto Serif KR',serif;
-  font-size:13px;
-  font-weight:300;
-  color:var(--muted);
-  margin-top:10px;
-  line-height:1.85;
-}
-
-/* ─── FINANCE ─── */
-.fin-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--line);
-  margin-top:22px;
-}
-.fin-card{overflow:hidden;background:#fff}
-.fin-card-hd{
-  background:var(--ink);
-  padding:10px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-}
-.fc-label{
-  font-size:10px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.5);
-  font-weight:400;
-}
-.fc-sub{font-size:12.5px;color:#fff;font-weight:600;letter-spacing:.02em}
-.fin-card-body{padding:24px 22px 26px}
-.fc-target{
-  font-family:'Noto Serif KR',serif;
-  font-size:12.5px;
-  font-weight:300;
-  color:var(--muted);
-  margin-bottom:16px;
-  padding-bottom:16px;
-  border-bottom:1px solid var(--line);
-}
-.fc-big-rate{
-  font-family:'Playfair Display',serif;
-  font-size:68px;
-  font-weight:700;
-  color:var(--ink);
-  line-height:1;
-  letter-spacing:-.02em;
-}
-.fc-big-rate sup{font-size:24px;vertical-align:top;padding-top:12px;font-weight:400;color:var(--muted)}
-.fc-note{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:10px;line-height:1.7}
-
-.focus-block{
-  background:#fff;
-  border:1px solid var(--line);
-  border-top:2px solid var(--ink);
-  margin-top:1px;
-  overflow:hidden;
-}
-.focus-hd{
-  background:var(--bg2);
-  padding:12px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  border-bottom:1px solid var(--line);
-  flex-wrap:wrap;
-  gap:8px;
-}
-.fh-label{
-  font-size:10.5px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--ink);
-  font-weight:700;
-}
-.fh-target{font-size:12.5px;color:var(--ink2);font-family:'Noto Serif KR',serif;font-weight:300}
-.focus-body{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
-}
-.focus-item{
-  background:#fff;
-  padding:24px 16px 26px;
-  text-align:center;
-  transition:background .15s;
-}
-.focus-item:hover{background:var(--bg2)}
-.fi-term{
-  font-size:11px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:12px;
-  font-weight:400;
-}
-.fi-rate{
-  font-family:'Playfair Display',serif;
-  font-size:50px;
-  font-weight:700;
-  color:var(--ink);
-  line-height:1;
-  letter-spacing:-.02em;
-}
-.fi-rate sup{font-size:18px;vertical-align:top;padding-top:9px;font-weight:400;color:var(--muted)}
-.fi-desc{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:10px}
-.focus-footnote{
-  padding:11px 22px;
-  font-family:'Noto Serif KR',serif;
-  font-size:12px;
-  font-weight:300;
-  color:var(--muted);
-  border-top:1px solid var(--line);
-  background:var(--bg2);
-}
-
-.premium-block{
-  background:#fff;
-  border:1px solid var(--line);
-  border-top:2px solid var(--ink);
-  margin-top:1px;
-}
-.prem-hd{
-  background:var(--bg2);
-  padding:11px 22px;
-  border-bottom:1px solid var(--line);
-}
-.ph-label{font-size:11px;letter-spacing:.06em;color:var(--ink);font-weight:700;text-transform:uppercase}
-.prem-body{padding:22px 22px 24px}
-.prem-target{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-bottom:4px}
-.prem-note{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-bottom:18px}
-.rate-compare{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.rc-box{
-  text-align:center;
-  padding:12px 20px;
-  border:1px solid var(--line);
-  background:var(--bg2);
-  min-width:110px;
-}
-.rc-lbl{font-size:10.5px;color:var(--muted);letter-spacing:.06em;margin-bottom:5px;text-transform:uppercase;font-weight:400}
-.rc-val{
-  font-family:'Playfair Display',serif;
-  font-size:22px;
-  font-weight:700;
-  color:var(--ink);
-}
-.rc-val.old{color:var(--muted2);text-decoration:line-through;font-weight:400}
-.rc-val.new{color:var(--green)}
-.vs-word{
-  font-family:'Playfair Display',serif;
-  font-size:14px;
-  font-style:italic;
-  color:var(--muted2);
-}
-.diff-tag{
-  background:var(--green);
-  color:#fff;
-  font-size:12px;
-  padding:5px 13px;
-  letter-spacing:.04em;
-  font-weight:600;
-}
-.prem-extra{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
-
-/* ─── PRICE CARD ─── */
-.price-legend{
-  display:flex;
-  gap:20px;
-  padding:10px 0;
-  margin-top:18px;
-  border-bottom:1px solid var(--line);
-  font-size:11.5px;
-  color:var(--muted);
-}
-.lg-msrp::before{content:'';display:inline-block;width:7px;height:7px;background:var(--muted2);border-radius:50%;margin-right:5px;vertical-align:middle}
-.lg-disc::before{content:'';display:inline-block;width:7px;height:7px;background:var(--red);border-radius:50%;margin-right:5px;vertical-align:middle}
-.lg-final::before{content:'';display:inline-block;width:7px;height:7px;background:var(--blue);border-radius:50%;margin-right:5px;vertical-align:middle}
-
-.pcard{
-  margin-top:36px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-top:3px solid var(--ink);
-  scroll-margin-top:110px;
-}
-.pcard-head{
-  background:var(--bg2);
-  padding:16px 24px;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.pcard-badge{
-  font-size:10px;
-  letter-spacing:.14em;
-  background:var(--ink);
-  color:#fff;
-  padding:4px 10px;
-  font-weight:700;
-  text-transform:uppercase;
-  flex-shrink:0;
-}
-.amg-badge{background:var(--amg)}
-.eq-badge{background:var(--blue)}
-.maybach-badge{background:#1a1200;color:#e8d5a8}
-.pcard-brand{font-size:10.5px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;font-weight:400}
-.pcard-model{
-  font-family:'Playfair Display',serif;
-  font-size:21px;
-  font-weight:700;
-  color:var(--ink);
-  letter-spacing:-.01em;
-}
-.pcard-img{display:none}
-
-.pcard-thead{
-  display:grid;
-  grid-template-columns:2fr 1fr 1.4fr 1fr;
-  background:var(--bg3);
-  padding:8px 24px;
-  gap:12px;
-  border-bottom:1px solid var(--line);
-}
-.pcard-thead span{
-  font-size:10.5px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--muted);
-  font-weight:400;
-}
-.pcard-thead span:not(:first-child){text-align:right}
-
-.pcard-row{
-  display:grid;
-  grid-template-columns:2fr 1fr 1.4fr 1fr;
-  padding:14px 24px;
-  gap:12px;
-  border-bottom:1px solid var(--line);
-  align-items:center;
-  transition:background .12s;
-}
-.pcard-row:last-child{border-bottom:none}
-.pcard-row:hover{background:var(--bg2)}
-.pcard-row.amg-row{background:#fdf9f9}
-.pcard-row.amg-row:hover{background:#faeaea}
-
-.pr-model strong{
-  display:block;
-  font-family:'Noto Serif KR',serif;
-  font-size:14.5px;
-  font-weight:500;
-  color:var(--ink);
-  margin-bottom:3px;
-  letter-spacing:.005em;
-}
-.pr-model small{
-  font-size:11.5px;
-  color:var(--muted);
-  letter-spacing:.02em;
-}
-.amg-row .pr-model small{color:var(--amg);opacity:.8}
-
-.pr-msrp{
-  text-align:right;
-  font-family:'Playfair Display',serif;
-  font-size:15px;
-  color:var(--muted);
-  white-space:nowrap;
-  font-weight:400;
-}
-.pr-msrp em{font-size:11px;font-style:normal;font-family:'Noto Sans KR',sans-serif}
-
-.pr-disc{text-align:right;white-space:nowrap}
-.pr-disc b{
-  font-family:'Playfair Display',serif;
-  font-size:18px;
-  font-weight:700;
-  color:var(--red);
-}
-.pr-disc b em{font-size:11px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-weight:400}
-.pr-disc s{
-  display:inline-block;
-  font-size:11px;
-  text-decoration:none;
-  background:#fff0ee;
-  color:var(--red);
-  padding:1px 5px;
-  margin-left:4px;
-  font-weight:600;
-  border-radius:2px;
-}
-.pr-none{
-  font-family:'Playfair Display',serif;
-  font-size:18px;
-  color:var(--muted2);
-  text-align:right;
-}
-
-.pr-final{
-  text-align:right;
-  font-family:'Playfair Display',serif;
-  font-size:18px;
-  font-weight:700;
-  color:var(--blue);
-  white-space:nowrap;
-}
-.pr-final em{font-size:11px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-weight:400}
-
-/* ─── FLEET OVERRIDE ─── */
-#fleet{background:var(--bg2)!important;padding:60px 0 70px!important}
-
-/* ─── FOOTER ─── */
-footer{background:var(--ink);padding:44px 32px}
-.footer-inner{
-  max-width:980px;margin:0 auto;
-  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;
-}
-.ft-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff;letter-spacing:.02em;margin-bottom:4px}
-.ft-role{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
-.ft-rule{width:28px;height:2px;background:rgba(255,255,255,.2);margin-bottom:16px}
-.ft-contact-line{font-size:13px;color:rgba(255,255,255,.6);line-height:2.1}
-.ft-contact-line a{color:rgba(255,255,255,.8);text-decoration:none}
-.ft-right{text-align:right}
-.ft-copy{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);line-height:2}
-.ft-copy span{display:block}
-.ft-star-wrap{display:none}
-
-/* ─── REVEAL ─── */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* ─── RESPONSIVE ─── */
+a.fleet-disc-card:hover{background:#2a2a2a}
+a.fleet-disc-card .dc-label{color:#fff;border-bottom-color:rgba(255,255,255,.12)}
+a.fleet-disc-card .dc-body{color:rgba(255,255,255,.5)}
+.fleet-arrow-ico{margin-left:auto;font-size:18px;color:rgba(255,255,255,.35);flex-shrink:0}
 @media(max-width:700px){
-  .disc-grid{grid-template-columns:1fr 1fr}
+  .disc-grid{grid-template-columns:1fr 1fr;gap:8px}
   a.fleet-disc-card{grid-column:span 2}
-  .special-row{grid-template-columns:1fr}
-  .fin-row{grid-template-columns:1fr}
-  .focus-body{grid-template-columns:1fr}
-  .benefit-pair{grid-template-columns:1fr}
-  .pcard-thead{grid-template-columns:1.8fr 1fr 1fr;padding:8px 14px}
-  .pcard-thead span:nth-child(2){display:none}
-  .pcard-row{grid-template-columns:1.8fr 1fr 1fr;padding:11px 14px}
-  .pr-msrp{display:none}
-  .footer-inner{grid-template-columns:1fr;text-align:center}
-  .ft-right{text-align:center}
-  .ft-rule{margin:16px auto}
-  .rate-compare{flex-direction:column;align-items:flex-start}
-  .site-header{padding:0 16px}
-  .sh-contact{display:none}
 }
 @media(max-width:440px){
   .disc-grid{grid-template-columns:1fr}
   a.fleet-disc-card{grid-column:span 1}
-  .pcard-head{padding:14px 16px}
-  .pcard-row{padding:10px 14px}
-  .pcard-thead{padding:8px 14px}
 }
 
-/* (중복 CSS 제거) */
-
-/* ─── NAV ─── */
-.nav-wrap{
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  overflow-x:auto;
-  scrollbar-width:none;
-  position:sticky;
-  top:60px;
-  z-index:190;
-}
-.nav-wrap::-webkit-scrollbar{display:none}
-.nav-inner{
-  display:flex;
-  white-space:nowrap;
-  padding:0 28px;
-  min-width:max-content;
-}
-.nav-inner a{
-  display:inline-flex;
-  align-items:center;
-  padding:12px 13px;
-  font-size:12.5px;
-  color:var(--muted);
-  text-decoration:none;
-  border-bottom:2px solid transparent;
-  transition:all .2s;
-  letter-spacing:.02em;
-}
-.nav-inner a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-.nav-inner a.nav-hot{
-  color:var(--accent);
-  font-weight:600;
-}
-
-/* ─── HERO ─── */
-.hero{
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  padding:48px 32px 40px;
-  text-align:center;
-}
-.hero-eyebrow{
-  font-size:11px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:14px;
-}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(36px,6vw,58px);
-  font-weight:600;
-  color:var(--accent);
-  line-height:1.1;
-  letter-spacing:.01em;
-  margin-bottom:10px;
-}
-.hero h1 em{
-  font-style:italic;
-  font-weight:400;
-  color:var(--accent2);
-}
-.hero-rule{
-  width:40px;
-  height:2px;
-  background:var(--accent);
-  margin:16px auto;
-}
-.hero-sub{
-  font-family:'Noto Serif KR',serif;
-  font-size:14px;
-  font-weight:300;
-  color:var(--accent2);
-  letter-spacing:.04em;
-}
-.hero-meta{
-  font-size:11.5px;
-  color:var(--muted);
-  margin-top:6px;
-  letter-spacing:.06em;
-}
-
-/* ─── WRAP ─── */
-.wrap{
-  max-width:980px;
-  margin:0 auto;
-  padding:0 24px 80px;
-}
-
-/* ─── NOTICE ─── */
-.notice-box{
-  background:var(--bg2);
-  border-left:3px solid var(--accent);
-  padding:18px 22px;
-  margin:40px 0 0;
-}
-.notice-box p{
-  font-family:'Noto Serif KR',serif;
-  font-size:13px;
-  font-weight:300;
-  color:var(--accent2);
-  line-height:1.9;
-}
-.notice-box strong{color:var(--accent);font-weight:600}
-
-/* ─── SECTION DIVIDER ─── */
-.sec-divider{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin:52px 0 28px;
-}
-.sec-divider::before,.sec-divider::after{
-  content:'';
-  flex:1;
-  height:1px;
-  background:var(--line2);
-}
-.sec-divider span{
-  font-size:11px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--muted);
-  white-space:nowrap;
-  font-family:'Noto Sans KR',sans-serif;
-  font-weight:300;
-}
-
-/* ─── DISCOUNT GRID ─── */
-.disc-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--line2);
-  margin-bottom:2px;
-}
-.disc-card{
-  padding:20px 18px;
-  border-right:1px solid var(--line2);
-  border-bottom:1px solid var(--line2);
-  background:#fff;
-  transition:background .15s;
-}
-.disc-card:last-child{border-right:none}
-.disc-card:hover{background:var(--bg2)}
-.dc-label{
-  font-size:11px;
-  font-weight:600;
-  color:var(--accent);
-  letter-spacing:.06em;
-  margin-bottom:10px;
-  text-transform:uppercase;
-  padding-bottom:8px;
-  border-bottom:1px solid var(--line);
-}
-.dc-body{
-  font-family:'Noto Serif KR',serif;
-  font-size:12.5px;
-  font-weight:300;
-  color:var(--accent2);
-  line-height:1.85;
-}
-.dc-body .plus{
-  color:var(--green);
-  font-weight:600;
-  font-size:14px;
-}
-/* 플릿 카드 */
-a.fleet-disc-card{
-  background:#1a2a3a;
-  border-right:none;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  grid-column:span 3;
-  cursor:pointer;
-  border-bottom:1px solid var(--line2);
-  transition:background .2s;
-}
-a.fleet-disc-card:hover{background:#1f3347}
-a.fleet-disc-card .dc-label{
-  color:#e8d5a8;
-  border-bottom-color:rgba(255,255,255,.1);
-}
-a.fleet-disc-card .dc-body{color:rgba(255,255,255,.55)}
-.fleet-arrow-ico{
-  margin-left:auto;
-  font-size:22px;
-  color:#e8d5a8;
-  opacity:.7;
-  flex-shrink:0;
-}
-
-/* ─── SPECIAL / EVENT ─── */
-.special-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--line2);
-  margin-top:1px;
-}
-.sp-block{
-  padding:22px 24px;
-  background:#fff;
-}
-.sp-block.dark{background:var(--accent)}
-.sp-eyebrow{
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:8px;
-}
-.sp-block.dark .sp-eyebrow{color:rgba(255,255,255,.5)}
-.sp-block h3{
-  font-family:'Playfair Display',serif;
-  font-size:17px;
-  font-weight:600;
-  color:var(--accent);
-  margin-bottom:8px;
-}
+/* ═══════════════════════════
+   SPECIAL / EVENT
+═══════════════════════════ */
+.special-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.sp-block{background:#fff;border:1px solid var(--line);padding:22px 22px}
+.sp-block.dark{background:var(--ink);border-color:var(--ink)}
+.sp-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.sp-block.dark .sp-eyebrow{color:rgba(255,255,255,.3)}
+.sp-block h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
 .sp-block.dark h3{color:#fff}
-.sp-block p{
-  font-family:'Noto Serif KR',serif;
-  font-size:13px;
-  font-weight:300;
-  color:var(--accent2);
-  line-height:1.8;
-}
-.sp-block.dark p{color:rgba(255,255,255,.65)}
-.sp-hl{color:#e8d5a8;font-weight:500}
+.sp-block p{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--ink2);line-height:1.8}
+.sp-block.dark p{color:rgba(255,255,255,.5)}
+/* 특별할인 내부 */
+.sp-inner{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.sp-item{border:1px solid var(--line);padding:13px 14px;background:var(--bg2)}
+.sp-item-dark{border:1px solid rgba(255,255,255,.12);padding:13px 14px;background:rgba(255,255,255,.05)}
+.sp-ilabel{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sp-item-dark .sp-ilabel{color:rgba(255,255,255,.3)}
+.sp-ival{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--ink2);line-height:1.6}
+.sp-irate{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:#fff;line-height:1}
+.sp-irate span{font-size:16px;font-weight:300;opacity:.45;margin-left:2px}
+.sp-irate small{font-family:'Noto Sans KR',sans-serif;font-size:11px;color:rgba(255,255,255,.35);display:block;margin-top:5px;font-weight:300}
+@media(max-width:700px){.special-row{grid-template-columns:1fr}}
 
-.ev-panel{
-  background:var(--bg2);
-  border:1px solid var(--line2);
-  border-top:3px solid var(--accent);
-  padding:22px 24px;
-  margin-top:14px;
-}
-.ev-head{
-  display:flex;
-  align-items:baseline;
-  gap:12px;
-  margin-bottom:16px;
-  padding-bottom:14px;
-  border-bottom:1px solid var(--line);
-}
-.ev-chip{
-  font-size:10px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  background:var(--accent);
-  color:#fff;
-  padding:4px 10px;
-  font-weight:600;
-}
-.ev-title{
-  font-family:'Playfair Display',serif;
-  font-size:17px;
-  font-weight:600;
-  color:var(--accent);
-}
-.ev-rows{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin-bottom:16px}
-.ev-k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:2px;white-space:nowrap}
-.ev-v{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--accent2)}
-.benefit-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.bp{background:#fff;border:1px solid var(--line2);padding:13px 16px}
-.bp-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600}
-.bp-val{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:400;color:var(--accent2)}
+.ev-panel{background:#fff;border:1px solid var(--line);border-top:2px solid var(--ink);padding:20px 22px;margin-top:8px}
+.ev-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:8px}
+.ev-chip{font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;padding:4px 10px;font-weight:600;flex-shrink:0}
+.ev-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--ink)}
+.ev-rows{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin-bottom:14px}
+.ev-k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px;white-space:nowrap}
+.ev-v{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--ink2)}
+.benefit-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bp{background:var(--bg2);border:1px solid var(--line);padding:12px 14px}
+.bp-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600}
+.bp-val{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--ink2)}
 
 .fleet-cta-bar{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  background:var(--bg2);
-  border:1px solid var(--line2);
-  border-left:3px solid var(--accent);
-  padding:13px 20px;
-  margin-top:14px;
-  text-decoration:none;
-  color:var(--accent);
-  font-size:13px;
-  font-weight:500;
-  transition:background .2s;
+  display:flex;align-items:center;gap:12px;
+  background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--ink);
+  padding:12px 18px;margin-top:8px;text-decoration:none;
+  color:var(--ink);font-size:13px;font-weight:500;transition:background .2s;
 }
 .fleet-cta-bar:hover{background:var(--bg3)}
 .fleet-cta-bar .fca-sub{color:var(--muted);font-size:12px;font-weight:300}
-.fleet-cta-bar .fca-arrow{margin-left:auto;font-size:18px;color:var(--accent2)}
+.fleet-cta-bar .fca-arrow{margin-left:auto;font-size:14px;color:var(--muted)}
 
-/* ─── SECTION HEADER ─── */
-.sec-hd{
-  padding:60px 0 4px;
-  border-top:1px solid var(--line2);
-  margin-top:60px;
-}
-.sec-hd:first-of-type{border-top:none;margin-top:0}
-.sec-eyebrow{
-  font-size:10.5px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:10px;
-  font-weight:300;
-}
-.sec-hd h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(28px,4vw,40px);
-  font-weight:600;
-  color:var(--accent);
-  line-height:1.1;
-  letter-spacing:.01em;
-}
-.sec-hd h2 em{font-style:italic;font-weight:400;color:var(--accent2)}
-.sec-sub{
-  font-family:'Noto Serif KR',serif;
-  font-size:13px;
-  font-weight:300;
-  color:var(--muted);
-  margin-top:10px;
-  line-height:1.85;
-}
+/* ═══════════════════════════
+   SECTION HEADER
+═══════════════════════════ */
+.sec-hd{padding:56px 0 6px;border-top:1px solid var(--line);margin-top:56px}
+.sec-hd.no-border{border-top:none;margin-top:0}
+.sec-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:300}
+.sec-hd h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
+.sec-hd h2 em{font-style:italic;font-weight:300;color:var(--muted)}
+.sec-sub{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-top:8px;line-height:1.85}
 
-/* ─── FINANCE ─── */
-.fin-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--line2);
-  margin-top:22px;
-}
-.fin-card{overflow:hidden;background:#fff}
-.fin-card-hd{
-  background:var(--accent);
-  padding:10px 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-}
-.fc-label{
-  font-size:10px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.7);
-  font-weight:300;
-}
-.fc-sub{font-size:12px;color:rgba(255,255,255,.85);font-weight:500}
+/* ═══════════════════════════
+   FINANCE
+═══════════════════════════ */
+.fin-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+.fin-card{overflow:hidden;background:#fff;border:1px solid var(--line)}
+.fin-card-hd{background:var(--ink);padding:11px 20px;display:flex;justify-content:space-between;align-items:baseline}
+.fc-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:300}
+.fc-sub{font-size:13px;color:#fff;font-weight:600;letter-spacing:.02em}
 .fin-card-body{padding:22px 20px 24px}
-.fc-target{font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);margin-bottom:14px}
-.fc-big-rate{
-  font-family:'Playfair Display',serif;
-  font-size:64px;
-  font-weight:600;
-  color:var(--accent);
-  line-height:1;
-}
-.fc-big-rate sup{font-size:22px;vertical-align:top;padding-top:10px;font-weight:400}
+.fc-target{font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.fc-big-rate{font-family:'Playfair Display',serif;font-size:62px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.fc-big-rate sup{font-size:22px;vertical-align:top;padding-top:10px;font-weight:300;color:var(--muted)}
 .fc-note{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:10px;line-height:1.7}
+@media(max-width:700px){.fin-row{grid-template-columns:1fr}}
 
-.focus-block{
-  background:#fff;
-  border:1px solid var(--line2);
-  border-top:2px solid var(--accent);
-  margin-top:1px;
+.focus-block{background:#fff;border:1px solid var(--line);border-top:2px solid var(--ink);margin-top:8px;overflow:hidden}
+.focus-hd{background:var(--bg2);padding:11px 20px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:6px}
+.fh-label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:700}
+.fh-target{font-size:12px;color:var(--ink2);font-family:'Noto Serif KR',serif;font-weight:300}
+.focus-body{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.focus-item{background:#fff;padding:22px 12px 24px;text-align:center;transition:background .15s}
+.focus-item.featured{background:var(--ink)}
+.focus-item:hover:not(.featured){background:var(--bg2)}
+.fi-term{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:300}
+.focus-item.featured .fi-term{color:rgba(255,255,255,.3)}
+.fi-rate{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.focus-item.featured .fi-rate{color:#fff}
+.fi-rate sup{font-size:17px;vertical-align:top;padding-top:8px;font-weight:300;color:var(--muted)}
+.focus-item.featured .fi-rate sup{color:rgba(255,255,255,.35)}
+.fi-badge{display:inline-block;margin-top:12px;padding:4px 12px;font-size:11px;font-weight:500;letter-spacing:.06em;background:var(--bg3);color:var(--muted)}
+.focus-item.featured .fi-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+.focus-fn{padding:10px 20px;font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);border-top:1px solid var(--line);background:var(--bg2)}
+@media(max-width:540px){.focus-body{grid-template-columns:1fr}}
+
+.premium-block{background:#fff;border:1px solid var(--line);border-top:2px solid var(--ink);margin-top:8px}
+.prem-hd{background:var(--bg2);padding:11px 20px;border-bottom:1px solid var(--line)}
+.ph-label{font-size:10.5px;letter-spacing:.06em;color:var(--ink);font-weight:700;text-transform:uppercase}
+.prem-body{padding:20px 20px 22px}
+.prem-note{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-bottom:18px}
+.rate-compare{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.rc-box{text-align:center;padding:14px 16px;border:1px solid var(--line);background:var(--bg2);flex:1;min-width:90px}
+.rc-box.active{border-color:var(--ink);background:#fff}
+.rc-lbl{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.rc-val{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--ink)}
+.rc-val.old{color:var(--muted2);text-decoration:line-through;font-weight:300}
+.rc-val.new{color:var(--green)}
+.vs-word{font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--muted2);align-self:center}
+.diff-tag{background:var(--green);color:#fff;font-size:11.5px;padding:6px 14px;font-weight:600;letter-spacing:.04em;align-self:center;white-space:nowrap}
+.prem-extra{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+@media(max-width:500px){.rate-compare{flex-direction:column}.vs-word{text-align:center}}
+
+/* ═══════════════════════════
+   PRICE CARD
+═══════════════════════════ */
+/* 범례 */
+.price-legend{
+  display:flex;gap:18px;padding:10px 0;
+  margin-top:14px;border-bottom:1px solid var(--line);
+  font-size:11.5px;color:var(--muted);flex-wrap:wrap;
+}
+.price-legend span::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.lg-msrp::before{background:var(--muted2)}
+.lg-disc::before{background:var(--red)}
+.lg-final::before{background:var(--blue)}
+
+/* 카드 */
+.pcard{
+  margin-top:28px;background:#fff;
+  border:1px solid var(--line);
+  border-top:2px solid var(--ink);
+  scroll-margin-top:136px;
   overflow:hidden;
 }
-.focus-hd{
-  background:var(--bg2);
-  padding:11px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  border-bottom:1px solid var(--line);
-  flex-wrap:wrap;
-  gap:6px;
-}
-.fh-label{
-  font-size:10px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--accent);
-  font-weight:600;
-}
-.fh-target{font-size:12.5px;color:var(--accent2);font-family:'Noto Serif KR',serif;font-weight:300}
-.focus-body{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
-}
-.focus-item{
-  background:#fff;
-  padding:20px 16px 22px;
-  text-align:center;
-  transition:background .15s;
-}
-.focus-item:hover{background:var(--bg2)}
-.fi-term{
-  font-size:11px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:10px;
-  font-weight:300;
-}
-.fi-rate{
-  font-family:'Playfair Display',serif;
-  font-size:46px;
-  font-weight:600;
-  color:var(--accent);
-  line-height:1;
-}
-.fi-rate sup{font-size:18px;vertical-align:top;padding-top:8px;font-weight:400}
-.fi-desc{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:8px}
-.focus-footnote{
-  padding:11px 20px;
-  font-family:'Noto Serif KR',serif;
-  font-size:12px;
-  font-weight:300;
-  color:var(--muted);
-  border-top:1px solid var(--line);
-  background:var(--bg2);
-}
-
-.premium-block{
-  background:#fff;
-  border:1px solid var(--line2);
-  border-top:2px solid var(--accent);
-  margin-top:1px;
-}
-.prem-hd{
-  background:var(--bg2);
-  padding:10px 20px;
-  border-bottom:1px solid var(--line);
-}
-.ph-label{
-  font-size:11px;
-  letter-spacing:.1em;
-  color:var(--accent);
-  font-weight:600;
-  text-transform:uppercase;
-}
-.prem-body{padding:20px 20px 22px}
-.prem-target{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-bottom:4px}
-.prem-note{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-bottom:18px}
-.rate-compare{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.rc-box{
-  text-align:center;
-  padding:12px 18px;
-  border:1px solid var(--line2);
-  background:var(--bg2);
-  min-width:100px;
-}
-.rc-lbl{font-size:10.5px;color:var(--muted);letter-spacing:.06em;margin-bottom:5px;text-transform:uppercase}
-.rc-val{
-  font-family:'Playfair Display',serif;
-  font-size:22px;
-  font-weight:600;
-  color:var(--accent);
-}
-.rc-val.old{color:var(--muted2);text-decoration:line-through;font-weight:400}
-.rc-val.new{color:var(--green)}
-.vs-word{
-  font-family:'Playfair Display',serif;
-  font-size:14px;
-  font-style:italic;
-  color:var(--muted2);
-}
-.diff-tag{
-  background:var(--green);
-  color:#fff;
-  font-size:12px;
-  padding:5px 13px;
-  letter-spacing:.04em;
-  font-weight:500;
-}
-.prem-extra{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
-
-/* ─── PRICE CARD (카드형 가격표) ─── */
-.price-legend{
-  display:flex;
-  gap:20px;
-  padding:10px 0;
-  margin-top:18px;
-  border-bottom:1px solid var(--line);
-  font-size:11px;
-  letter-spacing:.06em;
-  color:var(--muted);
-}
-.lg-msrp::before{content:'';display:inline-block;width:7px;height:7px;background:var(--muted2);border-radius:50%;margin-right:5px;vertical-align:middle}
-.lg-disc::before{content:'';display:inline-block;width:7px;height:7px;background:var(--red);border-radius:50%;margin-right:5px;vertical-align:middle}
-.lg-final::before{content:'';display:inline-block;width:7px;height:7px;background:var(--blue);border-radius:50%;margin-right:5px;vertical-align:middle}
-
-.pcard{
-  margin-top:40px;
-  background:#fff;
-  border:1px solid var(--line2);
-  border-top:3px solid var(--accent);
-  scroll-margin-top:108px;
-}
-/* 카드 헤더 */
+/* 카드 헤더 — 더 심플하게 */
 .pcard-head{
   background:var(--bg2);
-  padding:16px 24px;
-  border-bottom:1px solid var(--line2);
-  display:flex;
-  align-items:center;
-  gap:14px;
+  padding:12px 20px;
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;
 }
-.pcard-badge{
-  font-size:10.5px;
-  letter-spacing:.14em;
-  background:var(--accent);
-  color:#fff;
-  padding:4px 11px;
-  font-weight:600;
-  text-transform:uppercase;
-  flex-shrink:0;
-}
-.amg-badge{background:var(--amg)}
-.eq-badge{background:var(--blue)}
-.maybach-badge{background:#2a1a00;color:#e8d5a8}
-.pcard-brand{font-size:10.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
-.pcard-model{
-  font-family:'Playfair Display',serif;
-  font-size:20px;
-  font-weight:600;
-  color:var(--accent);
-  letter-spacing:.02em;
-}
-.pcard-img{display:none}  /* 이미지 준비 시 display:block */
+.pcard-brand{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px;font-weight:300}
+.pcard-model{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
 
 /* 컬럼 헤더 */
 .pcard-thead{
   display:grid;
-  grid-template-columns:2fr 1fr 1.4fr 1fr;
-  background:var(--bg3);
-  padding:8px 24px;
-  gap:12px;
+  grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,.9fr) minmax(0,1.05fr);
+  background:var(--bg3);padding:8px 20px;gap:6px;
   border-bottom:1px solid var(--line);
 }
-.pcard-thead span{
-  font-size:10.5px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted);
-  font-weight:300;
-}
+.pcard-thead span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
 .pcard-thead span:not(:first-child){text-align:right}
 
 /* 데이터 행 */
 .pcard-row{
   display:grid;
-  grid-template-columns:2fr 1fr 1.4fr 1fr;
-  padding:13px 24px;
-  gap:12px;
+  grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,.9fr) minmax(0,1.05fr);
+  padding:12px 20px;gap:6px;
   border-bottom:1px solid var(--line);
-  align-items:center;
-  transition:background .12s;
+  align-items:center;transition:background .12s;
 }
 .pcard-row:last-child{border-bottom:none}
-.pcard-row:hover{background:#f8f8f8}
-.pcard-row.amg-row{background:#fdf8f8}
+.pcard-row:hover{background:#f9f9f7}
+.pcard-row.amg-row{background:#fdf9f9}
 .pcard-row.amg-row:hover{background:#faeaea}
 
+/* 모델명 */
 .pr-model strong{
-  display:block;
-  font-family:'Noto Serif KR',serif;
-  font-size:14px;
-  font-weight:500;
-  color:var(--accent);
-  margin-bottom:2px;
-  letter-spacing:.01em;
+  display:block;font-family:'Noto Serif KR',serif;
+  font-size:13px;font-weight:500;color:var(--ink);
+  word-break:keep-all;line-height:1.45;
+  margin-bottom:1px;
 }
-.pr-model small{
-  font-size:11px;
-  color:var(--muted);
-  letter-spacing:.04em;
-}
-.amg-row .pr-model small{color:var(--amg);opacity:.75}
+.pr-model small{font-size:11px;color:var(--muted);letter-spacing:.02em;display:block;line-height:1.4}
+.amg-row .pr-model small{color:var(--amg);opacity:.7}
 
+/* 출고가 */
 .pr-msrp{
-  text-align:right;
-  font-family:'Playfair Display',serif;
-  font-size:15px;
-  color:var(--muted);
-  white-space:nowrap;
+  text-align:right;font-family:'Playfair Display',serif;
+  font-size:14px;color:var(--muted);white-space:nowrap;font-weight:300;
 }
-.pr-msrp em{font-size:11px;font-style:normal;font-family:'Noto Sans KR',sans-serif}
+.pr-msrp em{font-size:10px;font-style:normal;font-family:'Noto Sans KR',sans-serif}
 
-.pr-disc{text-align:right;white-space:nowrap}
+/* 할인 */
+.pr-disc{text-align:right}
 .pr-disc b{
-  font-family:'Playfair Display',serif;
-  font-size:17px;
-  font-weight:600;
-  color:var(--red);
+  display:block;font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:700;color:var(--red);
+  line-height:1.3;white-space:nowrap;
 }
-.pr-disc b em{font-size:11px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-weight:400}
+.pr-disc b em{font-size:10px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-weight:400}
 .pr-disc s{
-  display:inline-block;
-  font-size:11px;
-  text-decoration:none;
-  background:#fdf0ee;
-  color:var(--red);
-  padding:1px 5px;
-  margin-left:4px;
-  font-weight:500;
-  border-radius:2px;
+  display:inline-block;font-size:10px;text-decoration:none;
+  background:#fff0ee;color:var(--red);padding:1px 5px;
+  margin-top:2px;font-weight:600;border-radius:2px;
 }
-.pr-none{
-  font-family:'Playfair Display',serif;
-  font-size:18px;
-  color:var(--muted2);
-  text-align:right;
-}
+.pr-none{font-family:'Playfair Display',serif;font-size:18px;color:var(--muted2);text-align:right}
 
+/* 실구매가 */
 .pr-final{
-  text-align:right;
-  font-family:'Playfair Display',serif;
-  font-size:17px;
-  font-weight:600;
-  color:var(--blue);
-  white-space:nowrap;
+  text-align:right;font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:700;color:var(--blue);white-space:nowrap;
 }
-.pr-final em{font-size:11px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-weight:400}
+.pr-final em{font-size:10px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-weight:400}
 
-/* ─── FLEET SECTION 오버라이드 ─── */
-#fleet{background:var(--bg2)!important;padding:60px 0 70px!important}
-#fleet .pt-wrap{max-width:980px;margin:0 auto;padding:0 24px}
-#fleet .pl-hd{padding:0 0 8px}
-#fleet .pl-eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-#fleet .pl-hd h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--accent)}
-#fleet .pl-hd h2 em{font-style:italic;font-weight:400;color:var(--accent2)}
-.fleet-grid>div{background:#fff!important;border:1px solid var(--line2)}
-/* fleet 카드 내부 타이포 */
-.fleet-grid [style*="Cormorant"]{font-family:'Playfair Display',serif!important}
+/* 모바일 가격표 */
+@media(max-width:700px){
+  .pcard-thead{
+    grid-template-columns:minmax(0,2fr) minmax(0,.8fr) minmax(0,1fr);
+    padding:7px 14px;gap:4px;
+  }
+  .pcard-thead span:nth-child(2){display:none}
+  .pcard-row{
+    grid-template-columns:minmax(0,2fr) minmax(0,.8fr) minmax(0,1fr);
+    padding:11px 14px;gap:4px;
+  }
+  .pr-msrp{display:none}
+  .pr-model strong{font-size:12px;word-break:keep-all}
+  .pr-model small{font-size:10.5px}
+  .pr-disc b{font-size:13px}
+  .pr-disc s{font-size:9.5px;padding:1px 4px}
+  .pr-final{font-size:13px}
+  .pcard-head{padding:11px 14px}
+  .pcard-model{font-size:16px}
+}
+@media(max-width:380px){
+  .pcard-row{
+    grid-template-columns:minmax(0,2.1fr) minmax(0,.75fr) minmax(0,.95fr);
+    padding:9px 10px;gap:3px;
+  }
+  .pcard-thead{
+    grid-template-columns:minmax(0,2.1fr) minmax(0,.75fr) minmax(0,.95fr);
+    padding:7px 10px;gap:3px;
+  }
+  .pcard-head{padding:10px 10px}
+  .pr-model strong{font-size:11.5px}
+  .pr-disc b{font-size:12px}
+  .pr-final{font-size:12px}
+}
 
-/* ─── FOOTER ─── */
-footer{
-  background:var(--accent);
-  padding:40px 32px;
-}
-.footer-inner{
-  max-width:980px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:32px;
-  align-items:end;
-}
-.ft-name{
-  font-family:'Playfair Display',serif;
-  font-size:24px;
-  font-weight:600;
-  color:#fff;
-  letter-spacing:.06em;
-  margin-bottom:4px;
-}
-.ft-role{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px}
-.ft-rule{width:32px;height:2px;background:rgba(255,255,255,.3);margin-bottom:16px}
-.ft-contact-line{font-size:13px;color:rgba(255,255,255,.65);line-height:2.1}
-.ft-contact-line a{color:rgba(255,255,255,.8);text-decoration:none}
+/* ═══════════════════════════
+   FLEET
+═══════════════════════════ */
+#fleet{background:#f4f4f2;padding:60px 0 68px}
+#fleet .ft-wrap{max-width:960px;margin:0 auto;padding:0 24px}
+@media(max-width:700px){#fleet .ft-wrap{padding:0 16px}}
+
+/* ═══════════════════════════
+   FOOTER
+═══════════════════════════ */
+footer{background:var(--ink);padding:40px 32px}
+.footer-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+.ft-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:#fff;margin-bottom:4px}
+.ft-role{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+.ft-rule{width:24px;height:1px;background:rgba(255,255,255,.2);margin-bottom:14px}
+.ft-contact-line{font-size:13px;color:rgba(255,255,255,.5);line-height:2.1}
+.ft-contact-line a{color:rgba(255,255,255,.7);text-decoration:none}
 .ft-right{text-align:right}
-.ft-copy{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);line-height:2}
+.ft-copy{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.18);line-height:2.2}
 .ft-copy span{display:block}
-.ft-star-wrap{display:none}  /* 벤츠 스타 로고 제거 */
+.ft-star-wrap{display:none}
+@media(max-width:700px){
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .ft-right{text-align:center;margin-top:16px}
+  .ft-rule{margin:14px auto}
+  footer{padding:36px 20px}
+}
 
-/* ─── REVEAL ─── */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+/* ═══════════════════════════
+   FIXED BOTTOM BAR
+═══════════════════════════ */
+.bottom-bar{
+  display:none; /* PC에서 기본 숨김 */
+}
+@media(max-width:700px){
+  body{padding-bottom:60px}
+  .bottom-bar{
+    display:flex;
+    position:fixed;bottom:0;left:0;right:0;z-index:500;
+    background:#fff;border-top:1px solid var(--line);
+    height:56px;box-shadow:0 -2px 16px rgba(0,0,0,.1);
+  }
+  .bb-select{
+    flex:1;height:100%;border:none;border-right:1px solid var(--line);
+    background:#fff;font-size:13px;color:var(--ink);
+    font-family:'Noto Sans KR',sans-serif;
+    padding:0 12px 0 14px;outline:none;cursor:pointer;
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;
+    padding-right:28px;
+  }
+  .bb-kakao{
+    display:flex;align-items:center;justify-content:center;
+    width:56px;height:100%;background:#FEE500;
+    border:none;border-left:1px solid rgba(0,0,0,.06);
+    text-decoration:none;flex-shrink:0;font-size:22px;
+    transition:background .15s;
+  }
+  .bb-kakao:hover{background:#fdd800}
+  .bb-call{
+    display:flex;align-items:center;justify-content:center;
+    width:56px;height:100%;background:var(--ink);
+    border:none;text-decoration:none;flex-shrink:0;font-size:22px;
+    transition:background .2s;
+  }
+  .bb-call:hover{background:#2a2a2a}
+}
+
+/* ═══════════════════════════
+   REVEAL
+═══════════════════════════ */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
 .reveal.visible{opacity:1;transform:none}
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:700px){
-  .disc-grid{grid-template-columns:1fr 1fr}
-  a.fleet-disc-card{grid-column:span 2}
-  .special-row{grid-template-columns:1fr}
-  .fin-row{grid-template-columns:1fr}
-  .focus-body{grid-template-columns:1fr}
-  .benefit-pair{grid-template-columns:1fr}
-  .pcard-thead{grid-template-columns:1.8fr 1fr 1fr;padding:8px 14px}
-  .pcard-thead span:nth-child(2){display:none}
-  .pcard-row{grid-template-columns:1.8fr 1fr 1fr;padding:11px 14px}
-  .pr-msrp{display:none}
-  .footer-inner{grid-template-columns:1fr;text-align:center}
-  .ft-right{text-align:center}
-  .ft-rule{margin:16px auto}
-  .rate-compare{flex-direction:column;align-items:flex-start}
-  .site-header{padding:0 16px}
-  .sh-contact{display:none}
+/* ── 금융·혜택 배지 ── */
+.fin-badge{
+  display:inline-flex;
+  align-items:center;
+  margin-top:4px;
+  padding:1px 6px;
+  font-size:9.5px;
+  font-weight:500;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  line-height:1.7;
+  border-left:2px solid currentColor;
+  font-family:'Noto Sans KR',sans-serif;
 }
-@media(max-width:440px){
-  .disc-grid{grid-template-columns:1fr}
-  a.fleet-disc-card{grid-column:span 1}
-  .pcard-head{padding:14px 16px}
-  .pcard-row{padding:10px 12px}
-  .pcard-thead{padding:8px 12px}
+/* 무이자 — 블루 */
+.b-zero{ color:var(--blue); background:rgba(17,80,160,.06); }
+/* EV 저금리 — 테알 */
+.b-ev{ color:#0e7a6e; background:rgba(14,122,110,.06); }
+/* 잔가보장형 — 다크그린 */
+.b-residual{ color:var(--green); background:rgba(24,94,54,.06); }
+/* Special Conquest — 앰버 */
+.b-conquest{ color:#8a6000; background:rgba(138,96,0,.07); }
+@media(max-width:700px){
+  .fin-badge{font-size:9.5px;padding:2px 6px 2px 5px}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER (back + brand + contact 통합) -->
+<!-- ══ HEADER ══ -->
 <header class="site-header">
-  <!-- 상단 얇은 줄: 뒤로가기 + 날짜 -->
-  <div class="sh-top-bar">
-    <a href="koo_yonghei_full.html" class="sh-back"><span class="arrow">←</span> 소개 페이지</a>
-    <span class="sh-sep">|</span>
-    <span class="sh-date">2026 May · Price List</span>
+  <div class="sh-util">
+    <a href="koo_yonghei_full.html" class="sh-back" target="_self">← 소개 페이지</a>
+    <span class="sh-util-sep">|</span>
+    <span class="sh-util-date">2026 May · Price Guide</span>
   </div>
-  <!-- 하단 메인 줄: 브랜드 + 연락처 -->
-  <div class="sh-main-row">
-    <div class="sh-left">
-      <span class="sh-brand">Mercedes-Benz Official Dealer</span>
-      <span class="sh-sub">구용회 팀장</span>
+  <div class="sh-main">
+    <div class="sh-identity">
+      <span class="sh-dealer">Mercedes-Benz Official Dealer</span>
+      <span class="sh-name">구용회 팀장</span>
     </div>
-    <div class="sh-contact">
-      <a href="tel:01027580789">010-2758-0789</a>
-    </div>
+    <div class="sh-phone"><a href="tel:01027580789">010-2758-0789</a></div>
   </div>
 </header>
 
-<!-- NAV -->
-<nav class="nav-wrap" id="main-nav">
-  <div class="nav-inner" id="nav-inner">
-    <a href="#fin-sec" class="nav-hot">★ 5월 베스트</a>
-    <a href="#fin-sec">금융</a>
-    <a href="#t-a">A클래스</a>
-    <a href="#t-cla">CLA</a>
-    <a href="#t-gla">GLA·GLB</a>
-    <a href="#t-c">C클래스</a>
-    <a href="#t-e">E클래스</a>
-    <a href="#t-s">S클래스</a>
-    <a href="#t-cle">CLE</a>
-    <a href="#t-glc">GLC</a>
-    <a href="#t-gle">GLE</a>
-    <a href="#t-gls">GLS</a>
-    <a href="#t-g">G클래스</a>
-    <a href="#t-amg">AMG GT·SL</a>
-    <a href="#t-eq">전동화 EQ</a>
-    <a href="#t-myb">Maybach</a>
-    <a href="#fleet">Fleet</a>
-  </div>
-  <!-- 우측 페이드 + 스크롤 힌트 -->
-  <div class="nav-fade-right" id="nav-fade">
-    <span class="nav-scroll-hint">›</span>
+<!-- ══ NAV ══ -->
+<nav class="nav-wrap">
+  <div class="nav-inner-wrap">
+    <div class="nav-inner" id="nav-inner">
+      <a href="#fin-sec" class="hot">★ 5월 베스트</a>
+      <a href="#fin-sec">금융</a>
+      <a href="#t-a">A클래스</a>
+      <a href="#t-cla">CLA</a>
+      <a href="#t-gla">GLA · GLB</a>
+      <a href="#t-c">C클래스</a>
+      <a href="#t-e">E클래스</a>
+      <a href="#t-s">S클래스</a>
+      <a href="#t-cle">CLE</a>
+      <a href="#t-glc">GLC</a>
+      <a href="#t-gle">GLE</a>
+      <a href="#t-gls">GLS</a>
+      <a href="#t-g">G클래스</a>
+      <a href="#t-amg">AMG GT · SL</a>
+      <a href="#t-eq">전동화 EQ</a>
+      <a href="#t-myb">Maybach</a>
+      <a href="#fleet">Fleet</a>
+    </div>
+    <div class="nav-fade" id="nav-fade"><span class="nav-hint">›</span></div>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <div class="hero">
-  <!-- 좌 — 제목 -->
-  <div class="hero-left">
-    <div class="hero-eyebrow">2026 May · Price List</div>
-    <h1>가격 및<em>프로모션</em></h1>
+  <div class="hero-inner">
+    <div class="hero-kicker">Mercedes-Benz Price Guide</div>
+    <h1 class="hero-title">2026 MAY <em>Collection</em></h1>
     <div class="hero-rule"></div>
-    <div class="hero-sub">VAT 포함 &nbsp;/&nbsp; 단위: 만원 &nbsp;/&nbsp; 계약 시점 기준</div>
-  </div>
-  <!-- 우 — 정보 패널 -->
-  <div class="hero-right">
-    <div>
-      <div class="hero-info-block">
-        <div class="hero-info-label">담당 팀장</div>
-        <div class="hero-info-val">구용회 팀장</div>
-      </div>
-      <div class="hero-info-block">
-        <div class="hero-info-label">직통 전화</div>
-        <div class="hero-info-val"><a href="tel:01027580789">010-2758-0789</a></div>
-      </div>
-      <div class="hero-info-block">
-        <div class="hero-info-label">기준 월</div>
-        <div class="hero-info-val">2026년 5월</div>
-      </div>
-    </div>
-    <div class="hero-tags">
-      <span class="hero-tag">계약시점 조건 보장</span>
-      <span class="hero-tag">산차교환보상 3년</span>
-      <span class="hero-tag">VAT 포함</span>
-    </div>
+    <div class="hero-sub">메르세데스-벤츠 프로모션 안내</div>
+    <div class="hero-meta">VAT 포함 &nbsp;·&nbsp; 단위: 만원 &nbsp;·&nbsp; 계약 시점 기준</div>
   </div>
 </div>
 
 <div class="wrap">
 
-  <!-- NOTICE -->
-  <div class="notice-box reveal" style="margin-top:40px">
+  <div class="notice-box reveal" style="margin-top:36px">
     <p>아래 가격은 매월 갱신되는 메르세데스-벤츠 코리아 공식 캠페인 기준이며, <strong>계약 시점</strong>의 프로모션이 적용됩니다.<br>계약 시점의 조건은 출고 시점에도 동일하게 유지되며, 이후 가격이 인상되더라도 계약 조건으로 출고 가능합니다.</p>
   </div>
 
-  <!-- COMMON DISCOUNTS -->
-  <div class="sec-divider reveal"><span>공통 추가 할인 안내</span></div>
+  <div class="sec-div reveal"><span>공통 추가 할인 안내</span></div>
 
   <div class="disc-grid reveal">
     <div class="disc-card">
@@ -1680,7 +687,7 @@ footer{
       <div class="dc-body">5월 재시행 전 차종 트레이드인 시 모든 차량 <span class="plus">+1%</span> · 타 프로모션 중복 가능</div>
     </div>
     <div class="disc-card">
-      <div class="dc-label">전시 차량 · 하자수리 · 하이마일리지</div>
+      <div class="dc-label">전시차 · 하자수리 · 하이마일리지</div>
       <div class="dc-body">전시차 즉시 출고 <span class="plus">+1%</span><br>하자수리 · 하이마일리지 해당 시 각 <span class="plus">+1%</span></div>
     </div>
     <a href="#fleet" class="disc-card fleet-disc-card">
@@ -1692,20 +699,18 @@ footer{
     </a>
   </div>
 
-  <!-- SPECIAL + EVENT -->
-  <div class="special-row reveal" style="margin-top:14px">
+  <div class="special-row reveal">
     <div class="sp-block">
       <div class="sp-eyebrow">Special Promotion</div>
       <h3>특별 할인</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
-        <div style="padding:14px 16px;background:var(--bg2);border:1px solid var(--line)">
-          <div style="font-size:11px;font-weight:700;color:var(--ink);letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase">대상 차량</div>
-          <div style="font-family:'Noto Serif KR',serif;font-size:13px;font-weight:400;color:var(--ink2);line-height:1.7">E 200 AMG LINE<br>ROF Edition</div>
+      <div class="sp-inner">
+        <div class="sp-item">
+          <div class="sp-ilabel">대상 차량</div>
+          <div class="sp-ival">E 200 AMG LINE<br>ROF Edition</div>
         </div>
-        <div style="padding:14px 16px;background:var(--ink);border:1px solid var(--ink)">
-          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase">추가 할인</div>
-          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff;line-height:1">+2<span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.5)">%</span></div>
-          <div style="font-family:'Noto Serif KR',serif;font-size:11.5px;font-weight:300;color:rgba(255,255,255,.5);margin-top:4px">MBF MBMK 진행 시</div>
+        <div class="sp-item-dark">
+          <div class="sp-ilabel">추가 할인</div>
+          <div class="sp-irate">+2<span>%</span><small>MBF MBMK 진행 시</small></div>
         </div>
       </div>
     </div>
@@ -1715,9 +720,10 @@ footer{
       <p>5월 18일 — 6월 30일 · S클래스 보유 고객 대상<br>MY27 S-Class F/L (마이바흐 포함)</p>
     </div>
   </div>
+
   <div class="ev-panel reveal">
     <div class="ev-head">
-      <span class="ev-chip">Event 혜택 상세</span>
+      <span class="ev-chip">Event 혜택</span>
       <span class="ev-title">신형 S클래스 사전계약 이벤트</span>
     </div>
     <div class="ev-rows">
@@ -1731,174 +737,80 @@ footer{
     </div>
   </div>
 
-  <a href="#fleet" class="fleet-cta-bar reveal">
-    <span>★ FLEET 조건 안내</span>
-    <span class="fca-sub">법인플릿 · 임직원 플릿 조건 확인</span>
-    <span class="fca-arrow">→</span>
-  </a>
 
-  <!-- FINANCE -->
+  <!-- 금융 -->
   <div id="fin-sec" class="sec-hd reveal">
     <div class="sec-eyebrow">2026 May · Finance Program</div>
     <h2>5월 <em>금융 프로그램</em></h2>
-    <p class="sec-sub">할인은 그대로, 금융이 강해진 달입니다 · 산차교환보상 3년 기본 포함<br>모든 금리는 신용등급·심사 결과에 따라 변동될 수 있습니다</p>
+    <p class="sec-sub">할인은 그대로, 금융이 강해진 달입니다 · 산차교환보상 3년 기본 포함<br>모든 금리는 신용등급 · 심사 결과에 따라 변동될 수 있습니다</p>
   </div>
 
-  <!-- ── EV 금융 (가로 2분할) ── -->
-  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:24px">
-
-    <!-- EQA·EQB -->
-    <div style="background:#fff;position:relative;overflow:hidden">
-      <div style="background:var(--ink);padding:14px 24px;display:flex;align-items:baseline;justify-content:space-between">
-        <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:400">EV · 파격 금융</span>
-        <span style="font-size:13px;color:#fff;font-weight:600;letter-spacing:.02em">EQA · EQB</span>
-      </div>
-      <div style="padding:28px 24px 30px;display:flex;align-items:flex-end;gap:0;justify-content:space-between">
-        <div>
-          <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);margin-bottom:20px;line-height:1.7">전 기간 무이자<br>EQB SK ON 배터리 적용</div>
-          <div style="font-family:'Playfair Display',serif;font-size:72px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.03em">0<span style="font-size:28px;font-weight:400;color:var(--muted);margin-left:2px">%</span></div>
-          <div style="margin-top:10px;display:inline-block;background:var(--ink);color:#fff;font-size:11px;font-weight:600;padding:4px 12px;letter-spacing:.08em">무이자 완전 적용</div>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:var(--bg3);line-height:1;letter-spacing:-.04em;flex-shrink:0;margin-bottom:-4px">EV</div>
+  <div class="fin-row reveal">
+    <div class="fin-card">
+      <div class="fin-card-hd"><span class="fc-label">EV · 파격 금융</span><span class="fc-sub">EQA · EQB</span></div>
+      <div class="fin-card-body">
+        <div class="fc-target">전 기간 무이자 · EQB SK ON 배터리 적용</div>
+        <div class="fc-big-rate">0<sup>%</sup></div>
+        <div class="fc-note">완전 무이자 · 전 기간 동일</div>
       </div>
     </div>
-
-    <!-- EQE·EQS -->
-    <div style="background:#fff;position:relative;overflow:hidden">
-      <div style="background:var(--ink);padding:14px 24px;display:flex;align-items:baseline;justify-content:space-between">
-        <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:400">EV · 파격 금융</span>
-        <span style="font-size:13px;color:#fff;font-weight:600;letter-spacing:.02em">EQE · EQS</span>
+    <div class="fin-card">
+      <div class="fin-card-hd"><span class="fc-label">EV · 파격 금융</span><span class="fc-sub">EQE · EQS</span></div>
+      <div class="fin-card-body">
+        <div class="fc-target">최저 초저금리 · EQE 350+ SUV 시승 가능</div>
+        <div class="fc-big-rate">0.74<sup>%</sup></div>
+        <div class="fc-note">초저금리 프로그램</div>
       </div>
-      <div style="padding:28px 24px 30px;display:flex;align-items:flex-end;gap:0;justify-content:space-between">
-        <div>
-          <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);margin-bottom:20px;line-height:1.7">최저 초저금리<br>EQE 350+ SUV 시승 가능</div>
-          <div style="font-family:'Playfair Display',serif;font-size:72px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.03em">0.74<span style="font-size:28px;font-weight:400;color:var(--muted);margin-left:2px">%</span></div>
-          <div style="margin-top:10px;display:inline-block;background:var(--blue);color:#fff;font-size:11px;font-weight:600;padding:4px 12px;letter-spacing:.08em">초저금리 프로그램</div>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:var(--bg3);line-height:1;letter-spacing:-.04em;flex-shrink:0;margin-bottom:-4px">EV</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ── FOCUS 특별 금리 ── -->
-  <div class="reveal" style="background:#fff;border:1px solid var(--line);border-top:2px solid var(--ink);margin-top:1px">
-
-    <!-- 헤더 -->
-    <div style="padding:16px 24px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;background:var(--bg2)">
-      <div>
-        <span style="font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:700">Focus</span>
-        <span style="font-size:13px;color:var(--muted);margin-left:10px;font-family:'Noto Serif KR',serif;font-weight:300">특별 금리 프로그램</span>
-      </div>
-      <span style="font-family:'Noto Serif KR',serif;font-size:12.5px;color:var(--muted);font-weight:300">대상 — C 200 · E 200 AMG Line · E 350 e · E 450</span>
-    </div>
-
-    <!-- 3분할 금리 -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)">
-
-      <!-- 24개월 -->
-      <div style="background:#fff;padding:28px 24px 30px;text-align:center;position:relative;overflow:hidden">
-        <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:400">24개월</div>
-        <div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.02em">0<span style="font-size:22px;font-weight:400;color:var(--muted)">%</span></div>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
-          <div style="display:inline-block;background:var(--ink);color:#fff;font-size:11px;font-weight:600;padding:5px 16px;letter-spacing:.06em">완전 무이자</div>
-        </div>
-      </div>
-
-      <!-- 36개월 — 강조 -->
-      <div style="background:var(--ink);padding:28px 24px 30px;text-align:center;position:relative;overflow:hidden">
-        <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;font-weight:400">36개월</div>
-        <div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:#fff;line-height:1;letter-spacing:-.02em">1.7<span style="font-size:22px;font-weight:400;color:rgba(255,255,255,.5)">%대</span></div>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)">
-          <div style="display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;padding:5px 16px;letter-spacing:.06em">최저 금리</div>
-        </div>
-      </div>
-
-      <!-- 60개월 -->
-      <div style="background:#fff;padding:28px 24px 30px;text-align:center;position:relative;overflow:hidden">
-        <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:400">60개월</div>
-        <div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.02em">4.56<span style="font-size:22px;font-weight:400;color:var(--muted)">%</span></div>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
-          <div style="display:inline-block;background:var(--bg3);color:var(--muted);font-size:11px;font-weight:400;padding:5px 16px;letter-spacing:.06em">선수금 50% 기준</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 각주 -->
-    <div style="padding:12px 24px;background:var(--bg2);border-top:1px solid var(--line);font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted)">
-      ※ E 200 EX/AV · E 300 — 36개월 5.16–5.20% &nbsp;/&nbsp; 60개월 5.38–5.41% (선수금 50% 기준)
-    </div>
-
-  </div>
-
-  <!-- ── 잔존가치 보장형 ── -->
-  <div class="reveal" style="background:#fff;border:1px solid var(--line);border-top:2px solid var(--ink);margin-top:1px">
-
-    <!-- 헤더 -->
-    <div style="padding:14px 24px;border-bottom:1px solid var(--line);background:var(--bg2);display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px">
-      <div>
-        <span style="font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:700">Premium</span>
-        <span style="font-size:13px;color:var(--muted);margin-left:10px;font-family:'Noto Serif KR',serif;font-weight:300">잔존가치 보장형 할부</span>
-      </div>
-      <span style="font-family:'Noto Serif KR',serif;font-size:12px;color:var(--muted);font-weight:300">GLE SUV/Coupé · GT 43 · S 450 SWB · GLC 300</span>
-    </div>
-
-    <div style="padding:24px 24px 26px">
-
-      <div style="font-family:'Noto Serif KR',serif;font-size:13px;font-weight:300;color:var(--muted);margin-bottom:22px">월 납입금 부담 최소화 · 타이어 교환 3년 무상 추가</div>
-
-      <!-- 금리 비교 가로 바 -->
-      <div style="display:grid;grid-template-columns:1fr auto 1fr auto auto;align-items:center;gap:16px;flex-wrap:wrap">
-
-        <!-- 일반 할부 -->
-        <div style="border:1px solid var(--line);padding:18px 20px;background:var(--bg2)">
-          <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:400">일반 할부</div>
-          <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--muted2);text-decoration:line-through;text-decoration-color:var(--muted2)">6.35<span style="font-size:15px">~</span>6.70<span style="font-size:16px;font-weight:300">%</span></div>
-        </div>
-
-        <div style="font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--muted2);flex-shrink:0">vs</div>
-
-        <!-- 잔존가치 보장형 -->
-        <div style="border:1px solid var(--ink);padding:18px 20px;background:#fff;position:relative">
-          <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;font-weight:700">잔존가치 보장형</div>
-          <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green)">3.77<span style="font-size:15px">~</span>4.83<span style="font-size:16px;font-weight:400">%</span></div>
-        </div>
-
-        <!-- 인하폭 -->
-        <div style="background:var(--green);color:#fff;padding:14px 18px;text-align:center;flex-shrink:0">
-          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;font-weight:400">최대 인하</div>
-          <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1">2.93<span style="font-size:14px;font-weight:400">%p</span></div>
-        </div>
-
-      </div>
-
-      <div style="margin-top:16px;padding:12px 16px;background:var(--bg2);border-left:3px solid var(--ink);font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted)">
-        S 450 4MATIC SWB 전용 — 잔존가치 보장형 적용 시 <strong style="color:var(--ink);font-weight:600">3%대 금리</strong>까지 가능
-      </div>
-
     </div>
   </div>
 
-  <!-- PRICE TABLES -->
+  <div class="focus-block reveal">
+    <div class="focus-hd">
+      <span class="fh-label">Focus · 특별 금리</span>
+      <span class="fh-target">대상 — <a href="#t-c" style="color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2)">C 200</a> · <a href="#t-e" style="color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2)">E 200 AMG Line</a> · <a href="#t-e" style="color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2)">E 350 e</a> · <a href="#t-e" style="color:var(--ink2);text-decoration:underline;text-decoration-color:var(--line2)">E 450</a></span>
+    </div>
+    <div class="focus-body">
+      <div class="focus-item"><div class="fi-term">24개월</div><div class="fi-rate">0<sup>%</sup></div><div class="fi-badge">완전 무이자</div></div>
+      <div class="focus-item featured"><div class="fi-term">36개월</div><div class="fi-rate">1.7<sup>%대</sup></div><div class="fi-badge">최저 금리</div></div>
+      <div class="focus-item"><div class="fi-term">60개월</div><div class="fi-rate">4.56<sup>%</sup></div><div class="fi-badge">선수금 50%</div></div>
+    </div>
+    <div class="focus-fn">※ E 200 EX/AV · E 300 — 36개월 5.16–5.20% · 60개월 5.38–5.41% (선수금 50% 기준)</div>
+  </div>
+
+  <div class="premium-block reveal">
+    <div class="prem-hd"><span class="ph-label">Premium · 잔존가치 보장형 할부 — GLE SUV/Coupé · GT 43 · S 450 SWB · GLC 300</span></div>
+    <div class="prem-body">
+      <div class="prem-note">월 납입금 부담 최소화 · 타이어 교환 3년 무상 추가</div>
+      <div class="rate-compare">
+        <div class="rc-box"><div class="rc-lbl">일반 할부</div><div class="rc-val old">6.35~6.70%</div></div>
+        <div class="vs-word">vs</div>
+        <div class="rc-box active"><div class="rc-lbl">잔존가치 보장형</div><div class="rc-val new">3.77~4.83%</div></div>
+        <div class="diff-tag">최대 2.93%p ↓</div>
+      </div>
+      <div class="prem-extra">S 450 4MATIC SWB 전용 — 잔존가치 보장형 적용 시 <strong>3%대 금리</strong>까지 가능</div>
+    </div>
+  </div>
+
+  <!-- 가격표 -->
   <div class="sec-hd reveal">
     <div class="sec-eyebrow">2026 May · Price List</div>
     <h2>차종별 <em>가격표</em></h2>
   </div>
-
-  <!-- 범례 -->
   <div class="price-legend reveal">
     <span class="lg-msrp">출고가격</span>
-    <span class="lg-disc">할인금액 (할인율)</span>
+    <span class="lg-disc">할인금액 · 할인율</span>
     <span class="lg-final">실구매가</span>
   </div>
+
+
+
+  <!-- 범례 -->
+  
 
   <!-- ── A클래스 ── -->
   <div class="pcard reveal" id="t-a">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">A</span>
-        <div>
+      <div class="pcard-title-wrap"><div>
           <div class="pcard-brand">Mercedes-Benz</div>
           <div class="pcard-model">A클래스</div>
         </div>
@@ -1937,9 +849,7 @@ footer{
   <!-- ── CLA ── -->
   <div class="pcard reveal" id="t-cla">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">CLA</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">CLA</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">CLA</div></div>
       </div>
       <img class="pcard-img" src="img/cla.png" alt="CLA" onerror="this.style.display='none'">
     </div>
@@ -1967,9 +877,7 @@ footer{
   <!-- ── GLA·GLB ── -->
   <div class="pcard reveal" id="t-gla">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">GLA</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLA · GLB</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLA · GLB</div></div>
       </div>
       <img class="pcard-img" src="img/gla.png" alt="GLA" onerror="this.style.display='none'">
     </div>
@@ -2003,9 +911,7 @@ footer{
   <!-- ── C클래스 ── -->
   <div class="pcard reveal" id="t-c">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">C</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">C클래스</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">C클래스</div></div>
       </div>
       <img class="pcard-img" src="img/c_class.png" alt="C클래스" onerror="this.style.display='none'">
     </div>
@@ -2016,8 +922,8 @@ footer{
       <div class="pr-disc"><b>707<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">5,722<em>만원</em></div>
     </div>
-    <div class="pcard-row">
-      <div class="pr-model"><strong>C 200 AMG Line</strong><small>26년식</small></div>
+    <div class="pcard-row" style="background:#f8faff">
+      <div class="pr-model"><strong>C 200 AMG Line</strong><small>26년식</small><br><span class="fin-badge b-zero">특별금리</span></div>
       <div class="pr-msrp">6,750<em>만원</em></div>
       <div class="pr-disc"><b>743<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">6,007<em>만원</em></div>
@@ -2027,9 +933,7 @@ footer{
   <!-- ── E클래스 ── -->
   <div class="pcard reveal" id="t-e">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">E</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">E클래스</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">E클래스</div></div>
       </div>
       <img class="pcard-img" src="img/e_class.png" alt="E클래스" onerror="this.style.display='none'">
     </div>
@@ -2046,8 +950,8 @@ footer{
       <div class="pr-disc"><b>383<em>만원</em></b> <s>5%</s></div>
       <div class="pr-final">7,277<em>만원</em></div>
     </div>
-    <div class="pcard-row">
-      <div class="pr-model"><strong>E 200 AMG Line</strong><small>26년식</small></div>
+    <div class="pcard-row" style="background:#f8faff">
+      <div class="pr-model"><strong>E 200 AMG Line</strong><small>26년식</small><br><span class="fin-badge b-zero">특별금리</span></div>
       <div class="pr-msrp">8,000<em>만원</em></div>
       <div class="pr-disc"><b>880<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">7,120<em>만원</em></div>
@@ -2070,20 +974,20 @@ footer{
       <div class="pr-disc"><b>1,075<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">8,695<em>만원</em></div>
     </div>
-    <div class="pcard-row">
-      <div class="pr-model"><strong>E 350 e 4MATIC EXCLUSIVE</strong><small>26년식</small></div>
+    <div class="pcard-row" style="background:#f8faff">
+      <div class="pr-model"><strong>E 350 e 4MATIC EXCLUSIVE</strong><small>26년식</small><br><span class="fin-badge b-zero">특별금리</span></div>
       <div class="pr-msrp">9,870<em>만원</em></div>
       <div class="pr-disc"><b>1,086<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">8,784<em>만원</em></div>
     </div>
-    <div class="pcard-row">
-      <div class="pr-model"><strong>E 450 4MATIC AMG Line</strong><small>26년식</small></div>
+    <div class="pcard-row" style="background:#f8faff">
+      <div class="pr-model"><strong>E 450 4MATIC AMG Line</strong><small>26년식</small><br><span class="fin-badge b-zero">특별금리</span></div>
       <div class="pr-msrp">11,460<em>만원</em></div>
       <div class="pr-disc"><b>1,261<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">10,199<em>만원</em></div>
     </div>
-    <div class="pcard-row">
-      <div class="pr-model"><strong>E 450 4MATIC EXCLUSIVE</strong><small>26년식</small></div>
+    <div class="pcard-row" style="background:#f8faff">
+      <div class="pr-model"><strong>E 450 4MATIC EXCLUSIVE</strong><small>26년식</small><br><span class="fin-badge b-zero">특별금리</span></div>
       <div class="pr-msrp">12,820<em>만원</em></div>
       <div class="pr-disc"><b>1,410<em>만원</em></b> <s>11%</s></div>
       <div class="pr-final">11,409<em>만원</em></div>
@@ -2099,19 +1003,17 @@ footer{
   <!-- ── S클래스 ── -->
   <div class="pcard reveal" id="t-s">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">S</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">S클래스</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">S클래스</div></div>
       </div>
       <img class="pcard-img" src="img/s_class.png" alt="S클래스" onerror="this.style.display='none'">
     </div>
     <div class="pcard-thead"><span>모델</span><span>출고가격</span><span>할인금액 · 할인율</span><span>실구매가</span></div>
     <div class="pcard-row"><div class="pr-model"><strong>S 350 d 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">15,260<em>만원</em></div><div class="pr-disc"><b>1,526<em>만원</em></b> <s>10%</s></div><div class="pr-final">13,734<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>S 350 d 4MATIC (CY25/2)</strong><small>26년식</small></div><div class="pr-msrp">15,360<em>만원</em></div><div class="pr-disc"><b>1,536<em>만원</em></b> <s>10%</s></div><div class="pr-final">13,824<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">15,960<em>만원</em></div><div class="pr-disc"><b>1,277<em>만원</em></b> <s>8%</s></div><div class="pr-final">14,683<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC (CY25/2)</strong><small>26년식</small></div><div class="pr-msrp">16,060<em>만원</em></div><div class="pr-disc"><b>1,285<em>만원</em></b> <s>8%</s></div><div class="pr-final">14,775<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC (Long)</strong><small>26년식</small></div><div class="pr-msrp">19,160<em>만원</em></div><div class="pr-disc"><b>1,916<em>만원</em></b> <s>10%</s></div><div class="pr-final">17,244<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC Long (CY25/2)</strong><small>26년식</small></div><div class="pr-msrp">19,360<em>만원</em></div><div class="pr-disc"><b>1,936<em>만원</em></b> <s>10%</s></div><div class="pr-final">17,424<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">15,960<em>만원</em></div><div class="pr-disc"><b>1,277<em>만원</em></b> <s>8%</s></div><div class="pr-final">14,683<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC (CY25/2)</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">16,060<em>만원</em></div><div class="pr-disc"><b>1,285<em>만원</em></b> <s>8%</s></div><div class="pr-final">14,775<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC (Long)</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">19,160<em>만원</em></div><div class="pr-disc"><b>1,916<em>만원</em></b> <s>10%</s></div><div class="pr-final">17,244<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>S 450 4MATIC Long (CY25/2)</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">19,360<em>만원</em></div><div class="pr-disc"><b>1,936<em>만원</em></b> <s>10%</s></div><div class="pr-final">17,424<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>S 500 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">21,360<em>만원</em></div><div class="pr-disc"><b>2,136<em>만원</em></b> <s>10%</s></div><div class="pr-final">19,224<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>S 500 4MATIC (CY25/2)</strong><small>26년식</small></div><div class="pr-msrp">21,560<em>만원</em></div><div class="pr-disc"><b>2,156<em>만원</em></b> <s>10%</s></div><div class="pr-final">19,404<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>S 580 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">25,860<em>만원</em></div><div class="pr-disc"><b>2,586<em>만원</em></b> <s>10%</s></div><div class="pr-final">23,274<em>만원</em></div></div>
@@ -2121,9 +1023,7 @@ footer{
   <!-- ── CLE ── -->
   <div class="pcard reveal" id="t-cle">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">CLE</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">CLE</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">CLE</div></div>
       </div>
       <img class="pcard-img" src="img/cle.png" alt="CLE" onerror="this.style.display='none'">
     </div>
@@ -2139,48 +1039,42 @@ footer{
   <!-- ── GLC ── -->
   <div class="pcard reveal" id="t-glc">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">GLC</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLC</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLC</div></div>
       </div>
       <img class="pcard-img" src="img/glc.png" alt="GLC" onerror="this.style.display='none'">
     </div>
     <div class="pcard-thead"><span>모델</span><span>출고가격</span><span>할인금액 · 할인율</span><span>실구매가</span></div>
     <div class="pcard-row"><div class="pr-model"><strong>GLC 220 d 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">8,120<em>만원</em></div><div class="pr-disc"><b>568<em>만원</em></b> <s>7%</s></div><div class="pr-final">7,551<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC AVANTGARDE</strong><small>26년식</small></div><div class="pr-msrp">8,140<em>만원</em></div><div class="pr-disc"><b>733<em>만원</em></b> <s>9%</s></div><div class="pr-final">7,407<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC AMG Line</strong><small>26년식</small></div><div class="pr-msrp">9,140<em>만원</em></div><div class="pr-disc"><b>1,097<em>만원</em></b> <s>12%</s></div><div class="pr-final">8,043<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC AVANTGARDE</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">8,140<em>만원</em></div><div class="pr-disc"><b>733<em>만원</em></b> <s>9%</s></div><div class="pr-final">7,407<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC AMG Line</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">9,140<em>만원</em></div><div class="pr-disc"><b>1,097<em>만원</em></b> <s>12%</s></div><div class="pr-final">8,043<em>만원</em></div></div>
     <div class="pcard-row amg-row"><div class="pr-model"><strong>GLC 43 4MATIC</strong><small>AMG · 26년식</small></div><div class="pr-msrp">10,230<em>만원</em></div><div class="pr-disc"><b>716<em>만원</em></b> <s>7%</s></div><div class="pr-final">9,513<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC Coupé AVANTGARDE</strong><small>26년식</small></div><div class="pr-msrp">8,550<em>만원</em></div><div class="pr-disc"><b>770<em>만원</em></b> <s>9%</s></div><div class="pr-final">7,780<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC Coupé AMG Line</strong><small>26년식</small></div><div class="pr-msrp">9,570<em>만원</em></div><div class="pr-disc"><b>861<em>만원</em></b> <s>9%</s></div><div class="pr-final">8,708<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC Coupé AVANTGARDE</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">8,550<em>만원</em></div><div class="pr-disc"><b>770<em>만원</em></b> <s>9%</s></div><div class="pr-final">7,780<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLC 300 4MATIC Coupé AMG Line</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">9,570<em>만원</em></div><div class="pr-disc"><b>861<em>만원</em></b> <s>9%</s></div><div class="pr-final">8,708<em>만원</em></div></div>
     <div class="pcard-row amg-row"><div class="pr-model"><strong>GLC 43 4MATIC Coupé</strong><small>AMG · 26년식</small></div><div class="pr-msrp">10,690<em>만원</em></div><div class="pr-disc"><b>321<em>만원</em></b> <s>3%</s></div><div class="pr-final">10,369<em>만원</em></div></div>
   </div>
 
   <!-- ── GLE ── -->
   <div class="pcard reveal" id="t-gle">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">GLE</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLE</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLE</div></div>
       </div>
       <img class="pcard-img" src="img/gle.png" alt="GLE" onerror="this.style.display='none'">
     </div>
     <div class="pcard-thead"><span>모델</span><span>출고가격</span><span>할인금액 · 할인율</span><span>실구매가</span></div>
     <div class="pcard-row"><div class="pr-model"><strong>GLE 350 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">11,660<em>만원</em></div><div class="pr-disc"><b>1,166<em>만원</em></b> <s>10%</s></div><div class="pr-final">10,494<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>GLE 300 d 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">11,780<em>만원</em></div><div class="pr-disc"><b>942<em>만원</em></b> <s>8%</s></div><div class="pr-final">10,837<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLE 450 4MATIC</strong><small>26년식</small></div><div class="pr-msrp">12,760<em>만원</em></div><div class="pr-disc"><b>1,786<em>만원</em></b> <s>14%</s></div><div class="pr-final">10,973<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLE 450 4MATIC AMG Line</strong><small>26년식</small></div><div class="pr-msrp">13,760<em>만원</em></div><div class="pr-disc"><b>1,926<em>만원</em></b> <s>14%</s></div><div class="pr-final">11,833<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLE 450 4MATIC</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">12,760<em>만원</em></div><div class="pr-disc"><b>1,786<em>만원</em></b> <s>14%</s></div><div class="pr-final">10,973<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLE 450 4MATIC AMG Line</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">13,760<em>만원</em></div><div class="pr-disc"><b>1,926<em>만원</em></b> <s>14%</s></div><div class="pr-final">11,833<em>만원</em></div></div>
     <div class="pcard-row amg-row"><div class="pr-model"><strong>GLE 53 4MATIC+</strong><small>AMG · 26년식</small></div><div class="pr-msrp">16,460<em>만원</em></div><div class="pr-disc"><b>1,317<em>만원</em></b> <s>8%</s></div><div class="pr-final">15,143<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>GLE 450 d 4MATIC Coupé AMG Line</strong><small>26년식</small></div><div class="pr-msrp">13,260<em>만원</em></div><div class="pr-disc"><b>1,061<em>만원</em></b> <s>8%</s></div><div class="pr-final">12,199<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>GLE 450 4MATIC Coupé AMG Line</strong><small>26년식</small></div><div class="pr-msrp">14,110<em>만원</em></div><div class="pr-disc"><b>1,975<em>만원</em></b> <s>14%</s></div><div class="pr-final">12,134<em>만원</em></div></div>
+    <div class="pcard-row"><div class="pr-model"><strong>GLE 450 4MATIC Coupé AMG Line</strong><small>26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">14,110<em>만원</em></div><div class="pr-disc"><b>1,975<em>만원</em></b> <s>14%</s></div><div class="pr-final">12,134<em>만원</em></div></div>
     <div class="pcard-row amg-row"><div class="pr-model"><strong>GLE 53 4MATIC+ Coupé</strong><small>AMG · 26년식</small></div><div class="pr-msrp">16,860<em>만원</em></div><div class="pr-disc"><b>843<em>만원</em></b> <s>5%</s></div><div class="pr-final">16,017<em>만원</em></div></div>
   </div>
 
   <!-- ── GLS ── -->
   <div class="pcard reveal" id="t-gls">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">GLS</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLS</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">GLS</div></div>
       </div>
       <img class="pcard-img" src="img/gls.png" alt="GLS" onerror="this.style.display='none'">
     </div>
@@ -2196,9 +1090,7 @@ footer{
   <!-- ── G클래스 ── -->
   <div class="pcard reveal" id="t-g">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge">G</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">G클래스</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">G클래스</div></div>
       </div>
       <img class="pcard-img" src="img/g_class.png" alt="G클래스" onerror="this.style.display='none'">
     </div>
@@ -2212,9 +1104,7 @@ footer{
   <!-- ── AMG GT·SL ── -->
   <div class="pcard reveal" id="t-amg">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge amg-badge">AMG</span>
-        <div><div class="pcard-brand">Mercedes-AMG</div><div class="pcard-model">AMG GT · SL</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-AMG</div><div class="pcard-model">AMG GT · SL</div></div>
       </div>
       <img class="pcard-img" src="img/amg_gt.png" alt="AMG GT" onerror="this.style.display='none'">
     </div>
@@ -2223,37 +1113,33 @@ footer{
     <div class="pcard-row amg-row"><div class="pr-model"><strong>SL 63 4MATIC+</strong><small>AMG · 26년식</small></div><div class="pr-msrp">24,860<em>만원</em></div><div class="pr-disc pr-none">—</div><div class="pr-final">24,860<em>만원</em></div></div>
     <div class="pcard-row amg-row"><div class="pr-model"><strong>GT 55 4MATIC+</strong><small>AMG · 26년식</small></div><div class="pr-msrp">20,860<em>만원</em></div><div class="pr-disc"><b>626<em>만원</em></b> <s>3%</s></div><div class="pr-final">20,234<em>만원</em></div></div>
     <div class="pcard-row amg-row"><div class="pr-model"><strong>GT 63 S E Performance</strong><small>AMG · 26년식</small></div><div class="pr-msrp">27,860<em>만원</em></div><div class="pr-disc"><b>1,114<em>만원</em></b> <s>4%</s></div><div class="pr-final">26,745<em>만원</em></div></div>
-    <div class="pcard-row amg-row"><div class="pr-model"><strong>GT 43 4MATIC+</strong><small>AMG · 26년식</small></div><div class="pr-msrp">16,260<em>만원</em></div><div class="pr-disc"><b>1,463<em>만원</em></b> <s>9%</s></div><div class="pr-final">14,796<em>만원</em></div></div>
+    <div class="pcard-row amg-row"><div class="pr-model"><strong>GT 43 4MATIC+</strong><small>AMG · 26년식</small><br><span class="fin-badge b-residual">잔가보장형</span></div><div class="pr-msrp">16,260<em>만원</em></div><div class="pr-disc"><b>1,463<em>만원</em></b> <s>9%</s></div><div class="pr-final">14,796<em>만원</em></div></div>
   </div>
 
   <!-- ── EQ ── -->
   <div class="pcard reveal" id="t-eq">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge eq-badge">EQ</span>
-        <div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">전동화 EQ</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand">Mercedes-Benz</div><div class="pcard-model">전동화 EQ</div></div>
       </div>
       <img class="pcard-img" src="img/eq.png" alt="EQ" onerror="this.style.display='none'">
     </div>
     <div class="pcard-thead"><span>모델</span><span>출고가격</span><span>할인금액 · 할인율</span><span>실구매가</span></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQA 250 Progressive</strong><small>26년식</small></div><div class="pr-msrp">7,000<em>만원</em></div><div class="pr-disc"><b>700<em>만원</em></b> <s>10%</s></div><div class="pr-final">6,300<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQA 250 AMG Line</strong><small>26년식</small></div><div class="pr-msrp">7,580<em>만원</em></div><div class="pr-disc"><b>758<em>만원</em></b> <s>10%</s></div><div class="pr-final">6,822<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQB 300 4MATIC Progressive</strong><small>26년식</small></div><div class="pr-msrp">7,880<em>만원</em></div><div class="pr-disc"><b>788<em>만원</em></b> <s>10%</s></div><div class="pr-final">7,092<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQB 300 4MATIC AMG Line</strong><small>26년식</small></div><div class="pr-msrp">8,430<em>만원</em></div><div class="pr-disc"><b>843<em>만원</em></b> <s>10%</s></div><div class="pr-final">7,587<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQE 350+ SUV</strong><small>26년식</small></div><div class="pr-msrp">10,600<em>만원</em></div><div class="pr-disc"><b>1,060<em>만원</em></b> <s>10%</s></div><div class="pr-final">9,540<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQE 350+</strong><small>26년식</small></div><div class="pr-msrp">11,000<em>만원</em></div><div class="pr-disc"><b>1,100<em>만원</em></b> <s>10%</s></div><div class="pr-final">9,900<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQE 500 4MATIC SUV</strong><small>26년식</small></div><div class="pr-msrp">14,080<em>만원</em></div><div class="pr-disc"><b>1,408<em>만원</em></b> <s>10%</s></div><div class="pr-final">12,672<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQS 450 4MATIC SUV</strong><small>26년식</small></div><div class="pr-msrp">16,460<em>만원</em></div><div class="pr-disc"><b>1,646<em>만원</em></b> <s>10%</s></div><div class="pr-final">14,814<em>만원</em></div></div>
-    <div class="pcard-row"><div class="pr-model"><strong>EQS 580 4MATIC SUV</strong><small>26년식</small></div><div class="pr-msrp">19,060<em>만원</em></div><div class="pr-disc pr-none">—</div><div class="pr-final">19,060<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQA 250 Progressive</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">7,000<em>만원</em></div><div class="pr-disc"><b>700<em>만원</em></b> <s>10%</s></div><div class="pr-final">6,300<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQA 250 AMG Line</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">7,580<em>만원</em></div><div class="pr-disc"><b>758<em>만원</em></b> <s>10%</s></div><div class="pr-final">6,822<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQB 300 4MATIC Progressive</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">7,880<em>만원</em></div><div class="pr-disc"><b>788<em>만원</em></b> <s>10%</s></div><div class="pr-final">7,092<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQB 300 4MATIC AMG Line</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">8,430<em>만원</em></div><div class="pr-disc"><b>843<em>만원</em></b> <s>10%</s></div><div class="pr-final">7,587<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQE 350+ SUV</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">10,600<em>만원</em></div><div class="pr-disc"><b>1,060<em>만원</em></b> <s>10%</s></div><div class="pr-final">9,540<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQE 350+</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">11,000<em>만원</em></div><div class="pr-disc"><b>1,100<em>만원</em></b> <s>10%</s></div><div class="pr-final">9,900<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQE 500 4MATIC SUV</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">14,080<em>만원</em></div><div class="pr-disc"><b>1,408<em>만원</em></b> <s>10%</s></div><div class="pr-final">12,672<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQS 450 4MATIC SUV</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">16,460<em>만원</em></div><div class="pr-disc"><b>1,646<em>만원</em></b> <s>10%</s></div><div class="pr-final">14,814<em>만원</em></div></div>
+    <div class="pcard-row" style="background:#f3fbf8"><div class="pr-model"><strong>EQS 580 4MATIC SUV</strong><small>26년식</small><br><span class="fin-badge b-ev">EV 저금리</span></div><div class="pr-msrp">19,060<em>만원</em></div><div class="pr-disc pr-none">—</div><div class="pr-final">19,060<em>만원</em></div></div>
     <div class="pcard-row"><div class="pr-model"><strong>G 580 with EQ Technology</strong><small>26년식</small></div><div class="pr-msrp">21,470<em>만원</em></div><div class="pr-disc pr-none">—</div><div class="pr-final">21,470<em>만원</em></div></div>
   </div>
 
   <!-- ── Maybach ── -->
   <div class="pcard reveal" id="t-myb">
     <div class="pcard-head">
-      <div class="pcard-title-wrap">
-        <span class="pcard-badge maybach-badge">MYB</span>
-        <div><div class="pcard-brand" style="color:var(--gold2)">Mercedes-Maybach</div><div class="pcard-model" style="color:var(--gold3)">Maybach</div></div>
+      <div class="pcard-title-wrap"><div><div class="pcard-brand" style="color:var(--gold2)">Mercedes-Maybach</div><div class="pcard-model" style="color:var(--gold3)">Maybach</div></div>
       </div>
       <img class="pcard-img" src="img/maybach.png" alt="Maybach" onerror="this.style.display='none'">
     </div>
@@ -2272,7 +1158,15 @@ footer{
 </div><!-- /wrap -->
 
 <!-- ════════ FLEET SECTION ════════ -->
-<div id="fleet" style="background:var(--bg2);padding:60px 0 70px">
+
+
+</div><!-- /wrap -->
+
+
+
+</div><!-- /wrap -->
+
+<div id="fleet" style="background:#f4f4f2;padding:60px 0 68px">
 <div style="max-width:980px;margin:0 auto;padding:0 24px">
 
   <div class="reveal" style="padding:0 0 8px;margin-bottom:32px">
@@ -2480,5 +1374,171 @@ const io=new IntersectionObserver(entries=>{
 },{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="ft-name">구용회 팀장</div>
+      <div class="ft-role">Mercedes-Benz Official Dealer</div>
+      <div class="ft-rule"></div>
+      <div class="ft-contact-line">
+        <a href="tel:01027580789">010-2758-0789</a><br>
+        경기도 의정부시 시민로 309
+      </div>
+    </div>
+    <div class="ft-right">
+      <div class="ft-copy">
+        <span>Mercedes-Benz</span>
+        <span>Official Dealer</span>
+        <span>© 2026</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ FIXED BOTTOM BAR ════ -->
+<div class="bottom-bar">
+  <select class="bb-select" onchange="if(this.value) { const t=document.querySelector(this.value); if(t){ const y=t.getBoundingClientRect().top+window.pageYOffset-130; window.scrollTo({top:y,behavior:'smooth'}); } this.value=''; }">
+    <option value="">차종 선택</option>
+    <option value="#t-a">A클래스</option>
+    <option value="#t-cla">CLA</option>
+    <option value="#t-gla">GLA · GLB</option>
+    <option value="#t-c">C클래스</option>
+    <option value="#t-e">E클래스</option>
+    <option value="#t-s">S클래스</option>
+    <option value="#t-cle">CLE</option>
+    <option value="#t-glc">GLC</option>
+    <option value="#t-gle">GLE</option>
+    <option value="#t-gls">GLS</option>
+    <option value="#t-g">G클래스</option>
+    <option value="#t-amg">AMG GT · SL</option>
+    <option value="#t-eq">전동화 EQ</option>
+    <option value="#t-myb">Maybach</option>
+    <option value="#fleet">Fleet</option>
+  </select>
+  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">💬</a>
+  <a href="tel:01027580789" class="bb-call" title="전화 연결">📞</a>
+</div>
+
+<script>
+/* 스무스 스크롤 */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    const y=t.getBoundingClientRect().top+window.pageYOffset-130;
+    window.scrollTo({top:y,behavior:'smooth'});
+  });
+});
+/* 소개 페이지 링크 */
+document.querySelectorAll('.sh-back').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.stopPropagation();
+  });
+});
+/* 내비 스크롤 힌트 */
+const navInner=document.getElementById('nav-inner');
+const navFade=document.getElementById('nav-fade');
+if(navInner&&navFade){
+  const check=()=>navFade.classList.toggle('gone',navInner.scrollLeft+navInner.clientWidth>=navInner.scrollWidth-8);
+  navInner.addEventListener('scroll',check,{passive:true});
+  window.addEventListener('resize',check);
+  check();
+}
+/* 스크롤 리빌 */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="ft-name">구용회 팀장</div>
+      <div class="ft-role">Mercedes-Benz Official Dealer</div>
+      <div class="ft-rule"></div>
+      <div class="ft-contact-line">
+        <a href="tel:01027580789">010-2758-0789</a><br>
+        경기도 의정부시 시민로 309
+      </div>
+    </div>
+    <div class="ft-right">
+      <div class="ft-copy">
+        <span>Mercedes-Benz</span>
+        <span>Official Dealer</span>
+        <span>© 2026</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ FIXED BOTTOM BAR (모바일) ══ -->
+<div class="bottom-bar">
+  <select class="bb-select" id="model-select">
+    <option value="">차종 선택 →</option>
+    <option value="#t-a">A클래스</option>
+    <option value="#t-cla">CLA</option>
+    <option value="#t-gla">GLA · GLB</option>
+    <option value="#t-c">C클래스</option>
+    <option value="#t-e">E클래스</option>
+    <option value="#t-s">S클래스</option>
+    <option value="#t-cle">CLE</option>
+    <option value="#t-glc">GLC</option>
+    <option value="#t-gle">GLE</option>
+    <option value="#t-gls">GLS</option>
+    <option value="#t-g">G클래스</option>
+    <option value="#t-amg">AMG GT · SL</option>
+    <option value="#t-eq">전동화 EQ</option>
+    <option value="#t-myb">Maybach</option>
+    <option value="#fleet">Fleet</option>
+  </select>
+  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">💬</a>
+  <a href="tel:01027580789" class="bb-call" title="전화 연결">📞</a>
+</div>
+
+<script>
+/* 스무스 스크롤 */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(!href||href==='#')return;
+    e.preventDefault();
+    const t=document.querySelector(href);
+    if(!t)return;
+    const offset=window.innerWidth<=700?140:136;
+    window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-offset,behavior:'smooth'});
+  });
+});
+
+/* 차종 선택 드롭다운 */
+document.getElementById('model-select').addEventListener('change',function(){
+  if(!this.value)return;
+  const t=document.querySelector(this.value);
+  if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-140,behavior:'smooth'});
+  this.value='';
+});
+
+/* 내비 스크롤 힌트 */
+const ni=document.getElementById('nav-inner');
+const nf=document.getElementById('nav-fade');
+if(ni&&nf){
+  const chk=()=>nf.classList.toggle('gone',ni.scrollLeft+ni.clientWidth>=ni.scrollWidth-8);
+  ni.addEventListener('scroll',chk,{passive:true});
+  window.addEventListener('resize',chk);
+  chk();
+}
+
+/* 스크롤 리빌 */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
+
