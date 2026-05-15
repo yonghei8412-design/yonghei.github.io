@@ -302,9 +302,28 @@ body{
 }
 .disc-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:1px;
   background:var(--line);
+}
+/* 플릿 카드: 5번째 위치에서 나머지 3칸 전부 채움 */
+.disc-grid > a.fleet-disc-card{
+  grid-column: span 3;
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+.disc-grid > a.fleet-disc-card .fleet-inner{
+  display:flex;
+  flex-direction:column;
+}
+@media(max-width:700px){
+  .disc-grid{grid-template-columns:1fr 1fr}
+  .disc-grid > a.fleet-disc-card{grid-column:span 2}
+}
+@media(max-width:440px){
+  .disc-grid{grid-template-columns:1fr}
+  .disc-grid > a.fleet-disc-card{grid-column:span 1}
 }
 .disc-card{
   background:var(--cream);
@@ -324,6 +343,16 @@ body{
   transition:transform .3s;
 }
 .disc-card:hover::before{transform:scaleX(1)}
+/* 플릿 링크 카드 */
+a.fleet-disc-card{
+  text-decoration:none;
+  cursor:pointer;
+  background:#0B1F3A!important;
+  border-left:3px solid var(--gold)!important;
+}
+a.fleet-disc-card:hover{background:#132847!important}
+a.fleet-disc-card .dc-icon{color:var(--gold)!important}
+a.fleet-disc-card .dc-icon::after{display:none}
 .dc-icon{
   font-family:'Cormorant Garamond',serif;
   font-size:10px;
@@ -683,106 +712,186 @@ body{
 
 /* ─────────── PRICE LIST SECTION ─────────── */
 .price-section{
-  margin-top:48px;
-  scroll-margin-top:55px;
+  margin-top:52px;
+  scroll-margin-top:60px;
 }
 .ps-header{
   display:flex;
-  align-items:baseline;
-  gap:16px;
-  padding-bottom:14px;
+  align-items:center;
+  gap:14px;
+  padding:14px 20px;
   margin-bottom:0;
-  border-bottom:1px solid var(--ink2);
+  background:var(--black);
+  border-left:3px solid var(--gold);
 }
 .ps-badge{
   font-family:'Cormorant Garamond',serif;
-  font-size:10px;
+  font-size:11px;
   letter-spacing:.18em;
-  background:var(--black);
-  color:var(--gold);
-  padding:5px 11px;
+  background:var(--gold);
+  color:var(--black);
+  padding:4px 12px;
   text-transform:uppercase;
-  font-weight:600;
-  flex-none;
+  font-weight:700;
+  flex-shrink:0;
+  line-height:1.6;
 }
-.ps-badge.maybach{background:var(--gold);color:var(--black)}
+.ps-badge.maybach{background:var(--gold3);color:var(--black)}
 .ps-brand{
   font-family:'Cormorant Garamond',serif;
-  font-size:11.5px;
-  letter-spacing:.12em;
+  font-size:11px;
+  letter-spacing:.16em;
   text-transform:uppercase;
-  color:var(--ink4);
+  color:#555;
 }
 .ps-model{
   font-family:'Cormorant Garamond',serif;
-  font-size:20px;
+  font-size:19px;
   font-weight:400;
-  letter-spacing:.04em;
-  color:var(--ink);
+  letter-spacing:.06em;
+  color:#e8dcc8;
 }
 
 /* TABLE */
 table.ptable{
   width:100%;
   border-collapse:collapse;
-  font-size:13px;
+  font-size:13.5px;
+  table-layout:fixed;
 }
-table.ptable thead tr{background:var(--ink2)}
+/* 컬럼 너비 고정 */
+table.ptable col.col-model  { width:46%; }
+table.ptable col.col-msrp   { width:22%; }
+table.ptable col.col-promo  { width:12%; }
+table.ptable col.col-final  { width:20%; }
+
+table.ptable thead tr{ background:#1a1a1a; }
 table.ptable th{
-  padding:10px 16px;
-  color:#888;
+  padding:11px 18px;
+  color:#666;
   font-family:'Cormorant Garamond',serif;
-  font-size:10.5px;
-  letter-spacing:.16em;
+  font-size:10px;
+  letter-spacing:.22em;
   text-transform:uppercase;
   font-weight:400;
   text-align:left;
+  border-bottom:1px solid #2a2a2a;
 }
+table.ptable th:nth-child(2),
+table.ptable th:nth-child(3),
+table.ptable th:nth-child(4){ text-align:right; }
+
 table.ptable td{
-  padding:12px 16px;
+  padding:13px 18px;
   vertical-align:middle;
   background:var(--cream);
   border-bottom:1px solid var(--line);
   transition:background .15s;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-table.ptable tbody tr:nth-child(even) td{background:var(--cream2)}
-table.ptable tbody tr:hover td{background:var(--gold-dim)!important}
-table.ptable tbody tr:last-child td{border-bottom:none}
+table.ptable tbody tr:nth-child(even) td{ background:var(--cream2); }
+table.ptable tbody tr:hover td{ background:var(--gold-dim)!important; }
+table.ptable tbody tr:last-child td{ border-bottom:none; }
 
+/* 모델명 — 왼쪽 정렬 */
 td.model-nm{
   font-family:'Noto Serif KR',serif;
   font-weight:300;
+  font-size:13px;
   color:var(--ink2);
+  line-height:1.5;
+  padding-left:20px;
 }
 td.model-nm.amg{
   color:var(--red-amg);
-  font-style:italic;
 }
+td.model-nm.amg::before{
+  content:'AMG · ';
+  font-size:10px;
+  letter-spacing:.1em;
+  opacity:.5;
+  font-family:'Cormorant Garamond',serif;
+  font-style:normal;
+}
+td.maybach-model{
+  font-family:'Noto Serif KR',serif;
+  font-weight:300;
+  font-size:13px;
+  color:var(--ink2);
+  line-height:1.5;
+  padding-left:20px;
+}
+td.maybach-model::before{
+  content:'Maybach · ';
+  font-size:10px;
+  letter-spacing:.1em;
+  color:var(--gold2);
+  opacity:.8;
+  font-family:'Cormorant Garamond',serif;
+}
+
+/* 권장가 — 오른쪽 정렬, 회색 작게 */
 td.orig-price{
   color:var(--ink4);
   font-family:'Cormorant Garamond',serif;
-  font-size:14px;
+  font-size:13.5px;
+  text-align:right;
+  white-space:nowrap;
+  letter-spacing:.02em;
 }
+
+/* 프로모션 — 가운데 정렬 */
+td.promo-col{
+  text-align:right;
+  padding-right:20px;
+}
+
+/* 실구매가 — 오른쪽 정렬, 굵게 */
 td.final-price{
   font-family:'Cormorant Garamond',serif;
   font-size:15px;
   font-weight:500;
   color:var(--ink);
+  text-align:right;
   white-space:nowrap;
+  letter-spacing:.02em;
+  padding-right:20px;
 }
+
+/* 프로모션 뱃지 */
 .pbadge{
   display:inline-block;
   background:var(--red-amg);
   color:#fde8e8;
   font-family:'Cormorant Garamond',serif;
-  font-size:11px;
-  letter-spacing:.06em;
-  padding:3px 9px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.04em;
+  padding:3px 10px;
+  min-width:42px;
+  text-align:center;
 }
 .pnone{
   font-family:'Cormorant Garamond',serif;
-  font-size:18px;
-  color:var(--ink6);
+  font-size:16px;
+  color:#ccc;
+}
+
+/* 모바일 */
+@media(max-width:640px){
+  table.ptable{ table-layout:auto; font-size:12px; }
+  table.ptable col.col-model  { width:auto; }
+  table.ptable col.col-msrp   { width:auto; }
+  table.ptable col.col-promo  { width:auto; }
+  table.ptable col.col-final  { width:auto; }
+  table.ptable th,
+  table.ptable td{ padding:10px 10px; }
+  td.model-nm{ padding-left:10px; font-size:12px; }
+  td.model-nm.amg::before{ content:''; }
+  td.orig-price{ display:none; }
+  table.ptable th:nth-child(2){ display:none; }
+  td.final-price, td.promo-col{ padding-right:10px; }
 }
 
 /* ─────────── FOOTER ─────────── */
@@ -863,6 +972,9 @@ footer::before{
   table.ptable th,table.ptable td{padding:10px 10px;font-size:12px}
   .disc-grid{grid-template-columns:1fr 1fr}
   .rate-compare{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:860px){
+  .fleet-grid{grid-template-columns:1fr!important}
 }
 </style>
 </head>
@@ -948,8 +1060,9 @@ footer::before{
 <div class="wrap">
 
   <!-- NOTICE -->
-  <div class="notice-wrap reveal">
-    <p>아래 가격은 매월 갱신되는 메르세데스-벤츠 코리아 공식 캠페인 기준이며, <strong>계약 시점</strong>의 프로모션이 적용됩니다. 계약 시점의 조건은 출고 시점에도 동일하게 유지되며, 이후 가격이 인상되더라도 계약 조건으로 출고 가능합니다.</p>
+  <div class="notice-wrap reveal" style="margin-top:52px">
+    <p>아래 가격은 매월 갱신되는 메르세데스-벤츠 코리아 공식 캠페인 기준이며, <strong>계약 시점</strong>의 프로모션이 적용됩니다. 
+      계약 시점의 조건은 출고 시점에도 동일하게 유지되며, 이후 가격이 인상되더라도 계약 조건으로 출고 가능합니다.</p>
   </div>
 
   <!-- COMMON DISCOUNTS -->
@@ -980,6 +1093,16 @@ footer::before{
       <div class="dc-icon">하자수리 · 하이마일리지</div>
       <div class="dc-body">해당 시 각 <span class="plus">+1%</span> 추가 적용</div>
     </div>
+    <!-- ③ 빈 여백 자리 → 플릿 링크 카드 -->
+    <a href="#fleet" class="disc-card fleet-disc-card">
+      <div class="fleet-inner">
+        <div class="dc-icon">★ &nbsp;Fleet 조건 안내</div>
+        <div class="dc-body" style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.7">
+          법인플릿 · 임직원 플릿 조건 확인
+        </div>
+      </div>
+      <div style="margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);opacity:.6;flex-shrink:0">→</div>
+    </a>
   </div>
 
   <!-- SPECIAL + EVENT -->
@@ -1018,7 +1141,7 @@ footer::before{
   </div>
 
   <!-- FLEET -->
-  <a href="#" class="fleet-cta reveal">
+  <a href="#fleet" class="fleet-cta reveal">
     <span>★&ensp;FLEET 조건 안내</span>
     <span style="color:var(--ink4);font-size:12px">법인플릿 · 임직원 플릿 조건 확인</span>
     <span class="arrow">→</span>
@@ -1112,187 +1235,290 @@ footer::before{
   <!-- A -->
   <div class="price-section reveal" id="t-a">
     <div class="ps-header"><span class="ps-badge">A</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">A클래스</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">A 220 Hatch</td><td class="orig-price">48,100,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">43,290,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG A 45 S 4MATIC+</td><td class="orig-price">80,400,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">73,160,000원</td></tr>
-      <tr><td class="model-nm">A 220 Sedan</td><td class="orig-price">49,900,000원</td><td><span class="pbadge">5%</span></td><td class="final-price">47,400,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG A 35 4MATIC</td><td class="orig-price">67,700,000원</td><td><span class="pnone">—</span></td><td class="final-price">67,700,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">A 220 Hatch</td><td class="orig-price">48,100,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">43,290,000원</td></tr>
+      <tr><td class="model-nm amg">A 45 S 4MATIC+</td><td class="orig-price">80,400,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">73,160,000원</td></tr>
+      <tr><td class="model-nm">A 220 Sedan</td><td class="orig-price">49,900,000원</td><td class="promo-col"><span class="pbadge">5%</span></td><td class="final-price">47,400,000원</td></tr>
+      <tr><td class="model-nm amg">A 35 4MATIC</td><td class="orig-price">67,700,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">67,700,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- CLA -->
   <div class="price-section reveal" id="t-cla">
     <div class="ps-header"><span class="ps-badge">CLA</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">CLA</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">CLA 250 4MATIC AMG Line</td><td class="orig-price">63,700,000원</td><td><span class="pbadge">7%</span></td><td class="final-price">59,240,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG CLA 45 S 4MATIC+</td><td class="orig-price">90,600,000원</td><td><span class="pbadge">5%</span></td><td class="final-price">86,070,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG CLA 45 S 4MATIC+ Final Edition</td><td class="orig-price">95,800,000원</td><td><span class="pnone">—</span></td><td class="final-price">95,800,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">CLA 250 4MATIC AMG Line</td><td class="orig-price">63,700,000원</td><td class="promo-col"><span class="pbadge">7%</span></td><td class="final-price">59,240,000원</td></tr>
+      <tr><td class="model-nm amg">CLA 45 S 4MATIC+</td><td class="orig-price">90,600,000원</td><td class="promo-col"><span class="pbadge">5%</span></td><td class="final-price">86,070,000원</td></tr>
+      <tr><td class="model-nm amg">CLA 45 S 4MATIC+ Final Edition</td><td class="orig-price">95,800,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">95,800,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- GLA·GLB -->
   <div class="price-section reveal" id="t-gla">
     <div class="ps-header"><span class="ps-badge">GLA</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">GLA · GLB</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">GLA 250 4MATIC AMG Line</td><td class="orig-price">69,100,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">61,490,000원</td></tr>
-      <tr><td class="model-nm">GLB 200 d</td><td class="orig-price">63,300,000원</td><td><span class="pnone">—</span></td><td class="final-price">63,300,000원</td></tr>
-      <tr><td class="model-nm">GLB 250 4MATIC</td><td class="orig-price">71,100,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">63,270,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GLB 35 4MATIC</td><td class="orig-price">78,500,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">69,860,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">GLA 250 4MATIC AMG Line</td><td class="orig-price">69,100,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">61,490,000원</td></tr>
+      <tr><td class="model-nm">GLB 200 d</td><td class="orig-price">63,300,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">63,300,000원</td></tr>
+      <tr><td class="model-nm">GLB 250 4MATIC</td><td class="orig-price">71,100,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">63,270,000원</td></tr>
+      <tr><td class="model-nm amg">GLB 35 4MATIC</td><td class="orig-price">78,500,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">69,860,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- C -->
   <div class="price-section reveal" id="t-c">
     <div class="ps-header"><span class="ps-badge">C</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">C클래스</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">C 200 AVANTGARDE</td><td class="orig-price">64,300,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">57,220,000원</td></tr>
-      <tr><td class="model-nm">C 200 AMG Line</td><td class="orig-price">67,500,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">60,070,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">C 200 AVANTGARDE</td><td class="orig-price">64,300,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">57,220,000원</td></tr>
+      <tr><td class="model-nm">C 200 AMG Line</td><td class="orig-price">67,500,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">60,070,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- E -->
   <div class="price-section reveal" id="t-e">
     <div class="ps-header"><span class="ps-badge">E</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">E클래스</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">E 200 AVANTGARDE</td><td class="orig-price">76,500,000원</td><td><span class="pbadge">16%</span></td><td class="final-price">64,260,000원</td></tr>
-      <tr><td class="model-nm">E 200 EXCLUSIVE</td><td class="orig-price">76,600,000원</td><td><span class="pbadge">5%</span></td><td class="final-price">72,770,000원</td></tr>
-      <tr><td class="model-nm">E 200 AMG Line</td><td class="orig-price">80,000,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">71,200,000원</td></tr>
-      <tr><td class="model-nm">E 220 d 4MATIC EXCLUSIVE</td><td class="orig-price">86,100,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">78,350,000원</td></tr>
-      <tr><td class="model-nm">E 300 4MATIC EXCLUSIVE</td><td class="orig-price">93,600,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">83,300,000원</td></tr>
-      <tr><td class="model-nm">E 300 4MATIC AMG Line</td><td class="orig-price">97,700,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">86,950,000원</td></tr>
-      <tr><td class="model-nm">E 350 e 4MATIC EXCLUSIVE</td><td class="orig-price">98,700,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">87,840,000원</td></tr>
-      <tr><td class="model-nm">E 450 4MATIC AMG Line</td><td class="orig-price">114,600,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">101,990,000원</td></tr>
-      <tr><td class="model-nm">E 450 4MATIC EXCLUSIVE</td><td class="orig-price">128,200,000원</td><td><span class="pbadge">11%</span></td><td class="final-price">114,090,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG E 53 HYBRID 4MATIC+</td><td class="orig-price">141,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">127,440,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">E 200 AVANTGARDE</td><td class="orig-price">76,500,000원</td><td class="promo-col"><span class="pbadge">16%</span></td><td class="final-price">64,260,000원</td></tr>
+      <tr><td class="model-nm">E 200 EXCLUSIVE</td><td class="orig-price">76,600,000원</td><td class="promo-col"><span class="pbadge">5%</span></td><td class="final-price">72,770,000원</td></tr>
+      <tr><td class="model-nm">E 200 AMG Line</td><td class="orig-price">80,000,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">71,200,000원</td></tr>
+      <tr><td class="model-nm">E 220 d 4MATIC EXCLUSIVE</td><td class="orig-price">86,100,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">78,350,000원</td></tr>
+      <tr><td class="model-nm">E 300 4MATIC EXCLUSIVE</td><td class="orig-price">93,600,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">83,300,000원</td></tr>
+      <tr><td class="model-nm">E 300 4MATIC AMG Line</td><td class="orig-price">97,700,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">86,950,000원</td></tr>
+      <tr><td class="model-nm">E 350 e 4MATIC EXCLUSIVE</td><td class="orig-price">98,700,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">87,840,000원</td></tr>
+      <tr><td class="model-nm">E 450 4MATIC AMG Line</td><td class="orig-price">114,600,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">101,990,000원</td></tr>
+      <tr><td class="model-nm">E 450 4MATIC EXCLUSIVE</td><td class="orig-price">128,200,000원</td><td class="promo-col"><span class="pbadge">11%</span></td><td class="final-price">114,090,000원</td></tr>
+      <tr><td class="model-nm amg">E 53 HYBRID 4MATIC+</td><td class="orig-price">141,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">127,440,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- S -->
   <div class="price-section reveal" id="t-s">
     <div class="ps-header"><span class="ps-badge">S</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">S클래스</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">S 350 d 4MATIC</td><td class="orig-price">152,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">137,340,000원</td></tr>
-      <tr><td class="model-nm">S 350 d 4MATIC (CY25/2)</td><td class="orig-price">153,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">138,240,000원</td></tr>
-      <tr><td class="model-nm">S 450 4MATIC</td><td class="orig-price">159,600,000원</td><td><span class="pbadge">8%</span></td><td class="final-price">146,830,000원</td></tr>
-      <tr><td class="model-nm">S 450 4MATIC (CY25/2)</td><td class="orig-price">160,600,000원</td><td><span class="pbadge">8%</span></td><td class="final-price">147,750,000원</td></tr>
-      <tr><td class="model-nm">S 450 4MATIC (Long)</td><td class="orig-price">191,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">172,440,000원</td></tr>
-      <tr><td class="model-nm">S 450 4MATIC (Long) (CY25/2)</td><td class="orig-price">193,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">174,240,000원</td></tr>
-      <tr><td class="model-nm">S 500 4MATIC</td><td class="orig-price">213,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">192,240,000원</td></tr>
-      <tr><td class="model-nm">S 500 4MATIC (CY25/2)</td><td class="orig-price">215,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">194,040,000원</td></tr>
-      <tr><td class="model-nm">S 580 4MATIC</td><td class="orig-price">258,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">232,740,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG S 63 E Performance</td><td class="orig-price">297,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">267,840,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">S 350 d 4MATIC</td><td class="orig-price">152,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">137,340,000원</td></tr>
+      <tr><td class="model-nm">S 350 d 4MATIC (CY25/2)</td><td class="orig-price">153,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">138,240,000원</td></tr>
+      <tr><td class="model-nm">S 450 4MATIC</td><td class="orig-price">159,600,000원</td><td class="promo-col"><span class="pbadge">8%</span></td><td class="final-price">146,830,000원</td></tr>
+      <tr><td class="model-nm">S 450 4MATIC (CY25/2)</td><td class="orig-price">160,600,000원</td><td class="promo-col"><span class="pbadge">8%</span></td><td class="final-price">147,750,000원</td></tr>
+      <tr><td class="model-nm">S 450 4MATIC (Long)</td><td class="orig-price">191,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">172,440,000원</td></tr>
+      <tr><td class="model-nm">S 450 4MATIC (Long) (CY25/2)</td><td class="orig-price">193,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">174,240,000원</td></tr>
+      <tr><td class="model-nm">S 500 4MATIC</td><td class="orig-price">213,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">192,240,000원</td></tr>
+      <tr><td class="model-nm">S 500 4MATIC (CY25/2)</td><td class="orig-price">215,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">194,040,000원</td></tr>
+      <tr><td class="model-nm">S 580 4MATIC</td><td class="orig-price">258,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">232,740,000원</td></tr>
+      <tr><td class="model-nm amg">S 63 E Performance</td><td class="orig-price">297,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">267,840,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- CLE -->
   <div class="price-section reveal" id="t-cle">
     <div class="ps-header"><span class="ps-badge">CLE</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">CLE</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">CLE 200 Coupé AMG Line</td><td class="orig-price">75,700,000원</td><td><span class="pbadge">5%</span></td><td class="final-price">71,910,000원</td></tr>
-      <tr><td class="model-nm">CLE 450 4MATIC Coupé AMG Line</td><td class="orig-price">98,400,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">89,540,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG CLE 53 4MATIC+ Coupé</td><td class="orig-price">107,700,000원</td><td><span class="pbadge">3%</span></td><td class="final-price">104,460,000원</td></tr>
-      <tr><td class="model-nm">CLE 200 Cabriolet AMG Line</td><td class="orig-price">82,100,000원</td><td><span class="pbadge">4%</span></td><td class="final-price">78,810,000원</td></tr>
-      <tr><td class="model-nm">CLE 450 4MATIC Cabriolet AMG Line</td><td class="orig-price">102,600,000원</td><td><span class="pbadge">6%</span></td><td class="final-price">96,440,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG CLE 53 4MATIC+ Cabriolet</td><td class="orig-price">113,600,000원</td><td><span class="pbadge">3%</span></td><td class="final-price">110,190,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">CLE 200 Coupé AMG Line</td><td class="orig-price">75,700,000원</td><td class="promo-col"><span class="pbadge">5%</span></td><td class="final-price">71,910,000원</td></tr>
+      <tr><td class="model-nm">CLE 450 4MATIC Coupé AMG Line</td><td class="orig-price">98,400,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">89,540,000원</td></tr>
+      <tr><td class="model-nm amg">CLE 53 4MATIC+ Coupé</td><td class="orig-price">107,700,000원</td><td class="promo-col"><span class="pbadge">3%</span></td><td class="final-price">104,460,000원</td></tr>
+      <tr><td class="model-nm">CLE 200 Cabriolet AMG Line</td><td class="orig-price">82,100,000원</td><td class="promo-col"><span class="pbadge">4%</span></td><td class="final-price">78,810,000원</td></tr>
+      <tr><td class="model-nm">CLE 450 4MATIC Cabriolet AMG Line</td><td class="orig-price">102,600,000원</td><td class="promo-col"><span class="pbadge">6%</span></td><td class="final-price">96,440,000원</td></tr>
+      <tr><td class="model-nm amg">CLE 53 4MATIC+ Cabriolet</td><td class="orig-price">113,600,000원</td><td class="promo-col"><span class="pbadge">3%</span></td><td class="final-price">110,190,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- GLC -->
   <div class="price-section reveal" id="t-glc">
     <div class="ps-header"><span class="ps-badge">GLC</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">GLC</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">GLC 220 d 4MATIC</td><td class="orig-price">81,200,000원</td><td><span class="pbadge">7%</span></td><td class="final-price">75,510,000원</td></tr>
-      <tr><td class="model-nm">GLC 300 4MATIC AVANTGARDE</td><td class="orig-price">81,400,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">74,070,000원</td></tr>
-      <tr><td class="model-nm">GLC 300 4MATIC AMG Line</td><td class="orig-price">91,400,000원</td><td><span class="pbadge">12%</span></td><td class="final-price">80,430,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GLC 43 4MATIC</td><td class="orig-price">102,300,000원</td><td><span class="pbadge">7%</span></td><td class="final-price">95,130,000원</td></tr>
-      <tr><td class="model-nm">GLC 300 4MATIC Coupé AVANTGARDE</td><td class="orig-price">85,500,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">77,800,000원</td></tr>
-      <tr><td class="model-nm">GLC 300 4MATIC Coupé AMG Line</td><td class="orig-price">95,700,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">87,080,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GLC 43 4MATIC Coupé</td><td class="orig-price">106,900,000원</td><td><span class="pbadge">3%</span></td><td class="final-price">103,690,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">GLC 220 d 4MATIC</td><td class="orig-price">81,200,000원</td><td class="promo-col"><span class="pbadge">7%</span></td><td class="final-price">75,510,000원</td></tr>
+      <tr><td class="model-nm">GLC 300 4MATIC AVANTGARDE</td><td class="orig-price">81,400,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">74,070,000원</td></tr>
+      <tr><td class="model-nm">GLC 300 4MATIC AMG Line</td><td class="orig-price">91,400,000원</td><td class="promo-col"><span class="pbadge">12%</span></td><td class="final-price">80,430,000원</td></tr>
+      <tr><td class="model-nm amg">GLC 43 4MATIC</td><td class="orig-price">102,300,000원</td><td class="promo-col"><span class="pbadge">7%</span></td><td class="final-price">95,130,000원</td></tr>
+      <tr><td class="model-nm">GLC 300 4MATIC Coupé AVANTGARDE</td><td class="orig-price">85,500,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">77,800,000원</td></tr>
+      <tr><td class="model-nm">GLC 300 4MATIC Coupé AMG Line</td><td class="orig-price">95,700,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">87,080,000원</td></tr>
+      <tr><td class="model-nm amg">GLC 43 4MATIC Coupé</td><td class="orig-price">106,900,000원</td><td class="promo-col"><span class="pbadge">3%</span></td><td class="final-price">103,690,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- GLE -->
   <div class="price-section reveal" id="t-gle">
     <div class="ps-header"><span class="ps-badge">GLE</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">GLE</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">GLE 350 4MATIC</td><td class="orig-price">116,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">104,940,000원</td></tr>
-      <tr><td class="model-nm">GLE 300 d 4MATIC</td><td class="orig-price">117,800,000원</td><td><span class="pbadge">8%</span></td><td class="final-price">108,370,000원</td></tr>
-      <tr><td class="model-nm">GLE 450 4MATIC</td><td class="orig-price">127,600,000원</td><td><span class="pbadge">14%</span></td><td class="final-price">109,730,000원</td></tr>
-      <tr><td class="model-nm">GLE 450 4MATIC AMG Line</td><td class="orig-price">137,600,000원</td><td><span class="pbadge">14%</span></td><td class="final-price">118,330,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GLE 53 4MATIC+</td><td class="orig-price">164,600,000원</td><td><span class="pbadge">8%</span></td><td class="final-price">151,430,000원</td></tr>
-      <tr><td class="model-nm">GLE 450 d 4MATIC Coupé AMG Line</td><td class="orig-price">132,600,000원</td><td><span class="pbadge">8%</span></td><td class="final-price">121,990,000원</td></tr>
-      <tr><td class="model-nm">GLE 450 4MATIC Coupé AMG Line</td><td class="orig-price">141,100,000원</td><td><span class="pbadge">14%</span></td><td class="final-price">121,340,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GLE 53 4MATIC+ Coupé</td><td class="orig-price">168,600,000원</td><td><span class="pbadge">5%</span></td><td class="final-price">160,170,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">GLE 350 4MATIC</td><td class="orig-price">116,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">104,940,000원</td></tr>
+      <tr><td class="model-nm">GLE 300 d 4MATIC</td><td class="orig-price">117,800,000원</td><td class="promo-col"><span class="pbadge">8%</span></td><td class="final-price">108,370,000원</td></tr>
+      <tr><td class="model-nm">GLE 450 4MATIC</td><td class="orig-price">127,600,000원</td><td class="promo-col"><span class="pbadge">14%</span></td><td class="final-price">109,730,000원</td></tr>
+      <tr><td class="model-nm">GLE 450 4MATIC AMG Line</td><td class="orig-price">137,600,000원</td><td class="promo-col"><span class="pbadge">14%</span></td><td class="final-price">118,330,000원</td></tr>
+      <tr><td class="model-nm amg">GLE 53 4MATIC+</td><td class="orig-price">164,600,000원</td><td class="promo-col"><span class="pbadge">8%</span></td><td class="final-price">151,430,000원</td></tr>
+      <tr><td class="model-nm">GLE 450 d 4MATIC Coupé AMG Line</td><td class="orig-price">132,600,000원</td><td class="promo-col"><span class="pbadge">8%</span></td><td class="final-price">121,990,000원</td></tr>
+      <tr><td class="model-nm">GLE 450 4MATIC Coupé AMG Line</td><td class="orig-price">141,100,000원</td><td class="promo-col"><span class="pbadge">14%</span></td><td class="final-price">121,340,000원</td></tr>
+      <tr><td class="model-nm amg">GLE 53 4MATIC+ Coupé</td><td class="orig-price">168,600,000원</td><td class="promo-col"><span class="pbadge">5%</span></td><td class="final-price">160,170,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- GLS -->
   <div class="price-section reveal" id="t-gls">
     <div class="ps-header"><span class="ps-badge">GLS</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">GLS</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">GLS 450 d 4MATIC AMG Line</td><td class="orig-price">152,600,000원</td><td><span class="pbadge">3%</span></td><td class="final-price">148,020,000원</td></tr>
-      <tr><td class="model-nm">GLS 450 4MATIC AMG Line</td><td class="orig-price">152,600,000원</td><td><span class="pbadge">6%</span></td><td class="final-price">143,440,000원</td></tr>
-      <tr><td class="model-nm">GLS 450 d 4MATIC AMG Line Premium</td><td class="orig-price">157,100,000원</td><td><span class="pnone">—</span></td><td class="final-price">157,100,000원</td></tr>
-      <tr><td class="model-nm">GLS 450 4MATIC AMG Line Premium</td><td class="orig-price">157,100,000원</td><td><span class="pnone">—</span></td><td class="final-price">157,100,000원</td></tr>
-      <tr><td class="model-nm">GLS 580 4MATIC AMG Line</td><td class="orig-price">192,000,000원</td><td><span class="pbadge">7%</span></td><td class="final-price">178,560,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GLS 63 4MATIC+</td><td class="orig-price">208,600,000원</td><td><span class="pbadge">1%</span></td><td class="final-price">206,510,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">GLS 450 d 4MATIC AMG Line</td><td class="orig-price">152,600,000원</td><td class="promo-col"><span class="pbadge">3%</span></td><td class="final-price">148,020,000원</td></tr>
+      <tr><td class="model-nm">GLS 450 4MATIC AMG Line</td><td class="orig-price">152,600,000원</td><td class="promo-col"><span class="pbadge">6%</span></td><td class="final-price">143,440,000원</td></tr>
+      <tr><td class="model-nm">GLS 450 d 4MATIC AMG Line Premium</td><td class="orig-price">157,100,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">157,100,000원</td></tr>
+      <tr><td class="model-nm">GLS 450 4MATIC AMG Line Premium</td><td class="orig-price">157,100,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">157,100,000원</td></tr>
+      <tr><td class="model-nm">GLS 580 4MATIC AMG Line</td><td class="orig-price">192,000,000원</td><td class="promo-col"><span class="pbadge">7%</span></td><td class="final-price">178,560,000원</td></tr>
+      <tr><td class="model-nm amg">GLS 63 4MATIC+</td><td class="orig-price">208,600,000원</td><td class="promo-col"><span class="pbadge">1%</span></td><td class="final-price">206,510,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- G -->
   <div class="price-section reveal" id="t-g">
     <div class="ps-header"><span class="ps-badge">G</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">G클래스</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">G 450 d</td><td class="orig-price">193,500,000원</td><td><span class="pnone">—</span></td><td class="final-price">193,500,000원</td></tr>
-      <tr><td class="model-nm">G 450 d MANUFAKTUR</td><td class="orig-price">217,700,000원</td><td><span class="pnone">—</span></td><td class="final-price">217,700,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG G 63</td><td class="orig-price">261,200,000원</td><td><span class="pnone">—</span></td><td class="final-price">261,200,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG G 63 MANUFAKTUR</td><td class="orig-price">288,400,000원</td><td><span class="pnone">—</span></td><td class="final-price">288,400,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">G 450 d</td><td class="orig-price">193,500,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">193,500,000원</td></tr>
+      <tr><td class="model-nm">G 450 d MANUFAKTUR</td><td class="orig-price">217,700,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">217,700,000원</td></tr>
+      <tr><td class="model-nm amg">G 63</td><td class="orig-price">261,200,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">261,200,000원</td></tr>
+      <tr><td class="model-nm amg">G 63 MANUFAKTUR</td><td class="orig-price">288,400,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">288,400,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- AMG -->
   <div class="price-section reveal" id="t-amg">
     <div class="ps-header"><span class="ps-badge">AMG</span><span class="ps-brand">Mercedes-AMG</span><span class="ps-model">AMG GT · SL</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm amg">Mercedes-AMG SL 43</td><td class="orig-price">158,600,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">144,320,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG SL 63 4MATIC+</td><td class="orig-price">248,600,000원</td><td><span class="pnone">—</span></td><td class="final-price">248,600,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GT 55 4MATIC+</td><td class="orig-price">208,600,000원</td><td><span class="pbadge">3%</span></td><td class="final-price">202,340,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GT 63 S E Performance</td><td class="orig-price">278,600,000원</td><td><span class="pbadge">4%</span></td><td class="final-price">267,450,000원</td></tr>
-      <tr><td class="model-nm amg">Mercedes-AMG GT 43 4MATIC+</td><td class="orig-price">162,600,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">147,960,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm amg">SL 43</td><td class="orig-price">158,600,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">144,320,000원</td></tr>
+      <tr><td class="model-nm amg">SL 63 4MATIC+</td><td class="orig-price">248,600,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">248,600,000원</td></tr>
+      <tr><td class="model-nm amg">GT 55 4MATIC+</td><td class="orig-price">208,600,000원</td><td class="promo-col"><span class="pbadge">3%</span></td><td class="final-price">202,340,000원</td></tr>
+      <tr><td class="model-nm amg">GT 63 S E Performance</td><td class="orig-price">278,600,000원</td><td class="promo-col"><span class="pbadge">4%</span></td><td class="final-price">267,450,000원</td></tr>
+      <tr><td class="model-nm amg">GT 43 4MATIC+</td><td class="orig-price">162,600,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">147,960,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- EQ -->
   <div class="price-section reveal" id="t-eq">
     <div class="ps-header"><span class="ps-badge">EQ</span><span class="ps-brand">Mercedes-Benz</span><span class="ps-model">전동화 EQ</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">EQA 250 Progressive</td><td class="orig-price">70,000,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">63,000,000원</td></tr>
-      <tr><td class="model-nm">EQA 250 AMG Line</td><td class="orig-price">75,800,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">68,220,000원</td></tr>
-      <tr><td class="model-nm">EQB 300 4MATIC Progressive</td><td class="orig-price">78,800,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">70,920,000원</td></tr>
-      <tr><td class="model-nm">EQB 300 4MATIC AMG Line</td><td class="orig-price">84,300,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">75,870,000원</td></tr>
-      <tr><td class="model-nm">EQE 350+ SUV</td><td class="orig-price">106,000,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">95,400,000원</td></tr>
-      <tr><td class="model-nm">EQE 350+</td><td class="orig-price">110,000,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">99,000,000원</td></tr>
-      <tr><td class="model-nm">EQE 500 4MATIC SUV</td><td class="orig-price">140,800,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">126,720,000원</td></tr>
-      <tr><td class="model-nm">EQS 450 4MATIC SUV</td><td class="orig-price">164,600,000원</td><td><span class="pbadge">10%</span></td><td class="final-price">148,140,000원</td></tr>
-      <tr><td class="model-nm">EQS 580 4MATIC SUV</td><td class="orig-price">190,600,000원</td><td><span class="pnone">—</span></td><td class="final-price">190,600,000원</td></tr>
-      <tr><td class="model-nm">G 580 with EQ Technology</td><td class="orig-price">214,700,000원</td><td><span class="pnone">—</span></td><td class="final-price">214,700,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm">EQA 250 Progressive</td><td class="orig-price">70,000,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">63,000,000원</td></tr>
+      <tr><td class="model-nm">EQA 250 AMG Line</td><td class="orig-price">75,800,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">68,220,000원</td></tr>
+      <tr><td class="model-nm">EQB 300 4MATIC Progressive</td><td class="orig-price">78,800,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">70,920,000원</td></tr>
+      <tr><td class="model-nm">EQB 300 4MATIC AMG Line</td><td class="orig-price">84,300,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">75,870,000원</td></tr>
+      <tr><td class="model-nm">EQE 350+ SUV</td><td class="orig-price">106,000,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">95,400,000원</td></tr>
+      <tr><td class="model-nm">EQE 350+</td><td class="orig-price">110,000,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">99,000,000원</td></tr>
+      <tr><td class="model-nm">EQE 500 4MATIC SUV</td><td class="orig-price">140,800,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">126,720,000원</td></tr>
+      <tr><td class="model-nm">EQS 450 4MATIC SUV</td><td class="orig-price">164,600,000원</td><td class="promo-col"><span class="pbadge">10%</span></td><td class="final-price">148,140,000원</td></tr>
+      <tr><td class="model-nm">EQS 580 4MATIC SUV</td><td class="orig-price">190,600,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">190,600,000원</td></tr>
+      <tr><td class="model-nm">G 580 with EQ Technology</td><td class="orig-price">214,700,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">214,700,000원</td></tr>
     </tbody></table>
   </div>
 
   <!-- MAYBACH -->
   <div class="price-section reveal" id="t-myb">
     <div class="ps-header"><span class="ps-badge maybach">MYB</span><span class="ps-brand">Mercedes-Maybach</span><span class="ps-model">Maybach</span></div>
-    <table class="ptable"><thead><tr><th>모델명</th><th>권장 소비자가격</th><th>프로모션</th><th>실구매가</th></tr></thead><tbody>
-      <tr><td class="model-nm">Mercedes-Maybach S 580</td><td class="orig-price">315,600,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">287,190,000원</td></tr>
-      <tr><td class="model-nm">Mercedes-Maybach S 680</td><td class="orig-price">401,600,000원</td><td><span class="pbadge">9%</span></td><td class="final-price">365,450,000원</td></tr>
-      <tr><td class="model-nm">Mercedes-Maybach S 680 "V12 Edition"</td><td class="orig-price">478,000,000원</td><td><span class="pnone">—</span></td><td class="final-price">478,000,000원</td></tr>
-      <tr><td class="model-nm">Mercedes-Maybach SL 680</td><td class="orig-price">342,600,000원</td><td><span class="pbadge">2%</span></td><td class="final-price">335,740,000원</td></tr>
-      <tr><td class="model-nm">Mercedes-Maybach GLS 600</td><td class="orig-price">293,600,000원</td><td><span class="pbadge">6%</span></td><td class="final-price">275,980,000원</td></tr>
-      <tr><td class="model-nm">Mercedes-Maybach GLS 600 MANUFAKTUR</td><td class="orig-price">335,600,000원</td><td><span class="pbadge">6%</span></td><td class="final-price">315,460,000원</td></tr>
-      <tr><td class="model-nm">Mercedes-Maybach EQS 680 SUV</td><td class="orig-price">233,600,000원</td><td><span class="pnone">—</span></td><td class="final-price">233,600,000원</td></tr>
+    <table class="ptable"><colgroup><col class="col-model"><col class="col-msrp"><col class="col-promo"><col class="col-final"></colgroup><thead><tr><th>모델명</th><th style="text-align:right">권장 소비자가격</th><th style="text-align:right">프로모션</th><th style="text-align:right">실구매가</th></tr></thead><tbody>
+      <tr><td class="model-nm maybach-model">S 580</td><td class="orig-price">315,600,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">287,190,000원</td></tr>
+      <tr><td class="model-nm maybach-model">S 680</td><td class="orig-price">401,600,000원</td><td class="promo-col"><span class="pbadge">9%</span></td><td class="final-price">365,450,000원</td></tr>
+      <tr><td class="model-nm maybach-model">S 680 "V12 Edition"</td><td class="orig-price">478,000,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">478,000,000원</td></tr>
+      <tr><td class="model-nm maybach-model">SL 680</td><td class="orig-price">342,600,000원</td><td class="promo-col"><span class="pbadge">2%</span></td><td class="final-price">335,740,000원</td></tr>
+      <tr><td class="model-nm maybach-model">GLS 600</td><td class="orig-price">293,600,000원</td><td class="promo-col"><span class="pbadge">6%</span></td><td class="final-price">275,980,000원</td></tr>
+      <tr><td class="model-nm maybach-model">GLS 600 MANUFAKTUR</td><td class="orig-price">335,600,000원</td><td class="promo-col"><span class="pbadge">6%</span></td><td class="final-price">315,460,000원</td></tr>
+      <tr><td class="model-nm maybach-model">EQS 680 SUV</td><td class="orig-price">233,600,000원</td><td class="promo-col"><span class="pnone">—</span></td><td class="final-price">233,600,000원</td></tr>
     </tbody></table>
   </div>
 
+</div>
+
+<!-- ════════ FLEET SECTION ════════ -->
+<div id="fleet" style="background:var(--black);padding:72px 0 80px">
+<div class="pt-wrap">
+
+  <div class="pl-hd reveal">
+    <div class="pl-eyebrow">Fleet Program</div>
+    <h2>벤츠 <em>법인 · 임직원 플릿</em></h2>
+  </div>
+
+  <!-- 3 카드 그리드 -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,.15);margin-top:32px" class="reveal fleet-grid">
+
+    <!-- CORPORATE -->
+    <div style="background:#0e0e0e;padding:32px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Fleet Corporate</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#e8dcc8;margin-bottom:6px">법인 플릿</div>
+      <div style="font-size:12px;color:#555;margin-bottom:24px;font-family:'Noto Serif KR',serif;font-weight:300">대상 — 법인</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="border:1px solid rgba(201,169,110,.2);padding:16px 18px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-bottom:6px">1대 구매</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold);line-height:1">+2<sup style="font-size:14px;vertical-align:top;padding-top:6px">%</sup></div>
+          <div style="font-size:11.5px;color:#555;margin-top:5px;font-family:'Noto Serif KR',serif;font-weight:300">추가 할인 · S-Class · AMG · Maybach 한정</div>
+        </div>
+        <div style="border:1px solid rgba(201,169,110,.2);padding:16px 18px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-bottom:6px">2대 구매</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold);line-height:1">+3<sup style="font-size:14px;vertical-align:top;padding-top:6px">%</sup></div>
+          <div style="font-size:11.5px;color:#555;margin-top:5px;font-family:'Noto Serif KR',serif;font-weight:300">추가 할인 · 전 차종</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPLOYEE -->
+    <div style="background:#0a0a0a;padding:32px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Employee</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#e8dcc8;margin-bottom:6px">임직원 플릿</div>
+      <div style="font-size:12px;color:#555;margin-bottom:24px;font-family:'Noto Serif KR',serif;font-weight:300">대상 — MOU 체결 법인</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="border:1px solid rgba(201,169,110,.2);padding:14px 14px;text-align:center">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.1em;color:#555;margin-bottom:5px">대표이사</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold)">+5<sup style="font-size:13px;vertical-align:top;padding-top:5px">%</sup></div>
+          </div>
+          <div style="border:1px solid rgba(201,169,110,.2);padding:14px 14px;text-align:center">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.1em;color:#555;margin-bottom:5px">임직원</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold)">+2<sup style="font-size:13px;vertical-align:top;padding-top:5px">%</sup></div>
+          </div>
+        </div>
+        <div style="border:1px solid rgba(201,169,110,.35);padding:14px 14px;text-align:center;background:rgba(201,169,110,.06)">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);margin-bottom:5px">브랜드 대사</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold)">+5<sup style="font-size:13px;vertical-align:top;padding-top:5px">%</sup></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAMILY + PROCESS -->
+    <div style="background:#080808;padding:32px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Family</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#e8dcc8;margin-bottom:20px">플릿 공동명의 범위</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:24px">
+        <div style="font-size:11.5px;color:#666;font-family:'Noto Serif KR',serif;font-weight:300;padding:4px 0;border-bottom:1px solid #1a1a1a">조부모 / 배우자 조부모</div>
+        <div style="font-size:11.5px;color:#666;font-family:'Noto Serif KR',serif;font-weight:300;padding:4px 0;border-bottom:1px solid #1a1a1a">부모 / 배우자 부모</div>
+        <div style="font-size:11.5px;color:#666;font-family:'Noto Serif KR',serif;font-weight:300;padding:4px 0;border-bottom:1px solid #1a1a1a">형제 / 형제의 배우자</div>
+        <div style="font-size:11.5px;color:#666;font-family:'Noto Serif KR',serif;font-weight:300;padding:4px 0;border-bottom:1px solid #1a1a1a">배우자 형제</div>
+        <div style="font-size:11.5px;color:#a89070;font-family:'Noto Serif KR',serif;font-weight:400;padding:4px 0;border-bottom:1px solid #1a1a1a">★ 임직원 본인</div>
+        <div style="font-size:11.5px;color:#a89070;font-family:'Noto Serif KR',serif;font-weight:400;padding:4px 0;border-bottom:1px solid #1a1a1a">배우자</div>
+        <div style="font-size:11.5px;color:#a89070;font-family:'Noto Serif KR',serif;font-weight:400;padding:4px 0">자녀 / 자녀의 배우자</div>
+        <div style="font-size:11.5px;color:#444;font-family:'Noto Serif KR',serif;padding:4px 0;font-style:italic">배우자형제의배우자 불가</div>
+      </div>
+
+      <!-- PROCESS -->
+      <div style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;padding-top:12px;border-top:1px solid #1a1a1a">MOU 체결 방법</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(201,169,110,.3);font-weight:300;line-height:1;flex-shrink:0">1</span>
+          <div>
+            <div style="font-size:11.5px;font-weight:500;color:#aaa;margin-bottom:2px">서류 준비</div>
+            <div style="font-size:11px;color:#555;font-family:'Noto Serif KR',serif;font-weight:300">차량등록증 + 사업자사본 (당해년도 출고 차량)</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(201,169,110,.3);font-weight:300;line-height:1;flex-shrink:0">2</span>
+          <div>
+            <div style="font-size:11.5px;font-weight:500;color:#aaa;margin-bottom:2px">도장 날인</div>
+            <div style="font-size:11px;color:#555;font-family:'Noto Serif KR',serif;font-weight:300">MOU 체결서에 대표이사 도장 날인</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(201,169,110,.3);font-weight:300;line-height:1;flex-shrink:0">3</span>
+          <div>
+            <div style="font-size:11.5px;font-weight:500;color:#aaa;margin-bottom:2px">서류 제출</div>
+            <div style="font-size:11px;color:#555;font-family:'Noto Serif KR',serif;font-weight:300">법인플릿 담당자에게 제출 → MOU 체결 완료</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:14px;padding:10px 14px;background:rgba(201,169,110,.06);border-left:2px solid var(--gold);font-size:11.5px;color:#666;font-family:'Noto Serif KR',serif;font-weight:300">
+        ※ 서류 제출 완료 시 임직원 플릿 혜택 즉시 적용
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 
 <!-- FOOTER -->
