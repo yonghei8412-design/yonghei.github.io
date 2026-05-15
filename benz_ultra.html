@@ -550,29 +550,19 @@ footer{background:var(--ink);padding:40px 32px}
     background:#fff;border-top:1px solid var(--line);
     height:56px;box-shadow:0 -2px 16px rgba(0,0,0,.1);
   }
-  .bb-select{
-    flex:1;height:100%;border:none;border-right:1px solid var(--line);
-    background:#fff;font-size:13px;color:var(--ink);
-    font-family:'Noto Sans KR',sans-serif;
-    padding:0 12px 0 14px;outline:none;cursor:pointer;
-    appearance:none;-webkit-appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 12px center;
-    padding-right:28px;
-  }
   .bb-kakao{
-    display:flex;align-items:center;justify-content:center;
-    width:56px;height:100%;background:#FEE500;
-    border:none;border-left:1px solid rgba(0,0,0,.06);
-    text-decoration:none;flex-shrink:0;font-size:22px;
+    flex:1;display:flex;align-items:center;justify-content:center;
+    gap:6px;height:100%;background:#FEE500;
+    font-size:14px;font-weight:600;color:#3C1E1E;
+    text-decoration:none;border-right:1px solid rgba(0,0,0,.06);
     transition:background .15s;
   }
   .bb-kakao:hover{background:#fdd800}
   .bb-call{
-    display:flex;align-items:center;justify-content:center;
-    width:56px;height:100%;background:var(--ink);
-    border:none;text-decoration:none;flex-shrink:0;font-size:22px;
-    transition:background .2s;
+    flex:1;display:flex;align-items:center;justify-content:center;
+    gap:6px;height:100%;background:var(--ink);
+    font-size:14px;font-weight:600;color:#fff;
+    text-decoration:none;transition:background .2s;
   }
   .bb-call:hover{background:#2a2a2a}
 }
@@ -608,10 +598,136 @@ footer{background:var(--ink);padding:40px 32px}
 @media(max-width:700px){
   .fin-badge{font-size:9.5px;padding:2px 6px 2px 5px}
 }
+
+/* ══ FLEET ══ */
+.fleet-top-grid,
+.fleet-bottom-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.fleet-card{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:24px 22px;
+}
+.fleet-card-eyebrow{
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;font-weight:300;
+}
+.fleet-card-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;color:var(--ink);
+  letter-spacing:-.01em;margin-bottom:6px;
+}
+.fleet-card-sub{
+  font-family:'Noto Serif KR',serif;
+  font-size:12px;font-weight:300;color:var(--muted);
+  margin-bottom:18px;
+}
+/* 법인 할인율 리스트 */
+.fleet-rate-list{display:flex;flex-direction:column;gap:8px}
+.fleet-rate-item{
+  border:1px solid var(--line);padding:14px 16px;
+  background:var(--bg2);
+}
+.fleet-rate-label{
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;font-weight:400;
+}
+.fleet-rate-num{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:700;color:var(--ink);line-height:1;
+}
+.fleet-rate-num sup{font-size:14px;vertical-align:top;padding-top:6px;font-weight:300;color:var(--muted)}
+.fleet-rate-desc{
+  font-family:'Noto Serif KR',serif;
+  font-size:11.5px;font-weight:300;color:var(--muted);margin-top:5px;
+}
+/* 임직원 그리드 */
+.fleet-emp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fleet-emp-item{
+  border:1px solid var(--line);padding:14px 12px;
+  text-align:center;background:var(--bg2);
+}
+.fleet-emp-full{grid-column:span 2}
+.fleet-emp-label{
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;font-weight:400;
+}
+.fleet-emp-num{
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:700;color:var(--ink);
+}
+.fleet-emp-num sup{font-size:13px;vertical-align:top;padding-top:5px;font-weight:300;color:var(--muted)}
+/* 공동명의 */
+.fleet-family-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+}
+.fleet-fam-item{
+  font-family:'Noto Serif KR',serif;
+  font-size:12px;font-weight:300;color:var(--muted);
+  padding:8px 0;border-bottom:1px solid var(--line);
+  line-height:1.5;
+}
+.fleet-fam-item:nth-child(even){padding-left:10px}
+.fleet-fam-highlight{color:var(--ink);font-weight:500}
+.fleet-fam-muted{color:var(--muted2);font-style:italic;font-size:11px}
+/* MOU 프로세스 */
+.fleet-process{display:flex;flex-direction:column;gap:12px}
+.fleet-step{display:flex;align-items:flex-start;gap:14px}
+.fleet-step-num{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:var(--muted2);
+  line-height:1;flex-shrink:0;padding-top:1px;min-width:20px;
+}
+.fleet-step-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.fleet-step-desc{
+  font-family:'Noto Serif KR',serif;
+  font-size:12px;font-weight:300;color:var(--muted);line-height:1.6;
+}
+/* 모바일 fleet */
+@media(max-width:700px){
+  .fleet-top-grid,
+  .fleet-bottom-grid{grid-template-columns:1fr}
+  .fleet-card{padding:20px 18px}
+  .fleet-emp-grid{grid-template-columns:1fr 1fr}
+  .fleet-card-title{font-size:20px}
+}
+
+/* ══ CONTACT FAB (PC 우측 고정 버튼) ══ */
+.contact-fab{
+  position:fixed;
+  right:20px;bottom:32px;
+  z-index:400;
+  display:flex;flex-direction:column;gap:8px;
+}
+.fab-kakao,.fab-call{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 16px;
+  font-size:13px;font-weight:600;
+  text-decoration:none;border-radius:28px;
+  box-shadow:0 4px 16px rgba(0,0,0,.15);
+  transition:transform .18s,box-shadow .18s;
+  white-space:nowrap;
+}
+.fab-kakao:hover,.fab-call:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.fab-kakao{background:#FEE500;color:#3C1E1E}
+.fab-call{background:var(--ink);color:#fff}
+/* 모바일에서는 FAB 숨기고 bottom-bar 사용 */
+@media(max-width:700px){
+  .contact-fab{display:none}
+}
+/* PC에서는 bottom-bar 숨김 */
+@media(min-width:701px){
+  .bottom-bar{display:none!important}
+  body{padding-bottom:0}
+}
+
 </style>
 </head>
 <body>
-
 <!-- ══ HEADER ══ -->
 <header class="site-header">
   <div class="sh-util">
@@ -1156,111 +1272,109 @@ footer{background:var(--ink);padding:40px 32px}
 
 
 </div><!-- /wrap -->
-
-<!-- ════════ FLEET SECTION ════════ -->
-
-
 </div><!-- /wrap -->
 
+<div id="fleet" style="background:#f4f4f2;padding:56px 0 64px">
+<div style="max-width:960px;margin:0 auto;padding:0 24px">
 
-
-</div><!-- /wrap -->
-
-<div id="fleet" style="background:#f4f4f2;padding:60px 0 68px">
-<div style="max-width:980px;margin:0 auto;padding:0 24px">
-
-  <div class="reveal" style="padding:0 0 8px;margin-bottom:32px">
-    <div style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:400">Fleet Program</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--ink);letter-spacing:-.01em">벤츠 <em style="font-style:italic;font-weight:400;color:var(--muted)">법인 · 임직원 플릿</em></h2>
+  <!-- 헤더 -->
+  <div class="reveal" style="margin-bottom:28px">
+    <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:300">Fleet Program</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,36px);font-weight:700;color:var(--ink);letter-spacing:-.01em">벤츠 <em style="font-style:italic;font-weight:300;color:var(--muted)">법인 · 임직원 플릿</em></h2>
   </div>
 
-  <!-- 3 카드 -->
-  <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)">
+  <!-- 법인 + 임직원 — 상단 2열 -->
+  <div class="reveal fleet-top-grid">
 
-    <!-- CORPORATE -->
-    <div style="background:#fff;padding:32px 28px">
-      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:400">Fleet Corporate</div>
-      <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:6px">법인 플릿</div>
-      <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);margin-bottom:24px">대상 — 법인</div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <!-- 1대 -->
-        <div style="border:1px solid var(--line);padding:18px 20px;background:var(--bg2)">
-          <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:400">1대 구매</div>
-          <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--ink);line-height:1">+2<sup style="font-size:16px;vertical-align:top;padding-top:8px;font-weight:400;color:var(--muted)">%</sup></div>
-          <div style="font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:8px">추가 할인 · S-Class · AMG · Maybach 한정</div>
+    <!-- 법인 플릿 -->
+    <div class="fleet-card">
+      <div class="fleet-card-eyebrow">Fleet Corporate</div>
+      <div class="fleet-card-title">법인 플릿</div>
+      <div class="fleet-card-sub">대상 — 법인</div>
+      <div class="fleet-rate-list">
+        <div class="fleet-rate-item">
+          <div class="fleet-rate-label">1대 구매</div>
+          <div class="fleet-rate-num">+2<sup>%</sup></div>
+          <div class="fleet-rate-desc">S-Class · AMG · Maybach 한정</div>
         </div>
-        <!-- 2대 -->
-        <div style="border:1px solid var(--line);padding:18px 20px;background:var(--bg2)">
-          <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:400">2대 구매</div>
-          <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--ink);line-height:1">+3<sup style="font-size:16px;vertical-align:top;padding-top:8px;font-weight:400;color:var(--muted)">%</sup></div>
-          <div style="font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:8px">추가 할인 · 전 차종</div>
+        <div class="fleet-rate-item">
+          <div class="fleet-rate-label">2대 구매</div>
+          <div class="fleet-rate-num">+3<sup>%</sup></div>
+          <div class="fleet-rate-desc">전 차종</div>
         </div>
       </div>
     </div>
 
-    <!-- EMPLOYEE -->
-    <div style="background:#fff;padding:32px 28px">
-      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:400">Employee</div>
-      <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:6px">임직원 플릿</div>
-      <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);margin-bottom:24px">대상 — MOU 체결 법인</div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <div style="border:1px solid var(--line);padding:16px 14px;text-align:center;background:var(--bg2)">
-            <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:400">대표이사</div>
-            <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--ink)">+5<sup style="font-size:14px;vertical-align:top;padding-top:7px;font-weight:400;color:var(--muted)">%</sup></div>
-          </div>
-          <div style="border:1px solid var(--line);padding:16px 14px;text-align:center;background:var(--bg2)">
-            <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:400">임직원</div>
-            <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--ink)">+2<sup style="font-size:14px;vertical-align:top;padding-top:7px;font-weight:400;color:var(--muted)">%</sup></div>
-          </div>
+    <!-- 임직원 플릿 -->
+    <div class="fleet-card">
+      <div class="fleet-card-eyebrow">Employee</div>
+      <div class="fleet-card-title">임직원 플릿</div>
+      <div class="fleet-card-sub">대상 — MOU 체결 법인</div>
+      <div class="fleet-emp-grid">
+        <div class="fleet-emp-item">
+          <div class="fleet-emp-label">대표이사</div>
+          <div class="fleet-emp-num">+5<sup>%</sup></div>
         </div>
-        <div style="border:1px solid var(--line);padding:16px 14px;text-align:center;background:var(--bg2)">
-          <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:400">브랜드 대사</div>
-          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--ink)">+5<sup style="font-size:14px;vertical-align:top;padding-top:7px;font-weight:400;color:var(--muted)">%</sup></div>
+        <div class="fleet-emp-item">
+          <div class="fleet-emp-label">임직원</div>
+          <div class="fleet-emp-num">+2<sup>%</sup></div>
+        </div>
+        <div class="fleet-emp-item fleet-emp-full">
+          <div class="fleet-emp-label">브랜드 대사</div>
+          <div class="fleet-emp-num">+5<sup>%</sup></div>
         </div>
       </div>
     </div>
 
-    <!-- FAMILY + PROCESS -->
-    <div style="background:#fff;padding:32px 28px">
-      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:400">Family</div>
-      <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:20px">플릿 공동명의 범위</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;border-top:1px solid var(--line)">
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line)">조부모 / 배우자 조부모</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);padding:9px 0 9px 12px;border-bottom:1px solid var(--line)">부모 / 배우자 부모</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line)">형제 / 형제의 배우자</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);padding:9px 0 9px 12px;border-bottom:1px solid var(--line)">배우자 형제</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:500;color:var(--ink);padding:9px 0;border-bottom:1px solid var(--line)">★ 임직원 본인</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:500;color:var(--ink);padding:9px 0 9px 12px;border-bottom:1px solid var(--line)">배우자</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:300;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line)">자녀 / 자녀의 배우자</div>
-        <div style="font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted2);padding:9px 0 9px 12px;border-bottom:1px solid var(--line);font-style:italic">배우자형제의배우자 불가</div>
-      </div>
+  </div>
 
-      <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:400;padding-top:4px">MOU 체결 방법</div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--muted2);line-height:1;flex-shrink:0;padding-top:1px">1</span>
+  <!-- Family + MOU — 하단 2열 -->
+  <div class="reveal fleet-bottom-grid" style="margin-top:10px">
+
+    <!-- 공동명의 범위 -->
+    <div class="fleet-card">
+      <div class="fleet-card-eyebrow">Family</div>
+      <div class="fleet-card-title" style="margin-bottom:16px">공동명의 범위</div>
+      <div class="fleet-family-grid">
+        <div class="fleet-fam-item">조부모 / 배우자 조부모</div>
+        <div class="fleet-fam-item">부모 / 배우자 부모</div>
+        <div class="fleet-fam-item">형제 / 형제의 배우자</div>
+        <div class="fleet-fam-item">배우자 형제</div>
+        <div class="fleet-fam-item fleet-fam-highlight">★ 임직원 본인</div>
+        <div class="fleet-fam-item fleet-fam-highlight">배우자</div>
+        <div class="fleet-fam-item">자녀 / 자녀의 배우자</div>
+        <div class="fleet-fam-item fleet-fam-muted">배우자형제의배우자 불가</div>
+      </div>
+    </div>
+
+    <!-- MOU 체결 방법 -->
+    <div class="fleet-card">
+      <div class="fleet-card-eyebrow">MOU 체결 방법</div>
+      <div class="fleet-card-title" style="margin-bottom:16px">체결 프로세스</div>
+      <div class="fleet-process">
+        <div class="fleet-step">
+          <div class="fleet-step-num">1</div>
           <div>
-            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px">서류 준비</div>
-            <div style="font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted)">차량등록증 + 사업자사본 (당해년도 출고 차량)</div>
+            <div class="fleet-step-title">서류 준비</div>
+            <div class="fleet-step-desc">차량등록증 + 사업자사본 (당해년도 출고 차량)</div>
           </div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--muted2);line-height:1;flex-shrink:0;padding-top:1px">2</span>
+        <div class="fleet-step">
+          <div class="fleet-step-num">2</div>
           <div>
-            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px">도장 날인</div>
-            <div style="font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted)">MOU 체결서에 대표이사 도장 날인</div>
+            <div class="fleet-step-title">도장 날인</div>
+            <div class="fleet-step-desc">MOU 체결서에 대표이사 도장 날인</div>
           </div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:14px">
-          <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--muted2);line-height:1;flex-shrink:0;padding-top:1px">3</span>
+        <div class="fleet-step">
+          <div class="fleet-step-num">3</div>
           <div>
-            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px">서류 제출</div>
-            <div style="font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted)">법인플릿 담당자에게 제출 → MOU 체결 완료</div>
+            <div class="fleet-step-title">서류 제출</div>
+            <div class="fleet-step-desc">법인플릿 담당자에게 제출 → MOU 체결 완료</div>
           </div>
         </div>
       </div>
-      <div style="margin-top:16px;padding:12px 16px;background:var(--bg2);border-left:3px solid var(--ink);font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted)">
+      <div style="margin-top:14px;padding:10px 14px;background:var(--bg3);border-left:3px solid var(--ink);font-family:'Noto Serif KR',serif;font-size:12px;font-weight:300;color:var(--muted)">
         ※ 서류 제출 완료 시 임직원 플릿 혜택 즉시 적용
       </div>
     </div>
@@ -1268,114 +1382,6 @@ footer{background:var(--ink);padding:40px 32px}
   </div>
 </div>
 </div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="ft-left">
-      <div class="ft-star-wrap">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="16" cy="16" r="15" stroke="#c9a96e" stroke-width=".8"/>
-          <path d="M16 3 L16 16 L26.5 24" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
-          <path d="M16 3 L16 16 L5.5 24" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
-          <path d="M16 16 L16 29" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
-          <circle cx="16" cy="16" r="1.5" fill="#c9a96e" opacity=".7"/>
-        </svg>
-      </div>
-      <div class="ft-name">구용회</div>
-      <div class="ft-role">팀장 &nbsp;·&nbsp; Mercedes-Benz</div>
-      <div class="ft-rule"></div>
-      <div class="ft-contact-line">
-        <a href="tel:01027580789">010-2758-0789</a><br>
-        <a href="mailto:contact@motorone.co.kr">모터원 의정부전시장</a>
-      </div>
-    </div>
-    <div class="ft-right">
-      <div class="ft-copy">
-        <span>Mercedes-Benz Official Dealer</span>
-        <span style="color:#222;margin:6px 0;display:block">◆</span>
-        <span>© 2026 Motor One</span>
-        <span>Uijeongbu Showroom</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-});
-
-// Scroll reveal
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="ft-left">
-      <div class="ft-name">구용회</div>
-      <div class="ft-role">팀장 · 모터원 의정부전시장</div>
-      <div class="ft-rule"></div>
-      <div class="ft-contact-line">
-        <a href="tel:01027580789">010-2758-0789</a><br>
-        모터원 의정부전시장
-      </div>
-    </div>
-    <div class="ft-right">
-      <div class="ft-copy">
-        <span>Mercedes-Benz Official Dealer</span>
-        <span>© 2026 Motor One</span>
-        <span>Uijeongbu Showroom</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(!t)return;
-    const y=t.getBoundingClientRect().top+window.pageYOffset-110;
-    window.scrollTo({top:y,behavior:'smooth'});
-  });
-});
-
-// 내비 스크롤 힌트 — 끝까지 스크롤하면 페이드 제거
-const navInner = document.getElementById('nav-inner');
-const navFade  = document.getElementById('nav-fade');
-if(navInner && navFade){
-  const checkNav = () => {
-    const atEnd = navInner.scrollLeft + navInner.clientWidth >= navInner.scrollWidth - 8;
-    navFade.classList.toggle('hidden', atEnd);
-  };
-  navInner.addEventListener('scroll', checkNav, {passive:true});
-  window.addEventListener('resize', checkNav);
-  checkNav();
-}
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add('visible');
-  });
-},{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
-
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -1390,115 +1396,33 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     </div>
     <div class="ft-right">
       <div class="ft-copy">
-        <span>Mercedes-Benz</span>
-        <span>Official Dealer</span>
+        <span>Mercedes-Benz Official Dealer</span>
         <span>© 2026</span>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- ════ FIXED BOTTOM BAR ════ -->
-<div class="bottom-bar">
-  <select class="bb-select" onchange="if(this.value) { const t=document.querySelector(this.value); if(t){ const y=t.getBoundingClientRect().top+window.pageYOffset-130; window.scrollTo({top:y,behavior:'smooth'}); } this.value=''; }">
-    <option value="">차종 선택</option>
-    <option value="#t-a">A클래스</option>
-    <option value="#t-cla">CLA</option>
-    <option value="#t-gla">GLA · GLB</option>
-    <option value="#t-c">C클래스</option>
-    <option value="#t-e">E클래스</option>
-    <option value="#t-s">S클래스</option>
-    <option value="#t-cle">CLE</option>
-    <option value="#t-glc">GLC</option>
-    <option value="#t-gle">GLE</option>
-    <option value="#t-gls">GLS</option>
-    <option value="#t-g">G클래스</option>
-    <option value="#t-amg">AMG GT · SL</option>
-    <option value="#t-eq">전동화 EQ</option>
-    <option value="#t-myb">Maybach</option>
-    <option value="#fleet">Fleet</option>
-  </select>
-  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">💬</a>
-  <a href="tel:01027580789" class="bb-call" title="전화 연결">📞</a>
+<!-- ══ CONTACT FAB (PC + 모바일 공통) ══ -->
+<div class="contact-fab">
+  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="fab-kakao" title="카카오톡 상담">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C5.477 2 1 5.808 1 10.5c0 2.99 1.735 5.625 4.385 7.219L4.5 21l4.02-2.133C9.31 19.28 10.147 19.4 11 19.4c5.523 0 10-3.806 10-8.9S16.523 2 11 2z" fill="#3C1E1E"/></svg>
+    카카오 상담
+  </a>
+  <a href="tel:01027580789" class="fab-call" title="전화 연결">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5C1 12.15 7.85 19 17.5 19A1.5 1.5 0 0019 17.5v-4a1.5 1.5 0 00-1.5-1.5c-1.132 0-2.24-.18-3.27-.513a1.5 1.5 0 00-1.52.368l-2.02 2.02a11.576 11.576 0 01-5.055-5.056l2.02-2.02a1.5 1.5 0 00.368-1.52A10.52 10.52 0 018 2.5 1.5 1.5 0 006.5 1z" fill="white"/></svg>
+    전화 연결
+  </a>
 </div>
-
-<script>
-/* 스무스 스크롤 */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(!t)return;
-    const y=t.getBoundingClientRect().top+window.pageYOffset-130;
-    window.scrollTo({top:y,behavior:'smooth'});
-  });
-});
-/* 소개 페이지 링크 */
-document.querySelectorAll('.sh-back').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.stopPropagation();
-  });
-});
-/* 내비 스크롤 힌트 */
-const navInner=document.getElementById('nav-inner');
-const navFade=document.getElementById('nav-fade');
-if(navInner&&navFade){
-  const check=()=>navFade.classList.toggle('gone',navInner.scrollLeft+navInner.clientWidth>=navInner.scrollWidth-8);
-  navInner.addEventListener('scroll',check,{passive:true});
-  window.addEventListener('resize',check);
-  check();
-}
-/* 스크롤 리빌 */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
-
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="ft-name">구용회 팀장</div>
-      <div class="ft-role">Mercedes-Benz Official Dealer</div>
-      <div class="ft-rule"></div>
-      <div class="ft-contact-line">
-        <a href="tel:01027580789">010-2758-0789</a><br>
-        경기도 의정부시 시민로 309
-      </div>
-    </div>
-    <div class="ft-right">
-      <div class="ft-copy">
-        <span>Mercedes-Benz</span>
-        <span>Official Dealer</span>
-        <span>© 2026</span>
-      </div>
-    </div>
-  </div>
-</footer>
 
 <!-- ══ FIXED BOTTOM BAR (모바일) ══ -->
 <div class="bottom-bar">
-  <select class="bb-select" id="model-select">
-    <option value="">차종 선택 →</option>
-    <option value="#t-a">A클래스</option>
-    <option value="#t-cla">CLA</option>
-    <option value="#t-gla">GLA · GLB</option>
-    <option value="#t-c">C클래스</option>
-    <option value="#t-e">E클래스</option>
-    <option value="#t-s">S클래스</option>
-    <option value="#t-cle">CLE</option>
-    <option value="#t-glc">GLC</option>
-    <option value="#t-gle">GLE</option>
-    <option value="#t-gls">GLS</option>
-    <option value="#t-g">G클래스</option>
-    <option value="#t-amg">AMG GT · SL</option>
-    <option value="#t-eq">전동화 EQ</option>
-    <option value="#t-myb">Maybach</option>
-    <option value="#fleet">Fleet</option>
-  </select>
-  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">💬</a>
-  <a href="tel:01027580789" class="bb-call" title="전화 연결">📞</a>
+  <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">
+    💬 카카오 상담
+  </a>
+  <a href="tel:01027580789" class="bb-call" title="전화 연결">
+    📞 전화 연결
+  </a>
 </div>
 
 <script>
@@ -1516,7 +1440,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 /* 차종 선택 드롭다운 */
-document.getElementById('model-select').addEventListener('change',function(){
+const ms = document.getElementById('model-select');
+if(ms) ms.addEventListener('change',function(){
   if(!this.value)return;
   const t=document.querySelector(this.value);
   if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-140,behavior:'smooth'});
@@ -1541,4 +1466,3 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
-
