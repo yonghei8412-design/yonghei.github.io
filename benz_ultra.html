@@ -553,7 +553,7 @@ footer{background:var(--ink);padding:40px 32px}
   .bb-kakao{
     flex:1;display:flex;align-items:center;justify-content:center;
     gap:6px;height:100%;background:#FEE500;
-    font-size:14px;font-weight:600;color:#3C1E1E;
+    font-size:13px;font-weight:600;color:#3C1E1E;
     text-decoration:none;border-right:1px solid rgba(0,0,0,.06);
     transition:background .15s;
   }
@@ -561,7 +561,7 @@ footer{background:var(--ink);padding:40px 32px}
   .bb-call{
     flex:1;display:flex;align-items:center;justify-content:center;
     gap:6px;height:100%;background:var(--ink);
-    font-size:14px;font-weight:600;color:#fff;
+    font-size:13px;font-weight:600;color:#fff;
     text-decoration:none;transition:background .2s;
   }
   .bb-call:hover{background:#2a2a2a}
@@ -1418,15 +1418,17 @@ footer{background:var(--ink);padding:40px 32px}
 <!-- ══ FIXED BOTTOM BAR (모바일) ══ -->
 <div class="bottom-bar">
   <a href="https://open.kakao.com/o/snV0S6Tf" target="_blank" class="bb-kakao" title="카카오톡 상담">
-    💬 카카오 상담
+    <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M11 2C5.477 2 1 5.808 1 10.5c0 2.99 1.735 5.625 4.385 7.219L4.5 21l4.02-2.133C9.31 19.28 10.147 19.4 11 19.4c5.523 0 10-3.806 10-8.9S16.523 2 11 2z" fill="#3C1E1E"/></svg>
+    카카오 상담
   </a>
   <a href="tel:01027580789" class="bb-call" title="전화 연결">
-    📞 전화 연결
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5C1 12.15 7.85 19 17.5 19A1.5 1.5 0 0019 17.5v-4a1.5 1.5 0 00-1.5-1.5c-1.132 0-2.24-.18-3.27-.513a1.5 1.5 0 00-1.52.368l-2.02 2.02a11.576 11.576 0 01-5.055-5.056l2.02-2.02a1.5 1.5 0 00.368-1.52A10.52 10.52 0 018 2.5 1.5 1.5 0 006.5 1z" fill="white"/></svg>
+    전화 연결
   </a>
 </div>
 
 <script>
-/* 스무스 스크롤 */
+/* 스무스 스크롤 — #앵커만 처리, 외부 링크 절대 건드리지 않음 */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const href=a.getAttribute('href');
@@ -1437,15 +1439,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const offset=window.innerWidth<=700?140:136;
     window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-offset,behavior:'smooth'});
   });
-});
-
-/* 차종 선택 드롭다운 */
-const ms = document.getElementById('model-select');
-if(ms) ms.addEventListener('change',function(){
-  if(!this.value)return;
-  const t=document.querySelector(this.value);
-  if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-140,behavior:'smooth'});
-  this.value='';
 });
 
 /* 내비 스크롤 힌트 */
