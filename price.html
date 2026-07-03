@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mercedes-Benz 가격표 · 7월 금융 요약 v38</title>
+<title>Mercedes-Benz 가격표 · 7월 금융 요약 v39</title>
 <style>
 :root{
   --navy:#17172d;
@@ -35,7 +35,7 @@ body{
 .topbar-wrap{position:sticky;top:0;z-index:50;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.08)}
 .topbar{max-width:1280px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:10px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
 .topbar::-webkit-scrollbar{display:none}
-.topbar a{color:rgba(255,255,255,.76);text-decoration:none;height:58px;display:inline-flex;align-items:center;padding:0 10px;font-size:14px;font-weight:650;letter-spacing:-.02em;border-bottom:3px solid transparent;transition:.16s ease}
+.topbar a{color:rgba(255,255,255,.76);text-decoration:none;height:58px;display:inline-flex;align-items:center;padding:0 10px;font-size:14px;font-weight:650;letter-spacing:-.02em;border-bottom:3px solid transparent;transition:.16s ease;flex:0 0 auto;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .topbar a:hover{color:#fff;border-bottom-color:rgba(242,200,71,.72)}
 .topbar a.best{color:var(--gold);font-weight:760}
 .topbar a.best:before{content:"★";margin-right:5px;font-size:14px}
@@ -556,7 +556,35 @@ function renderMobile(){
   });
   root.innerHTML=html;
 }
-renderTopbar();renderDesktop();renderMobile();
+
+function stickyOffset(){
+  const bar=document.querySelector(".topbar-wrap");
+  return (bar ? bar.offsetHeight : 0) + 8;
+}
+function smartScrollTo(id){
+  let target=document.getElementById(id);
+  if(!target && id.startsWith("sec-")) target=document.getElementById("m-"+id);
+  if(!target && id.startsWith("m-sec-")) target=document.getElementById(id.replace("m-",""));
+  if(!target) return;
+  const y=target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+  window.scrollTo({top:y,behavior:"smooth"});
+}
+function wireTopbar(){
+  const nav=document.getElementById("topbar");
+  if(!nav) return;
+  nav.addEventListener("click",function(e){
+    const a=e.target.closest('a[href^="#"]');
+    if(!a) return;
+    let id=a.getAttribute("href").slice(1);
+    if(window.matchMedia("(max-width:800px)").matches && id.startsWith("sec-")){
+      id="m-"+id;
+    }
+    e.preventDefault();
+    smartScrollTo(id);
+  });
+}
+renderTopbar();renderDesktop();renderMobile();wireTopbar();
+
 </script>
 
 <!-- FLOATING CONTACT DOCK -->
