@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mercedes-Benz 가격표 · 7월 금융 요약 v37</title>
+<title>Mercedes-Benz 가격표 · 7월 금융 요약 v38</title>
 <style>
 :root{
   --navy:#17172d;
@@ -325,6 +325,51 @@ thead th:nth-child(4),tbody td:nth-child(4){text-align:right}
   .price-float-wrap{left:.8rem;right:.8rem;bottom:.75rem;grid-template-columns:1fr 1fr;gap:.42rem}
   .price-float-btn{min-width:0;width:100%;height:40px;padding:0 .62rem;font-size:11px}
   .price-float-btn svg{width:15px;height:15px}
+}
+
+
+/* PERSONAL PRICE TYPOGRAPHY REFINEMENT */
+body,
+table,
+input,
+button,
+textarea{
+  font-family:"Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.hero h1,
+h1,
+h2,
+.class-title,
+.brief-v,
+.section-title,
+.title-strong{
+  font-family:"Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight:900 !important;
+  letter-spacing:-0.055em !important;
+}
+.hero h1{
+  font-size:54px !important;
+  line-height:1.08 !important;
+  color:#0b0f18 !important;
+}
+.eyebrow{
+  letter-spacing:.16em !important;
+  font-weight:700 !important;
+}
+.desc{
+  font-weight:500;
+}
+@media(max-width:900px){
+  .hero h1{
+    font-size:38px !important;
+    line-height:1.12 !important;
+  }
+}
+@media(max-width:640px){
+  .hero h1{
+    font-size:30px !important;
+    line-height:1.15 !important;
+  }
 }
 
 </style>
