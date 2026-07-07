@@ -137,6 +137,16 @@
     object-position: center top;
     display: block;
   }
+
+  .hero-photo-placeholder.photo-fallback::after {
+    content: 'Yong-Hei Koo';
+    position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif; color: rgba(201,168,76,0.82);
+    font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: 0.08em;
+    z-index: 1; text-align: center; white-space: nowrap;
+  }
+  .hero-photo-placeholder.photo-fallback img { opacity: 0; }
+
   .hero-photo-overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
     background: linear-gradient(to top, rgba(5,5,5,0.92) 0%, transparent 60%);
@@ -469,7 +479,7 @@
   </div>
   <div class="hero-image-wrap">
     <div class="hero-photo-placeholder">
-      <img src="내사진_2.jpg" alt="구용회 팀장 프로필 사진">
+      <img id="heroPhoto" src="내사진_2.jpg" alt="구용회 팀장 프로필 사진">
       <div class="hero-photo-overlay">
         <div class="hero-name-en">Yong-Hei Koo</div>
         <div class="hero-name-ko">구용회 팀장 · 영업 3팀</div>
@@ -832,6 +842,34 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => io.observe(el));
+
+
+  const heroPhoto = document.getElementById('heroPhoto');
+  const heroPhotoWrap = document.querySelector('.hero-photo-placeholder');
+  const photoCandidates = [
+    '내사진_2.jpg',
+    './내사진_2.jpg',
+    '%EB%82%B4%EC%82%AC%EC%A7%84_2.jpg',
+    '내사진_2.png',
+    './내사진_2.png',
+    '%EB%82%B4%EC%82%AC%EC%A7%84_2.png',
+    '내사진_2.png.jpg',
+    './내사진_2.png.jpg',
+    '%EB%82%B4%EC%82%AC%EC%A7%84_2.png.jpg',
+    'profile.jpg',
+    'profile.png'
+  ];
+  let photoTryIndex = 0;
+  if (heroPhoto) {
+    heroPhoto.onerror = () => {
+      photoTryIndex += 1;
+      if (photoTryIndex < photoCandidates.length) {
+        heroPhoto.src = photoCandidates[photoTryIndex];
+      } else if (heroPhotoWrap) {
+        heroPhotoWrap.classList.add('photo-fallback');
+      }
+    };
+  }
 
   const form = document.getElementById('consultForm');
   const msg = document.getElementById('formMsg');
